@@ -8,7 +8,7 @@ public class VisionPlusApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VisionPlusApplication.class, args);
-                System.out.println("Hola Mundp");
+
 	}
 
 }
