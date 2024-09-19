@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author sebas
  */
-public class ReportesDao implements Operacion<Reportes>{
+public class ReportesDAO implements Operacion<Reportes>{
 
     @Autowired
     private ReportesRepositorio repoReporte;
