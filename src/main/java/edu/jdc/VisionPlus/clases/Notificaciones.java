@@ -1,13 +1,40 @@
 package edu.jdc.VisionPlus.clases;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
+
+@Entity
+@Table(name = "notificaciones")
 public class Notificaciones {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Notificacion")
     private Integer idNotifcacion;
+    
+    @NotNull    
+    @Column(name = "id_Usuario")
     private Usuarios IdUsuario;
+    
+    @NotNull
+    @Size(min = 3, max = 250)
+    @Column(name = "mensaje_Notificacion")
     private String mensajeNotificacion;
+    
+    @NotNull    
+    @Column(name = "fehca_Envio_Notificacion")
     private Date fechaEnvioNotificacion;
+    
+    @NotNull    
+    @Column(name = "estado_Notificacion")
     private Integer estadoNotificacion;
     
     public Notificaciones(){
