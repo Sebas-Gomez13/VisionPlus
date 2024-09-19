@@ -1,17 +1,61 @@
 package edu.jdc.VisionPlus.clases;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name="Usuarios")
 public class Usuarios extends Roles {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_Usuario")
     private Integer idUsuario;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="nombre_Usuario")
     private String nombreUsuario;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="apellido_Usuario")
     private String apellidoUsuario;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="correo_Usuario")
     private String correoUsuario;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="clave_Usuario")
     private String claveUsuario;
+    
+    @NotNull
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name="fecha_Creacion")
     private Date  fechaCreacion;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="telefono_Usuario")
     private String telefonoUsuario;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="direccion_Usuario")
     private String direccionUsuario;
+    
+    @NotNull
+    @Column(name="estado_Usuario")
     private Integer estadoUsuario;
     
     public Usuarios(){

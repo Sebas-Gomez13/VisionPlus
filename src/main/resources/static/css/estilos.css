@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+.blog-footer{
+    display: flex;
+    padding: 2.5rem;
+    color: lightgrey;
+    text-align: center;
+    border-top: 5px solid black;
+    
+}
+
+section{
+    height: 40rem;
+}
+
+.fondo-bienvenida{
+  background: rgb(156,213,186);
+background: linear-gradient(90deg, rgba(156,213,186,0.7301295518207283) 9%, rgba(130,128,190,0.5704656862745099) 25%, rgba(130,128,190,0.39959733893557425) 52%, rgba(144,182,233,0.7497373949579832) 80%);
+}
+.info{
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+}
+.accordion-button{
+    background: #bebcde;
+    list-style: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 20px;
+    font-size: 20px;
+    color: #59369c;   
+    font-weight: bold;
+    font-family: Oswald;
+}
+
+h2, h1{
+    text-align: center;
+}
+.rectan{
+    align-items: center;
+    background: #ddd8e7;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 200px; /* Altura de ejemplo */
+}
+.nosotros{
+    height: auto;
+     justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
+
+

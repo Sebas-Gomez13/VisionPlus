@@ -1,10 +1,31 @@
 package edu.jdc.VisionPlus.clases;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
+@Entity
+@Table(name="Reportes")
 public class Reportes {
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_Reporte")
     private Integer idReporte;
+     
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="nombre_Reporte")
     private String nombreReporte;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="descripcion_Reporte")
     private String descripcionReporte;
     
     public Reportes(){

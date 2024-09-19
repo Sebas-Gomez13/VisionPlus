@@ -1,16 +1,50 @@
 package edu.jdc.VisionPlus.clases;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
 
+@Entity
+@Table(name="Historiales")
 public class Historiales {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_Historial")
     private Integer idHistorial;
+    
+    @NotNull
+    @Column(name="id_Paciente")
     private Usuarios idPaciente;
+    
+    @NotNull
+    @Column(name="id_Oftamologo")
     private Usuarios idOftamologo;
+    
+    @NotNull
+    @Column(name="fecha_Consulta")
     private Date fecha_consulta;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="diagnostico")
     private String Diagnostico;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="descripcion")
     private String Descripcion;
+    
+    @NotNull
+    @Size(min=3, max=250)
+    @Column(name="prescripcion")
     private String prescripcion;
     
     public Historiales(){
