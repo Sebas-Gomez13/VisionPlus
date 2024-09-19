@@ -1,13 +1,38 @@
 package edu.jdc.VisionPlus.clases;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import java.security.Timestamp;
 import java.util.Objects;
 
+
+@Entity
+@Table(name = "citas")
 public class Citas {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Cita")
     private Integer idCita;
+    
+    @NotNull    
+    @Column(name = "id_Paciente")
     private  Usuarios idPaciente;
+    
+    @NotNull    
+    @Column(name = "id_Oftalmologo")
     private Usuarios idOftamologo;
+    
+    @NotNull
+    @Column(name = "fecha_hora")    
     private Timestamp fecha_hora;
+    
+    @NotNull
+    @Column(name = "estado")    
     private Integer estado;
     
     public Citas(){
