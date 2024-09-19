@@ -1,6 +1,8 @@
-
 package edu.jdc.VisionPlus.repositorios;
 
-public class CitasRepositorio {
+import edu.jdc.VisionPlus.clases.Citas;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CitasRepositorio extends CrudRepository<Citas, Integer>{
     
 }
