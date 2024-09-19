@@ -2,6 +2,7 @@ package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.Citas;
 import edu.jdc.VisionPlus.interfaces.Operacion;
+import edu.jdc.VisionPlus.repositorios.CitasRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class CitasDAO implements Operacion<Citas>{
     
     @Autowired
-    private CitaRepositorio repoCita;
+    private CitasRepositorio repoCita;
 
     @Override
     public List<Citas> consultar(String orden) {
