@@ -10,4 +10,6 @@ public interface Operacion<T> {
     public Boolean actualizar (T objActualizar);
     public Boolean eliminar(Integer llavePrimaria);
     public Integer cantidadRegistros();
+
+
 }
