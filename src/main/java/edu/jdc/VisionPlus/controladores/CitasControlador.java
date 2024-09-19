@@ -15,14 +15,14 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 public class CitasControlador {
-    
+
     @Autowired(required = true)
     private CitasDAO citaDao;
-    
-        @GetMapping("/listBrand")
-    public String listarMarcas(Model vista) {
-        List<Citas> arregloCitas=citaDao.consultar("");
-        vista.addAttribute("arrCitas",arregloCitas);
+
+    @GetMapping("/listBrand")
+    public String listarCita(Model vista) {
+        List<Citas> arregloCitas = citaDao.consultar("");
+        vista.addAttribute("arrCitas", arregloCitas);
         return "listarCitas";
     }
 
@@ -31,12 +31,12 @@ public class CitasControlador {
         vista.addAttribute("objCita", new Citas());
         return "crearCita";
     }
-    
+
     @PostMapping("/addBrand")
-    public String registrarMarca(@Valid @ModelAttribute Citas objCita,BindingResult respuesta,Model vista, SessionStatus estado){
+    public String registrarCita(@Valid @ModelAttribute Citas objCita, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearCita";
-            
+
         } else {
             citaDao.registrar(objCita);
             estado.setComplete();
@@ -45,7 +45,7 @@ public class CitasControlador {
     }
 
     @GetMapping("/adminBrand")
-    public String administrarCitas(Model vista) {
+    public String administrarCita(Model vista) {
         return "administrarCitas";
     }
 

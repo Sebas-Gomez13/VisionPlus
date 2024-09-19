@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsuariosDAOS implements Operacion<Usuarios> {
+public class UsuariosDAO implements Operacion<Usuarios> {
 
     @Autowired
     private UsuarioRepositorio repoUsuario;
