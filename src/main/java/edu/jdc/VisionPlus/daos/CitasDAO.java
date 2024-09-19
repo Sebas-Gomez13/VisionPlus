@@ -37,12 +37,11 @@ public class CitasDAO implements Operacion<Citas>{
     @Override
     public Boolean eliminar(Integer llavePrimaria) {
          return true;
-//        return repoMarca.eliminarMarca(llavePrimaria);
     }
 
     @Override
     public Integer cantidadRegistros() {
-//         return repoCita.cantidadMarcas();
+
     return 0;
     }
     
