@@ -6,7 +6,7 @@ import edu.jdc.VisionPlus.repositorios.NotificacionesRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class NotificacionesDAO implements Operacion<Notificaciones>{
+public class NotificacionesDao implements Operacion<Notificaciones>{
     
     @Autowired
     private NotificacionesRepositorio repoNotificacion;

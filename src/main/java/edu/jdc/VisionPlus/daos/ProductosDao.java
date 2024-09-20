@@ -6,7 +6,7 @@ import edu.jdc.VisionPlus.repositorios.ProductosRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ProductosDAO implements Operacion<Productos>{
+public class ProductosDao implements Operacion<Productos>{
     
     @Autowired
     private ProductosRepositorio repoProducto;

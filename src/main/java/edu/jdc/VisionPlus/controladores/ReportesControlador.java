@@ -1,7 +1,7 @@
 package edu.jdc.VisionPlus.controladores;
 
 import edu.jdc.VisionPlus.clases.Reportes;
-import edu.jdc.VisionPlus.daos.ReportesDAO;
+import edu.jdc.VisionPlus.daos.ReportesDao;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 public class ReportesControlador {
 
     @Autowired(required = true)
-    private ReportesDAO reporteDao;
+    private ReportesDao reporteDao;
 
     @GetMapping("/listBrand")
     public String listarReporte(Model vista) {

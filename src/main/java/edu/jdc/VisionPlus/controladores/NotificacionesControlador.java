@@ -1,7 +1,7 @@
 package edu.jdc.VisionPlus.controladores;
 
 import edu.jdc.VisionPlus.clases.Notificaciones;
-import edu.jdc.VisionPlus.daos.NotificacionesDAO;
+import edu.jdc.VisionPlus.daos.NotificacionesDao;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 public class NotificacionesControlador {
 
     @Autowired(required = true)
-    private NotificacionesDAO notificacionDao;
+    private NotificacionesDao notificacionDao;
 
     @GetMapping("/listBrand")
     public String listarNotificacion(Model vista) {

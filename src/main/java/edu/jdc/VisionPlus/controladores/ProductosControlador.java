@@ -1,7 +1,7 @@
 package edu.jdc.VisionPlus.controladores;
 
 import edu.jdc.VisionPlus.clases.Productos;
-import edu.jdc.VisionPlus.daos.ProductosDAO;
+import edu.jdc.VisionPlus.daos.ProductosDao;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 public class ProductosControlador {
 
     @Autowired(required = true)
-    private ProductosDAO productoDao;
+    private ProductosDao productoDao;
 
     @GetMapping("/listBrand")
     public String listarProducto(Model vista) {
