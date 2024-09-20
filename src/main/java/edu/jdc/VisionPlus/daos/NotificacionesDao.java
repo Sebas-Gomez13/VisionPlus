@@ -5,10 +5,11 @@ import edu.jdc.VisionPlus.interfaces.Operacion;
 import edu.jdc.VisionPlus.repositorios.NotificacionesRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class NotificacionesDao implements Operacion<Notificaciones>{
-    
-    @Autowired
+    @Autowired(required = true)
     private NotificacionesRepositorio repoNotificacion;
 
     @Override

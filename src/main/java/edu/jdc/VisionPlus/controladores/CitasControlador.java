@@ -19,20 +19,20 @@ public class CitasControlador {
     @Autowired(required = true)
     private CitasDAO citaDao;
 
-    @GetMapping("/listBrand")
+    @GetMapping("/listCitas")
     public String listarCita(Model vista) {
         List<Citas> arregloCitas = citaDao.consultar("");
         vista.addAttribute("arrCitas", arregloCitas);
         return "listarCitas";
     }
 
-    @GetMapping("/addBrand")
+    @GetMapping("/addCitas")
     public String crearCita(Model vista) {
         vista.addAttribute("objCita", new Citas());
         return "crearCita";
     }
 
-    @PostMapping("/addBrand")
+    @PostMapping("/addCitas")
     public String registrarCita(@Valid @ModelAttribute Citas objCita, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearCita";
@@ -40,16 +40,16 @@ public class CitasControlador {
         } else {
             citaDao.registrar(objCita);
             estado.setComplete();
-            return "redirect:/listBrand";
+            return "redirect:/listCitas";
         }
     }
 
-    @GetMapping("/adminBrand")
+    @GetMapping("/adminCitas")
     public String administrarCita(Model vista) {
         return "administrarCitas";
     }
 
-    @GetMapping("/updateBrand")
+    @GetMapping("/updateCitas")
     public String actualizarCita(Model vista, Integer llavePrimaria) {
         return "actualizarCita";
     }

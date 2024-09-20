@@ -5,7 +5,9 @@ import edu.jdc.VisionPlus.interfaces.Operacion;
 import edu.jdc.VisionPlus.repositorios.ProductosRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductosDao implements Operacion<Productos>{
     
     @Autowired

@@ -44,13 +44,13 @@ public class Productos {
     
     @NotNull    
     @Column(name = "id_Usuario")
-    private Usuarios idUsuario;
+    private Integer idUsuario;
     
     public Productos(){
         
     }
 
-    public Productos(Integer idProducto, String nombreProducto, String descripcion, String imageenUrl, Integer categoria, Integer cantidadVisitas, Usuarios idUsuario) {
+    public Productos(Integer idProducto, String nombreProducto, String descripcion, String imageenUrl, Integer categoria, Integer cantidadVisitas, Integer idUsuario) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
@@ -59,6 +59,64 @@ public class Productos {
         this.cantidadVisitas = cantidadVisitas;
         this.idUsuario = idUsuario;
     }
+
+    public Integer getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
+    }
+
+    public Integer getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Integer categoria) {
+        this.categoria = categoria;
+    }
+
+    public Integer getCantidadVisitas() {
+        return cantidadVisitas;
+    }
+
+    public void setCantidadVisitas(Integer cantidadVisitas) {
+        this.cantidadVisitas = cantidadVisitas;
+    }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    
+    
 
     @Override
     public int hashCode() {

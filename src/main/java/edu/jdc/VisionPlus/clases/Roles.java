@@ -11,16 +11,16 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-@Table(name="Roles")
+@Table(name="roles")
 public class Roles {
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_Rol")
+    @Column(name="idRol")
     private Integer idRol;
      
     @NotNull
     @Size(min=3, max=250)
-    @Column(name="nombre_Rol")
+    @Column(name="nombreRol")
     private String nombreRol;
 
     public Roles() {

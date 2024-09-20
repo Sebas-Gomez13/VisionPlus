@@ -19,20 +19,20 @@ public class HistorialesControlador {
     @Autowired(required = true)
     private HistorialesDAO historialDao;
 
-    @GetMapping("/listBrand")
+    @GetMapping("/listHistoriales")
     public String listarHistorial(Model vista) {
         List<Historiales> arregloHistoriales = historialDao.consultar("");
         vista.addAttribute("arrHistoriales", arregloHistoriales);
         return "listarHistoriales";
     }
 
-    @GetMapping("/addBrand")
+    @GetMapping("/addHistoriales")
     public String crearHistorial(Model vista) {
         vista.addAttribute("objHistorial", new Historiales());
         return "crearHistorial";
     }
 
-    @PostMapping("/addBrand")
+    @PostMapping("/addHistoriales")
     public String registrarHistorial(@Valid @ModelAttribute Historiales objHistorial, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearHistorial";
@@ -40,16 +40,16 @@ public class HistorialesControlador {
         } else {
             historialDao.registrar(objHistorial);
             estado.setComplete();
-            return "redirect:/listBrand";
+            return "redirect:/listHistoriales";
         }
     }
 
-    @GetMapping("/adminBrand")
+    @GetMapping("/adminHistoriales")
     public String administrarHistorial(Model vista) {
         return "administrarHistorial";
     }
 
-    @GetMapping("/updateBrand")
+    @GetMapping("/updateHistoriales")
     public String actualizarHistorial(Model vista, Integer llavePrimaria) {
         return "actualizarHistorial";
     }

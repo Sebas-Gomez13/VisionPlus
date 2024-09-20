@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package edu.jdc.VisionPlus.clases;
 
 import jakarta.persistence.Column;
@@ -11,67 +15,69 @@ import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ *
+ * @author julic
+ */
 @Entity
-@Table(name="Usuarios")
-public class Usuarios extends Roles {
+@Table(name = "usuarios")
+public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_Usuario")
+    @Column(name="id_Helado")
     private Integer idUsuario;
     
     @NotNull
-    @Size(min=3, max=250)
-    @Column(name="nombre_Usuario")
+    @Size(min = 3, max = 250)
+    @Column(name = "nombreUsuario")
     private String nombreUsuario;
     
     @NotNull
-    @Size(min=3, max=250)
-    @Column(name="apellido_Usuario")
-    private String apellidoUsuario;
+    @Size(min = 3, max = 250)
+    @Column(name = "apellidoUsuario")
+    private String ApellidoUsuario;
     
     @NotNull
-    @Size(min=3, max=250)
-    @Column(name="correo_Usuario")
+    @Size(min = 3, max = 250)
+    @Column(name = "correoUsuario")
     private String correoUsuario;
     
     @NotNull
-    @Size(min=3, max=250)
-    @Column(name="clave_Usuario")
-    private String claveUsuario;
+    @Size(min = 3, max = 250)
+    @Column(name = "contrasenaUsuario")
+    private String contrasenaUsuario;
     
     @NotNull
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name="fecha_Creacion")
-    private Date  fechaCreacion;
+    @Column(name = "fechaCreacionUsuario")
+    private Date fechaCreacionUsuario;
     
     @NotNull
-    @Size(min=3, max=250)
-    @Column(name="telefono_Usuario")
+    @Size(min = 3, max = 250)
+    @Column(name = "telefonoUsuario")
     private String telefonoUsuario;
     
     @NotNull
-    @Size(min=3, max=250)
-    @Column(name="direccion_Usuario")
+    @Size(min = 3, max = 250)
+    @Column(name = "direccionUsuario")
     private String direccionUsuario;
     
     @NotNull
-    @Column(name="estado_Usuario")
+    @Column(name = "estadoUsuario")
     private Integer estadoUsuario;
-    
-    public Usuarios(){
-        
+
+    public Usuarios() {
     }
-    public Usuarios(Integer idRol, Integer idUsuario, String nombreUsuario, String apellidoUsuario,String correoUsuario, 
-            String claveUsuario, Date fechaCreacion, String telefonoUsuario, String direccionUsuario,Integer estadoUsuario){
-        this.idUsuario=idUsuario;
-        this.nombreUsuario=nombreUsuario;
-        this.apellidoUsuario=apellidoUsuario;
-        this.correoUsuario=correoUsuario;
-        this.claveUsuario=claveUsuario;
-        this.fechaCreacion=fechaCreacion;
-        this.telefonoUsuario=telefonoUsuario;
-        this.direccionUsuario=direccionUsuario;
-        this.estadoUsuario=estadoUsuario;
+
+    public Usuarios(Integer idUsuario, String nombreUsuario, String ApellidoUsuaeio, String correoUsuaeio, String contrasenaUsuario, Date fechaCreacionUsuario, String telefonoUsuario, String direccionUsuario, Integer estadoUsuario) {
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.ApellidoUsuario = ApellidoUsuaeio;
+        this.correoUsuario = correoUsuaeio;
+        this.contrasenaUsuario = contrasenaUsuario;
+        this.fechaCreacionUsuario = fechaCreacionUsuario;
+        this.telefonoUsuario = telefonoUsuario;
+        this.direccionUsuario = direccionUsuario;
+        this.estadoUsuario = estadoUsuario;
     }
 
     public Integer getIdUsuario() {
@@ -90,36 +96,36 @@ public class Usuarios extends Roles {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getApellidoUsuario() {
-        return apellidoUsuario;
+    public String getApellidoUsuaeio() {
+        return ApellidoUsuario;
     }
 
-    public void setApellidoUsuario(String apellidoUsuario) {
-        this.apellidoUsuario = apellidoUsuario;
+    public void setApellidoUsuaeio(String ApellidoUsuaeio) {
+        this.ApellidoUsuario = ApellidoUsuaeio;
     }
 
-    public String getCorreoUsuario() {
+    public String getCorreoUsuaeio() {
         return correoUsuario;
     }
 
-    public void setCorreoUsuario(String correoUsuario) {
-        this.correoUsuario = correoUsuario;
+    public void setCorreoUsuaeio(String correoUsuaeio) {
+        this.correoUsuario = correoUsuaeio;
     }
 
-    public String getClaveUsuario() {
-        return claveUsuario;
+    public String getContrasenaUsuario() {
+        return contrasenaUsuario;
     }
 
-    public void setClaveUsuario(String claveUsuario) {
-        this.claveUsuario = claveUsuario;
+    public void setContrasenaUsuario(String contrasenaUsuario) {
+        this.contrasenaUsuario = contrasenaUsuario;
     }
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
+    public Date getFechaCreacionUsuario() {
+        return fechaCreacionUsuario;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setFechaCreacionUsuario(Date fechaCreacionUsuario) {
+        this.fechaCreacionUsuario = fechaCreacionUsuario;
     }
 
     public String getTelefonoUsuario() {
@@ -148,8 +154,8 @@ public class Usuarios extends Roles {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.idUsuario);
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.idUsuario);
         return hash;
     }
 
@@ -170,7 +176,11 @@ public class Usuarios extends Roles {
 
     @Override
     public String toString() {
-        return "Usuarios{" + "idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", apellidoUsuario=" + apellidoUsuario + ", correoUsuario=" + correoUsuario + ", claveUsuario=" + claveUsuario + ", fechaCreacion=" + fechaCreacion + ", telefonoUsuario=" + telefonoUsuario + ", direccionUsuario=" + direccionUsuario + ", estadoUsuario=" + estadoUsuario + '}';
+        return "Usuarios{" + "idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", ApellidoUsuario=" + ApellidoUsuario + ", correoUsuario=" + correoUsuario + ", contrasenaUsuario=" + contrasenaUsuario + ", fechaCreacionUsuario=" + fechaCreacionUsuario + ", telefonoUsuario=" + telefonoUsuario + ", direccionUsuario=" + direccionUsuario + ", estadoUsuario=" + estadoUsuario + '}';
     }
+
+    
+    
+    
     
 }

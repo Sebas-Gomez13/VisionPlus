@@ -11,9 +11,9 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-@Table(name="Reportes")
+@Table(name="reportes")
 public class Reportes {
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_Reporte")
     private Integer idReporte;

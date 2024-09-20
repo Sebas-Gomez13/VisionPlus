@@ -19,20 +19,20 @@ public class NotificacionesControlador {
     @Autowired(required = true)
     private NotificacionesDao notificacionDao;
 
-    @GetMapping("/listBrand")
+    @GetMapping("/listNotificaciones")
     public String listarNotificacion(Model vista) {
         List<Notificaciones> arregloNotificaciones = notificacionDao.consultar("");
         vista.addAttribute("arrNotificaciones", arregloNotificaciones);
         return "listarNotificacion";
     }
 
-    @GetMapping("/addBrand")
+    @GetMapping("/addNotificaciones")
     public String crearNotificacion(Model vista) {
         vista.addAttribute("objNotificacion", new Notificaciones());
         return "crearNotificacion";
     }
 
-    @PostMapping("/addBrand")
+    @PostMapping("/addNotificaciones")
     public String registrarNotificacion(@Valid @ModelAttribute Notificaciones objNotificaciones, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearNotificacion";
@@ -40,16 +40,16 @@ public class NotificacionesControlador {
         } else {
             notificacionDao.registrar(objNotificaciones);
             estado.setComplete();
-            return "redirect:/listBrand";
+            return "redirect:/listNotificaciones";
         }
     }
 
-    @GetMapping("/adminBrand")
+    @GetMapping("/adminNotificaciones")
     public String administrarNotificacion(Model vista) {
         return "administrarNotificacion";
     }
 
-    @GetMapping("/updateBrand")
+    @GetMapping("/updateNotificaciones")
     public String actualizarNotificacion(Model vista, Integer llavePrimaria) {
         return "actualizarNotificacion";
     }

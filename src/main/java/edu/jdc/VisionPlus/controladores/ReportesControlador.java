@@ -19,20 +19,20 @@ public class ReportesControlador {
     @Autowired(required = true)
     private ReportesDao reporteDao;
 
-    @GetMapping("/listBrand")
+    @GetMapping("/listReportes")
     public String listarReporte(Model vista) {
         List<Reportes> arregloReportes = reporteDao.consultar("");
         vista.addAttribute("arrReportes", arregloReportes);
         return "listarReporte";
     }
 
-    @GetMapping("/addBrand")
+    @GetMapping("/addReportes")
     public String crearReporte(Model vista) {
         vista.addAttribute("objReporte", new Reportes());
         return "crearReporte";
     }
 
-    @PostMapping("/addBrand")
+    @PostMapping("/addReportes")
     public String registrarReporte(@Valid @ModelAttribute Reportes objReportes, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearReporte";
@@ -40,16 +40,16 @@ public class ReportesControlador {
         } else {
             reporteDao.registrar(objReportes);
             estado.setComplete();
-            return "redirect:/listBrand";
+            return "redirect:/listReportes";
         }
     }
 
-    @GetMapping("/adminBrand")
+    @GetMapping("/adminReportes")
     public String administrarReporte(Model vista) {
         return "administrarReporte";
     }
 
-    @GetMapping("/updateBrand")
+    @GetMapping("/updateReportes")
     public String actualizarReporte(Model vista, Integer llavePrimaria) {
         return "actualizarReporte";
     }

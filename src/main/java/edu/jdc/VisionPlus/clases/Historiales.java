@@ -13,7 +13,7 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name="Historiales")
+@Table(name="historiales")
 public class Historiales {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +22,11 @@ public class Historiales {
     
     @NotNull
     @Column(name="id_Paciente")
-    private Usuarios idPaciente;
+    private Integer idPaciente;
     
     @NotNull
     @Column(name="id_Oftamologo")
-    private Usuarios idOftamologo;
+    private Integer idOftamologo;
     
     @NotNull
     @Column(name="fecha_Consulta")
@@ -51,7 +51,7 @@ public class Historiales {
         
     }
 
-    public Historiales(Integer idHistorial, Usuarios idPaciente, Usuarios idOftamologo, Date fecha_consulta, String Diagnostico, String Descripcion, String prescripcion) {
+    public Historiales(Integer idHistorial, Integer idPaciente, Integer idOftamologo, Date fecha_consulta, String Diagnostico, String Descripcion, String prescripcion) {
         this.idHistorial = idHistorial;
         this.idPaciente = idPaciente;
         this.idOftamologo = idOftamologo;
@@ -61,6 +61,8 @@ public class Historiales {
         this.prescripcion = prescripcion;
     }
 
+    
+
     public Integer getIdHistorial() {
         return idHistorial;
     }
@@ -69,19 +71,19 @@ public class Historiales {
         this.idHistorial = idHistorial;
     }
 
-    public Usuarios getIdPaciente() {
+    public Integer getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(Usuarios idPaciente) {
+    public void setIdPaciente(Integer idPaciente) {
         this.idPaciente = idPaciente;
     }
 
-    public Usuarios getIdOftamologo() {
+    public Integer getIdOftamologo() {
         return idOftamologo;
     }
 
-    public void setIdOftamologo(Usuarios idOftamologo) {
+    public void setIdOftamologo(Integer idOftamologo) {
         this.idOftamologo = idOftamologo;
     }
 

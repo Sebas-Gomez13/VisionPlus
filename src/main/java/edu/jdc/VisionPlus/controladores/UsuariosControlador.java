@@ -19,21 +19,22 @@ public class UsuariosControlador {
 
     @Autowired(required = true)
     private UsuariosDAO usuarioDao;
+    
 
-    @GetMapping("/listBrand")
+    @GetMapping("/listUsuarios")
     public String listarUsuario(Model vista) {
         List<Usuarios> arregloUsuarios = usuarioDao.consultar("");
         vista.addAttribute("arrUsuarios", arregloUsuarios);
         return "listarUsuarios";
     }
 
-    @GetMapping("/addBrand")
+    @GetMapping("/addUsuarios")
     public String crearUsuario(Model vista) {
         vista.addAttribute("objUsuario", new Usuarios());
         return "crearUsuario";
     }
 
-    @PostMapping("/addBrand")
+    @PostMapping("/addUsuarios")
     public String registrarUsuario(@Valid @ModelAttribute Usuarios objUsuarios, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearUsuario";
@@ -41,16 +42,16 @@ public class UsuariosControlador {
         } else {
             usuarioDao.registrar(objUsuarios);
             estado.setComplete();
-            return "redirect:/listBrand";
+            return "redirect:/listUsuarios";
         }
     }
 
-    @GetMapping("/adminBrand")
+    @GetMapping("/adminUsuarios")
     public String administrarUsuario(Model vista) {
         return "administrarUsuario";
     }
 
-    @GetMapping("/updateBrand")
+    @GetMapping("/updateUsuarios")
     public String actualizarUsuario(Model vista, Integer llavePrimaria) {
         return "actualizarUsuario";
     }

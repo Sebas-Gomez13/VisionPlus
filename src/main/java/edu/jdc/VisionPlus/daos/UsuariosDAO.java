@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsuariosDAO implements Operacion<Usuarios> {
 
-    @Autowired
+    @Autowired(required = true)
     private UsuarioRepositorio repoUsuario;
 
     @Override

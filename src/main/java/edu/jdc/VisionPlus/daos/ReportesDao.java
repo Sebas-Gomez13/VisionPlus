@@ -9,12 +9,15 @@ import edu.jdc.VisionPlus.interfaces.Operacion;
 import edu.jdc.VisionPlus.repositorios.ReportesRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author sebas
  */
-public class ReportesDAO implements Operacion<Reportes>{
+
+@Service
+public class ReportesDao implements Operacion<Reportes>{
 
     @Autowired
     private ReportesRepositorio repoReporte;

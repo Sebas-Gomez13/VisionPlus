@@ -22,7 +22,7 @@ public class Notificaciones {
     
     @NotNull    
     @Column(name = "id_Usuario")
-    private Usuarios IdUsuario;
+    private Integer IdUsuario;
     
     @NotNull
     @Size(min = 3, max = 250)
@@ -41,7 +41,7 @@ public class Notificaciones {
         
     }
 
-    public Notificaciones(Integer idNotifcacion, Usuarios IdUsuario, String mensajeNotificacion, Date fechaEnvioNotificacion, Integer estadoNotificacion) {
+    public Notificaciones(Integer idNotifcacion, Integer IdUsuario, String mensajeNotificacion, Date fechaEnvioNotificacion, Integer estadoNotificacion) {
         this.idNotifcacion = idNotifcacion;
         this.IdUsuario = IdUsuario;
         this.mensajeNotificacion = mensajeNotificacion;
@@ -57,11 +57,11 @@ public class Notificaciones {
         this.idNotifcacion = idNotifcacion;
     }
 
-    public Usuarios getIdUsuario() {
+    public Integer getIdUsuario() {
         return IdUsuario;
     }
 
-    public void setIdUsuario(Usuarios IdUsuario) {
+    public void setIdUsuario(Integer IdUsuario) {
         this.IdUsuario = IdUsuario;
     }
 

@@ -19,20 +19,20 @@ public class ProductosControlador {
     @Autowired(required = true)
     private ProductosDao productoDao;
 
-    @GetMapping("/listBrand")
+    @GetMapping("/listProducto")
     public String listarProducto(Model vista) {
         List<Productos> arregloProductos = productoDao.consultar("");
         vista.addAttribute("arrProductos", arregloProductos);
         return "listarProducto";
     }
 
-    @GetMapping("/addBrand")
+    @GetMapping("/addProducto")
     public String crearProducto(Model vista) {
         vista.addAttribute("objProducto", new Productos());
         return "crearProducto";
     }
 
-    @PostMapping("/addBrand")
+    @PostMapping("/addProducto")
     public String registrarProducto(@Valid @ModelAttribute Productos objProductos, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearProducto";
@@ -40,16 +40,16 @@ public class ProductosControlador {
         } else {
             productoDao.registrar(objProductos);
             estado.setComplete();
-            return "redirect:/listBrand";
+            return "redirect:/listProducto";
         }
     }
 
-    @GetMapping("/adminBrand")
+    @GetMapping("/adminProducto")
     public String administrarProducto(Model vista) {
         return "administrarProducto";
     }
 
-    @GetMapping("/updateBrand")
+    @GetMapping("/updateProducto")
     public String actualizarProducto(Model vista, Integer llavePrimaria) {
         return "actualizarProducto";
     }

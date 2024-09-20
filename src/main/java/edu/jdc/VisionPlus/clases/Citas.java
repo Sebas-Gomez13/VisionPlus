@@ -19,13 +19,7 @@ public class Citas {
     @Column(name = "id_Cita")
     private Integer idCita;
     
-    @NotNull    
-    @Column(name = "id_Paciente")
-    private  Usuarios idPaciente;
     
-    @NotNull    
-    @Column(name = "id_Oftalmologo")
-    private Usuarios idOftamologo;
     
     @NotNull
     @Column(name = "fecha_hora")    
@@ -39,10 +33,9 @@ public class Citas {
         
     }
 
-    public Citas(Integer idCita, Usuarios idPaciente, Usuarios idOftamologo, Timestamp fecha_hora, Integer estado) {
+    public Citas(Integer idCita,  Timestamp fecha_hora, Integer estado) {
         this.idCita = idCita;
-        this.idPaciente = idPaciente;
-        this.idOftamologo = idOftamologo;
+        
         this.fecha_hora = fecha_hora;
         this.estado = estado;
     }
@@ -55,21 +48,7 @@ public class Citas {
         this.idCita = idCita;
     }
 
-    public Usuarios getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(Usuarios idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
-    public Usuarios getIdOftamologo() {
-        return idOftamologo;
-    }
-
-    public void setIdOftamologo(Usuarios idOftamologo) {
-        this.idOftamologo = idOftamologo;
-    }
+    
 
     public Timestamp getFecha_hora() {
         return fecha_hora;
@@ -111,7 +90,7 @@ public class Citas {
 
     @Override
     public String toString() {
-        return "Citas{" + "idCita=" + idCita + ", idPaciente=" + idPaciente + ", idOftamologo=" + idOftamologo + ", fecha_hora=" + fecha_hora + ", estado=" + estado + '}';
+        return "Citas{" + "idCita=" + idCita + ", fecha_hora=" + fecha_hora + ", estado=" + estado + '}';
     }
    
 }
