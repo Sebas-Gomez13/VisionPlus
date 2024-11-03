@@ -63,7 +63,7 @@ public class UsuarioControlador {
     }
     
     @GetMapping(value = "/deleteUsuarios/{idUsuario}")
-    public String eliminarTenis(@PathVariable(value = "idUsuario") Integer codSeleccionado, RedirectAttributes redireccionar) {
+    public String eliminarUsuario(@PathVariable(value = "idUsuario") Integer codSeleccionado, RedirectAttributes redireccionar) {
         boolean elimino = false;
         if (codSeleccionado > 0) {
             elimino = usuarioDao.eliminar(codSeleccionado);
@@ -98,12 +98,18 @@ public class UsuarioControlador {
     @PostMapping(value = {"/updateUsuarios/{idUsuario}"})
     public String modificarUsuario(@PathVariable(value = "idUsuario") Integer codigo, @Valid @ModelAttribute("objUsuario") Usuario objActualizar,
             BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {
+ 
+         Usuario usuarioExistente = usuarioDao.buscar(codigo);
+         System.out.println(codigo);
+         objActualizar.setFechaCreacionUsuario(usuarioExistente.getFechaCreacionUsuario());
+                System.out.println(objActualizar);
         if (respuesta.hasErrors()) {
             redireccionar.addFlashAttribute("mensaje", "fallo al actualizar el objeto");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
         } else {
             objActualizar.setIdUsuario(codigo);
             objActualizar.setRolUsuario(objActualizar.getRolUsuario());
+            System.out.println(objActualizar);
             boolean actualizado = usuarioDao.actualizar(objActualizar);
             if (actualizado) {
                 redireccionar.addFlashAttribute("mensaje", "exito al actualizar el Usuario: " + objActualizar.getNombreUsuario() + " " + objActualizar.getApellidoUsuario());
@@ -113,7 +119,7 @@ public class UsuarioControlador {
                 redireccionar.addFlashAttribute("tipo", "alert-danger");
             }
         }
-        return "redirect:/adminUsuario";
+        return "redirect:/adminUsuarios";
     }
 
 }

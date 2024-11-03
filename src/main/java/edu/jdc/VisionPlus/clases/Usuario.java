@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package edu.jdc.VisionPlus.clases;
 
 import jakarta.persistence.Column;
@@ -17,10 +13,7 @@ import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- *
- * @author julic
- */
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -70,7 +63,7 @@ public class Usuario {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "cod_rol", nullable = false)
-    private Rol rolUsuario;
+    public Rol rolUsuario;
 
     public Usuario() {
     }

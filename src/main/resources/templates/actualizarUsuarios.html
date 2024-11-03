@@ -3,17 +3,18 @@
     <body>
         <main>
             <nav th:replace="/contenedor/tablero ::cabecera"></nav>            
-                <div class="container-fluid mt-4 mb-4">
-                    <div class="d-flex justify-content-center">
-                        <div class="col-6">
-                            <div class="card">
-                                <div class="card-header bg-primary text-white">
-                                    <h4 class="fw-semibold fst-italic"> Formulario editar Usuarios</h4>
-                                </div>
-                                <div class="card-body">
-                                    <form th:action="@{/updateUsuarios/{idUsuario}(idUsuario =${objUsuario.idUsuario})}" th:object="${objUsuario}" method="post">
-                                        <input type="text" name="rolUsuario" class="form-control" th:field="*{rolUsuario.}">
-                                        <div class="mb-3">
+            <div class="container-fluid mt-4 mb-4">
+                <div class="d-flex justify-content-center">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="fw-semibold fst-italic"> Formulario editar Usuarios</h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/updateUsuarios/{idUsuario}(idUsuario =${objUsuario.idUsuario})}" th:object="${objUsuario}" method="post">
+                                    <input type="text" name="rolUsuario" class="form-control" th:field="*{fechaCreacionUsuario}" >
+                                    <input type="text" name="rolUsuario" class="form-control" th:field="*{rolUsuario.idRol}" >
+                                    <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Nombres
                                         </label>
@@ -51,16 +52,27 @@
                                         </label>
                                         <input type="text" name="direccionUsuario" class="form-control" th:field="*{direccionUsuario}">
                                     </div>
-                                        <span class="d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
-                                            <a th:href="@{/adminUsuarios}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
-                                        </span>
-                                    </form>
-                                </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="estadoUsuario">
+                                            <span class="rojito">*</span>Estado
+                                        </label>
+                                        <select id="estadoUsuario" class="form-select" th:field="*{estadoUsuario}"> 
+                                            <option th:value="1" th:text="'Activo'" 
+                                                    accesskey="" th:selected="${estadoUsuario == 1}">Activo</option>
+                                            <option th:value="0" th:text="'Inactivo'" 
+                                                    th:selected="${estadoUsuario == 0}">Inactivo</option>
+                                        </select>
+                                                  </div>
+                                    <span class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                        <a th:href="@{/adminUsuarios}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                    </span>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </div>            
+                </div>
+            </div>            
         </main>
     </body>
     <footer th:replace="contenedor/tablero :: footer"></footer>
