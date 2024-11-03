@@ -103,6 +103,7 @@ public class UsuarioControlador {
             redireccionar.addFlashAttribute("tipo", "alert-danger");
         } else {
             objActualizar.setIdUsuario(codigo);
+            objActualizar.setRolUsuario(objActualizar.getRolUsuario());
             boolean actualizado = usuarioDao.actualizar(objActualizar);
             if (actualizado) {
                 redireccionar.addFlashAttribute("mensaje", "exito al actualizar el Usuario: " + objActualizar.getNombreUsuario() + " " + objActualizar.getApellidoUsuario());

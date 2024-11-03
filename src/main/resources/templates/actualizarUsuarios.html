@@ -12,6 +12,7 @@
                                 </div>
                                 <div class="card-body">
                                     <form th:action="@{/updateUsuarios/{idUsuario}(idUsuario =${objUsuario.idUsuario})}" th:object="${objUsuario}" method="post">
+                                        <input type="text" name="rolUsuario" class="form-control" th:field="*{rolUsuario.}">
                                         <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Nombres
