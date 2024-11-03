@@ -1,0 +1,70 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="contenedor/tablero :: cabecera"></nav>
+            <section>
+                <div class="container-fluid mt-4">
+                    <h4 class="fw-semibold fst-italic text-center">Administrar Camisas</h4>
+                    <div class="d-flex justify-content-center ">
+                        <div class="col-md-10">
+
+                            <div th:if="${mensaje != null}">
+                                <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
+                                    <span class="fw-semibold" th:text="${mensaje}"></span>
+                                    <button class="btn-close" type="button" data-bs-dissmis="alert"></button>
+                                </div> 
+
+                            </div>
+                            <div class="text-end">
+                                <a th:href="@{/addShirts}" class="btn btn-info text-white">
+                                    Registrar Camisa
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <table class="table table-sm table-striped table-hover">
+                                    <thead>
+                                        <tr class="table table-dark bg-dark">
+                                            <th style="width: 15%">Codigo</th>
+                                            <th style="width: 15%">Tipo</th>
+                                            <th style="width: 15%">Color</th>
+                                            <th style="width: 15%">Valor</th>
+                                            <th style="width: 15%">Marca</th>
+                                            <th style="width: 15%">Talla</th>
+                                            <th style="width: 15%">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr th:each="objCamisa:${arrCamisas}">
+                                            <td th:text="${objCamisa.codPrenda}"></td>
+                                            <td th:text="${objCamisa.tipoCamisa}"></td>
+                                            <td th:text="${objCamisa.color}"></td>
+                                            <td th:text="${objCamisa.valorPrenda}"></td>
+                                            <td th:text="${objCamisa.marcaCamisa.nombreMarca}"></td>
+                                            <td th:text="${objCamisa.tallaCamisa.nombreTalla}"></td>
+                                            <td>
+                                                <a th:href="@{/updateShirts/}+${objCamisa.codPrenda}" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-edit fs-5 text-white"></i>  
+                                                </a>
+                                                &nbsp;
+                                                <a th:href="@{/deleteShirts/}+${objCamisa.codPrenda}" class="btn btn-danger btn-sm"
+                                                   onclick="return confirm('¿estas seguro de eliminar marca')">
+                                                    <i class="fa fa-trash fs-5 text-white"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+
+</html>

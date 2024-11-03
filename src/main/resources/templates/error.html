@@ -1,0 +1,27 @@
+
+<html>
+    <head th:replace="contenedor/tablero :: head"> </head>
+    <body>
+        <section>
+            <div class="container mt-5">
+                <div class="d-flex justify-content-center">
+                    <div class="col-11">
+                        <div class="h-100 p-5 text-white bg-dark rounded-3">
+                            <div class="text-center">
+                                <h1 class="error">404</h1>
+                                <p> Error 404 (Page Not Found) página no encontrada.</p>
+                                <div class="d-flex justify-content-center">
+                                    <a class="btn btn-info text-white" th:href="@{/}">
+                                        <i class="fa fa-edit"></i>
+                                        Inicio
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>

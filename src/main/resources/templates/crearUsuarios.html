@@ -1,0 +1,66 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="/contenedor/tablero ::cabecera"></nav>            
+            <div class="container-fluid mt-4">
+                <div class="d-flex justify-content-center">
+                    <div class="col-6">
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="fw-semibold fst-italic"> Formulario Registro Usuario</h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/addUsuarios}" th:object="${objUsuario}" method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Nombres
+                                        </label>
+                                        <input type="text" name="nombreUsuario" class="form-control" th:field="*{nombreUsuario}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Apellidos
+                                        </label>
+                                        <input type="text" name="apellidoUsuario" class="form-control" th:field="*{apellidoUsuario}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Correo
+                                        </label>
+                                        <input type="text" name="correoUsuario" class="form-control" th:field="*{correoUsuario}">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Contraseña
+                                        </label>
+                                        <input type="text" name="correoUsuario" class="form-control" th:field="*{contrasenaUsuario}">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Telefono
+                                        </label>
+                                        <input type="text" name="telefonoUsuario" class="form-control" th:field="*{telefonoUsuario}">
+                                    </div>                                        
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Direccion
+                                        </label>
+                                        <input type="text" name="direccionUsuario" class="form-control" th:field="*{direccionUsuario}">
+                                    </div>
+                                    <span class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary col-3 fw-semibold mx-3">Registrar</button>
+                                        <a th:href="@{/adminUsuarios}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                    </span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>

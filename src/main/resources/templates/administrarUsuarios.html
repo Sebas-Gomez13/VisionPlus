@@ -1,0 +1,82 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="contenedor/tablero :: cabecera"></nav>
+            <section>
+                <div class="container-fluid mt-4">
+                    <h4 class="fw-semibold fst-italic text-center">Administrar Pacientes</h4>
+                    <div class="d-flex justify-content-center ">
+                        <div class="col-md-10">
+
+                            <div th:if="${mensaje != null}">
+                                <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
+                                    <span class="fw-semibold" th:text="${mensaje}"></span>
+                                    <button class="btn-close" type="button" data-bs-dissmis="alert"></button>
+                                </div> 
+
+                            </div>
+                            <div class="text-end">
+                                <a th:href="@{/addUsuarios}" class="btn btn-info text-white">
+                                    Registrar Paciente
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <table class="table table-sm table-striped table-hover">
+                                    <thead>
+                                        <tr class="table table-dark bg-dark">
+                                            <th>Codigo</th>
+                                            <th>Nombre</th>
+                                            <th>Apellidos</th>
+                                            <th>Direccion</th>
+                                            <th>Fecha</th>
+                                            <th>Correo</th>
+                                            <th>Contrasena</th>                                        
+                                            <th>Telefono</th>
+                                            <th>Estado</th>
+                                            <th>Rol</th>
+                                            <th style="">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr th:each="objUsuario:${arrUsuarios}" >
+                                            <td th:text="${objUsuario.idUsuario}"></td>
+                                            <td th:text="${objUsuario.nombreUsuario}"></td>
+                                            <td th:text="${objUsuario.ApellidoUsuario}"></td>
+                                            <td th:text="${objUsuario.direccionUsuario}"></td>
+                                            <td th:text="${#dates.format(objUsuario.fechaCreacionUsuario, 'dd/MMM/yyyy').toUpperCase()}"></td>
+                                            <td th:text="${objUsuario.correoUsuario}"></td>
+                                            <td th:text="${objUsuario.contrasenaUsuario}"></td>
+                                            <td th:text="${objUsuario.telefonoUsuario}"></td>
+                                            <td ><span style="padding:5px; margin-top: 30%" class="alert" th:text="${objUsuario.estadoUsuario == 0 ? 'Inactivo' : 'Activo'}" th:classappend="${objUsuario.estadoUsuario == 0 ? 'alert-danger' : 'text-success'}"></span></td>
+                                            <td th:text="${objUsuario.rolUsuario.nombreRol}"></td>
+                                            <td> 
+                                                <a th:href="@{/updateUsuarios/}+${objUsuario.idUsuario}" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-edit fs-5 text-white"></i>  
+                                                </a>
+                                                &nbsp;
+                                                <a th:if="${(objUsuario.estadoUsuario !=0)}" th:href="@{/deleteUsuarios/}+${objUsuario.idUsuario}" class="btn btn-danger btn-sm"
+                                                   onclick="return confirm('¿estas seguro de eliminar a este Usuario')">
+                                                    <i class="fa fa-trash fs-5 text-white"></i>
+                                                </a>
+                                                <a th:unless="${objUsuario.estadoUsuario !=0}"  class="btn btn-secondary btn-sm"
+                                                   onclick="return alert('El usuario ya se encuentra inactivo')">
+                                                    <i class="fa fa-trash fs-5 text-white"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+
+</html>

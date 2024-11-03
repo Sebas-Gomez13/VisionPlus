@@ -1,0 +1,73 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="/contenedor/tablero ::cabecera"></nav>
+            <section>
+                <div class="container-fluid mt-4">
+                    <div class="d-flex justify-content-center">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="fw-semibold fst-italic"> Formulario editar Camisa</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form th:action="@{/updateShirts/{codPrenda}(codPrenda =${objCamisa.codPrenda})}" th:object="${objCamisa}" method="post">
+                                        <div class="mb-3">
+                                            <label for="tipoCamisa" class="form-label">
+                                                <span class="rojito">*</span> Tipo Camisa
+                                            </label>
+                                            <input type="text" name="tipoCamisa" class="form-control" th:field="*{tipoCamisa}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="marcaCamisa" class="form-label">
+                                                <span class="rojito">*</span> Marca
+                                            </label>
+                                            <select id="marcaCamisa" class="form-select" th:field="*{marcaCamisa}">
+                                                <option th:each="objMarca:${arrMarcas}" th:text="${objMarca.nombreMarca}" th:value="${objMarca.codMarca}"></option>
+                                            </select>
+                                            <span class="rojito" th:if="${objCamisa.marcaCamisa==null}"th:errors="*{marcaCamisa}">Seleccione una marca</span>     
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="tallaCamisa" class="form-label">
+                                                <span class="rojito">*</span> Talla
+                                            </label>
+                                            <select id="tallaCamisa" class="form-select" th:field="*{tallaCamisa}">
+                                                <option th:each="objTalla:${arrTallas}" th:text="${objTalla.nombreTalla}" th:value="${objTalla.codTalla}"></option>
+                                            </select>
+                                            <span class="rojito" th:if="${objCamisa.tallaCamisa==null}"th:errors="*{TallaCamisa}">Seleccione una talla</span>     
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="color" class="form-label">
+                                                <span class="rojito">*</span>color camisa
+                                            </label>
+                                            <input type="text" name="color" class="form-control" th:field="*{color}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="valorPrenda" class="form-label">
+                                                <span class="rojito">*</span>precio
+                                            </label>
+                                            <input type="text" name="valorPrenda" class="form-control" th:field="*{valorPrenda}">
+                                        </div>
+                                        <span class="d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                            <a th:href="@{/adminShirts}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                        </span>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>
+

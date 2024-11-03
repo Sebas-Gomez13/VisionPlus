@@ -1,0 +1,50 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section>
+            <div class="d-flex justify-content-center bg-primary text-white">
+                esta es la cabecera
+            </div>
+            <div class="row h-100">
+                <div class="col-3">
+                    <div class="text-center mt-5 bg-danger text-white">
+                        este es el menu lateral
+                    </div>
+
+                </div>
+                <div class="col-9">
+                    <div class="d-flex justify-content-center">
+                        <div class="mt-4">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h4 class="fst-italic text-primary" > Bienvenido Usuario</h4>
+                                </div>
+                                
+                                <div class="card-body">
+                                    <ul class="p-4">
+                                        <li th:text="${objSesion.nombreUsuario}"></li>
+                                        <li th:text="${objSesion.apellidosUsuario}"></li>
+                                        <li th:text="${objSesion.correoAcceso}"></li>
+                                        <li th:text="${objSesion.nombreRol}"></li>
+                                    </ul>
+
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </body>
+
+    <footer th:replace="contenedor/tablero :: footer">
+
+    </footer>
+</html>

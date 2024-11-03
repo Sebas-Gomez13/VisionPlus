@@ -1,0 +1,50 @@
+<html>
+   <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="/contenedor/tablero ::cabecera"></nav>
+            <section>
+                <div class="container-fluid mt-4">
+                    <div class="d-flex justify-content-center">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="fw-semibold fst-italic"> Formulario editar Marca</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form th:action="@{/updateBrand/{codMarca}(codMarca =${objMarca.codMarca})}" th:object="${objMarca}" method="post">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <span class="rojito">*</span> Nombre Marca
+                                            </label>
+                                            <input type="text" name="nombreMarca" class="form-control" th:field="*{nombreMarca}">
+                                                
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="form-check form-switch">
+                                                <input type="checkbox" class="form-check-input" name="estadoMarca"
+                                                       th:field="*{estadoMarca}">
+                                                <label class="form-check-label" for="estadoMarca"> Estado Marca</label>
+                                            </div>
+                                        </div>
+                                        <span class="d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                            <a th:href="@{/adminBrand}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                        </span>
+                                        
+                                    </form>
+                                    
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </section>
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>
