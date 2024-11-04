@@ -1,6 +1,7 @@
 package edu.jdc.VisionPlus.controladores;
 
 import edu.jdc.VisionPlus.clases.Cita;
+import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.CitaDAO;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -28,7 +29,12 @@ public class CitaControlador {
 
     @GetMapping("/addCitas")
     public String crearCita(Model vista) {
+        List<Usuario> arrOftalmologo= citaDao.buscarOftamologo();
+        vista.addAttribute("arrOftalmologo",arrOftalmologo);
+        List<Usuario> arrPaciente= citaDao.buscarPaciente();
+        vista.addAttribute("arrPaciente",arrPaciente);
         vista.addAttribute("objCita", new Cita());
+        
         return "crearCita";
     }
 
@@ -38,6 +44,8 @@ public class CitaControlador {
             return "crearCita";
 
         } else {
+            objCita.setEstado(1);
+            
             citaDao.registrar(objCita);
             estado.setComplete();
             return "redirect:/listCitas";
