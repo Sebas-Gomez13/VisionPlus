@@ -105,7 +105,27 @@ public class CitaControlador {
         objNotificacion.setEstadoNotificacion(1);
         objNotificacion.setFechaEnvioNotificacion(Date.from(Instant.now()));
         citaDao.nuevaNoti(objNotificacion);
-        citaDao.actualizarEstado(objEncontrado.getIdCita());
+        citaDao.actualizarEstado(objEncontrado.getIdCita(), 2);
+        return "redirect:/adminCitas";
+    }
+    
+    @GetMapping(value = "/deleteCitas/{idCita}")
+    public String eliminarTenis(@PathVariable(value = "idCita") Integer codSeleccionado, RedirectAttributes redireccionar) {
+        boolean elimino = false;
+        if (codSeleccionado > 0) {
+            elimino = citaDao.eliminar(codSeleccionado);
+            if (elimino) {
+                redireccionar.addFlashAttribute("mensaje", "Cita Cancelada");
+                redireccionar.addFlashAttribute("tipo", "alert-success");
+            } else {
+                redireccionar.addFlashAttribute("mensaje", "Fallo al Cancelar la Cita");
+                redireccionar.addFlashAttribute("tipo", "alert-danger");
+
+            }
+        } else {
+            redireccionar.addFlashAttribute("mensaje", "Fallo al Cancelar la Cita");
+            redireccionar.addFlashAttribute("tipo", "alert-danger");
+        }
         return "redirect:/adminCitas";
     }
 }

@@ -44,9 +44,11 @@ public class CitaDAO implements Operacion<Cita>{
         return repoCita.save(objActualizar)!=null;
     }
 
+    @Transactional
     @Override
     public Boolean eliminar(Integer llavePrimaria) {
-         return true;
+         int eliminado = repoCita.actualizarCita(llavePrimaria, 4);
+         return eliminado > 0;
     }
 
     @Override
@@ -68,8 +70,8 @@ public class CitaDAO implements Operacion<Cita>{
     }
     
     @Transactional
-    public Integer actualizarEstado(Integer llavePrimaria){
-        return repoCita.actualizarCita(llavePrimaria);
+    public Integer actualizarEstado(Integer llavePrimaria, Integer estadoAct){
+        return repoCita.actualizarCita(llavePrimaria, estadoAct);
     }
     
 }

@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CitaRepositorio extends CrudRepository<Cita, Integer>{
     @Modifying
-    @Query("UPDATE Cita set estado=2 where idCita=:llavePrimaria")
-    public Integer actualizarCita(@Param("llavePrimaria") Integer llavePrimaria);
+    @Query("UPDATE Cita set estado=:estadoAct where idCita=:llavePrimaria")
+    public Integer actualizarCita(@Param("llavePrimaria") Integer llavePrimaria, @Param("estado") Integer estadoAct);
 }
