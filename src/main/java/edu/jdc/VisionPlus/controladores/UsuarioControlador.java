@@ -95,13 +95,7 @@ public class UsuarioControlador {
 
     @PostMapping(value = {"/updateUsuarios/{idUsuario}"})
     public String modificarUsuario(@PathVariable(value = "idUsuario") Integer codigo, @Valid @ModelAttribute("objUsuario") Usuario objActualizar,
-            BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {
-        Usuario usuarioExistente = usuarioDao.buscar(codigo);
-        System.out.println(codigo);
-        objActualizar.setFechaCreacionUsuario(usuarioExistente.getFechaCreacionUsuario());
-        objActualizar.setRolUsuario(new Rol(4, ""));
-        System.out.println(respuesta);
-        System.out.println(objActualizar);        
+            BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {                
         if (respuesta.hasErrors()) {
             redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
