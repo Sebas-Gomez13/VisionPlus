@@ -13,6 +13,16 @@
                             <div class="card-body">
                                 <form th:action="@{/addUsuarios}" th:object="${objUsuario}" method="post">
                                     <div class="mb-3">
+                                        <label for="rolUsuario" class="form-label">
+                                            <span class="rojito">*</span> Rol del Usuario
+                                        </label>
+                                        <select id="rolUsuario" class="form-select" th:field="*{rolUsuario}">
+                                            <option value="null">Seleccione un Rol</option>
+                                            <option th:each="objUsuario:${arrRoles}" th:text="${objUsuario.nombreRol}" th:value="${objUsuario.idRol}"></option>
+                                        </select>
+                                        <span class="rojito" th:if="${objUsuario.rolUsuario==null}"th:errors="*{rolUsuario}">Seleccione un Rol</span>     
+                                    </div>
+                                    <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Nombres
                                         </label>

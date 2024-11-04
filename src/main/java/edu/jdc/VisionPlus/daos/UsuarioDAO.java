@@ -2,6 +2,7 @@ package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
+import edu.jdc.VisionPlus.repositorios.RolRepositorio;
 import edu.jdc.VisionPlus.repositorios.UsuarioRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ public class UsuarioDAO implements Operacion<Usuario> {
 
     @Autowired(required = true)
     private UsuarioRepositorio repoUsuario;
+    
+
 
     @Override
     public List<Usuario> consultar(String orden) {
@@ -47,6 +50,7 @@ public class UsuarioDAO implements Operacion<Usuario> {
         return 0;
     }
     
+  
     
 
 }

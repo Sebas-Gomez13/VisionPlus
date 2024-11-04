@@ -1,5 +1,8 @@
 package edu.jdc.VisionPlus.repositorios;
 
-public interface RolRepositorio {
+import edu.jdc.VisionPlus.clases.Rol;
+import org.springframework.data.repository.CrudRepository;
+
+public interface RolRepositorio extends CrudRepository<Rol,Integer>{
     
 }
