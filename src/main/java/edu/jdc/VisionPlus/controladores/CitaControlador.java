@@ -61,4 +61,12 @@ public class CitaControlador {
     public String actualizarCita(Model vista, Integer llavePrimaria) {
         return "actualizarCita";
     }
+    
+    @GetMapping("/usuarios/rol/3")
+    public String obtenerUsuariosRol3(Model vista) {
+        List<Usuario> arregloCitas = citaDao.obtenerUsuariosPorRol();
+        vista.addAttribute("arrCitas", arregloCitas);        
+        return "listarCitas";
+    }
+    
 }

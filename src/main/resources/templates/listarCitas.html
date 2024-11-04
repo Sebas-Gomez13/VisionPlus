@@ -22,13 +22,12 @@
                                 </thead>
                                 
                                 <tbody>
-                                    <tr th:each="objTenis:${arrTenis}">
-                                        <td th:text="${objTenis.codPrenda}"></td>
-                                        <td th:text="${objTenis.tipoTenis}"></td>
-                                        <td th:text="${objTenis.materialTenis}"></td>
-                                        <td th:text="${objTenis.color}"></td>
-                                        <td th:text="${objTenis.valorPrenda}"></td>
-                                        <td th:text="${objTenis.marcaTenis.nombreMarca}"></td>
+                                    <tr th:each="objCitas:${arrCitas}">
+                                        <td th:text="${objCitas.idUsuario}"></td>
+                                        <td th:text="${objCitas.nombreUsuario}"></td>
+                                        <td th:text="${objCitas.ApellidoUsuario}"></td>
+                                        <td th:text="${objCitas.rolUsuario.nombreRol}"></td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
