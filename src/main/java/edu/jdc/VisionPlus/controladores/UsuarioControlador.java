@@ -25,6 +25,7 @@ public class UsuarioControlador {
 
     @Autowired(required = true)
     private UsuarioDAO usuarioDao;
+    
 
     @GetMapping("/listUsuarios")
     public String listarUsuario(Model vista) {

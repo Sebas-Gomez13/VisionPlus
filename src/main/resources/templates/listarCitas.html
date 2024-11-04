@@ -7,38 +7,36 @@
                 <div class="container-fluid mt-4">
                     <h4 class="fw-semibold fst-italic" style="display: flex; align-content: center; justify-content: center">Listado De Tenis</h4>
                     <div class="d-flex justify-content-center ">
-                    <div class="col-md-10"> 
-                        <div class="mt-2">
-                            <table class="table table-sm table-striped table-hover">
-                                <thead>
-                                    <tr class="table table-dark bg-dark">                                        
-                                        <th>Paciente</th>
-                                        <th>Oftalmologo</th>
-                                        <th>Fecha</th>
-                                        <th>Hora</th>
-                                        <th>Estado</th>                                        
-                                    </tr>
-                                </thead>
-                                
-                                <tbody>
-                                    <tr th:each="objCitas:${arrCitas}">
-                                        <td th:text="${objCitas.idPaciente.nombreUsuario + ' ' + objCitas.idPaciente.ApellidoUsuario}"></td>
-                                        <td th:text="${objCitas.idOftalmologo.nombreUsuario + ' ' + objCitas.idOftalmologo.ApellidoUsuario}"></td>
-                                        <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MM-dd')}"></td>
-                                        <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>                                        
-                                        <td ><span class="alert fw-bold" th:text="${objCitas.estado == 1 ? 'Enviado' : 'Leido'}" th:classappend="${objCitas.estado == 1 ? 'text-danger' : 'text-success'}"></span></td>
-                                        
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                        </div>
-                    </div> 
+                        <div class="col-md-10"> 
+                            <div class="mt-2">
+                                <table class="table table-sm table-striped table-hover">
+                                    <thead>
+                                        <tr class="table table-dark bg-dark">                                        
+                                            <th>Paciente</th>
+                                            <th>Oftalmologo</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Estado</th>                                        
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr th:each="objCitas:${arrCitas}">
+                                            <td th:text="${objCitas.idPaciente.nombreUsuario + ' ' + objCitas.idPaciente.ApellidoUsuario}"></td>
+                                            <td th:text="${objCitas.idOftalmologo.nombreUsuario + ' ' + objCitas.idOftalmologo.ApellidoUsuario}"></td>
+                                            <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MM-dd')}"></td>
+                                            <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>                                        
+                                            <td ><span class="alert fw-bold" th:text="${objCitas.estado == 1 ? 'Enviado' : 'Leido'}" th:classappend="${objCitas.estado == 1 ? 'text-danger' : 'text-success'}"></span></td>                                        
+                                        </tr>
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div> 
                     </div>
                 </div>
             </section>
         </main>
     </body>
     <footer th:replace="contenedor/tablero :: footer"></footer>
-    
+
 </html>

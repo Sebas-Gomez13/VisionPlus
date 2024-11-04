@@ -1,0 +1,72 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="contenedor/tablero :: cabecera"></nav>
+            <section>
+                <div class="container-fluid mt-4">
+                    <h4 class="fw-semibold fst-italic text-center">Administrar Pacientes</h4>
+                    <div class="d-flex justify-content-center ">
+                        <div class="col-md-10">
+
+                            <div th:if="${mensaje != null}">
+                                <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
+                                    <span class="fw-semibold" th:text="${mensaje}"></span>
+                                    <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
+                                </div> 
+
+                            </div>
+                            <div class="text-end">
+                                <a th:href="@{/addCitas}" class="btn btn-info text-white">
+                                    Nueva Cita
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <table class="table table-sm table-striped table-hover">
+                                    <thead>
+                                        <tr class="table table-dark bg-dark">                                        
+                                            <th>Paciente</th>
+                                            <th>Oftalmologo</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Estado</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr th:each="objCitas:${arrCitas}">
+                                            <td th:text="${objCitas.idPaciente.nombreUsuario + ' ' + objCitas.idPaciente.ApellidoUsuario}"></td>
+                                            <td th:text="${objCitas.idOftalmologo.nombreUsuario + ' ' + objCitas.idOftalmologo.ApellidoUsuario}"></td>
+                                            <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MM-dd')}"></td>
+                                            <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>                                        
+                                            <td ><span class="alert fw-bold" th:text="${objCitas.estado == 1 ? 'Enviado' : 'Leido'}" th:classappend="${objCitas.estado == 1 ? 'text-danger' : 'text-success'}"></span></td>                                        
+                                            <td> 
+                                                <a th:href="@{/updateCitas/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-edit fs-5 text-white"></i>  
+                                                </a>
+                                                &nbsp;
+                                                <a th:if="${(objCitas.estado!=0)}" th:href="@{/deleteUsuarios/}+${objCitas.idCita}" class="btn btn-danger btn-sm"
+                                                   onclick="return confirm('¿estas seguro de eliminar a este Usuario')">
+                                                    <i class="fa fa-trash fs-5 text-white"></i>
+                                                </a>
+                                                <a th:unless="${objCitas.estado!=0}"  class="btn btn-secondary btn-sm"
+                                                   onclick="return alert('El usuario ya se encuentra inactivo')">
+                                                    <i class="fa fa-trash fs-5 text-white"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+
+</html>
