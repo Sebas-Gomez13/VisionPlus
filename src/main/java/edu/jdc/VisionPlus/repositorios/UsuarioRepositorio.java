@@ -16,5 +16,6 @@ public interface UsuarioRepositorio extends CrudRepository<Usuario, Integer>{
 
         List<Usuario> findByRolUsuario(Rol rolUsuario);
         List<Usuario> findByIdUsuario(Integer idUsuario);
+        
 
 }
