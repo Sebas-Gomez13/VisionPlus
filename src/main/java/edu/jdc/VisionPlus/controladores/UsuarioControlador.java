@@ -30,6 +30,7 @@ public class UsuarioControlador {
     @Autowired(required=true)
     private RolDAO rolDao;
 
+
     @GetMapping("/listUsuarios")
     public String listarUsuario(Model vista) {
         List<Usuario> arregloUsuarios = usuarioDao.consultar("");
