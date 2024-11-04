@@ -1,14 +1,17 @@
 package edu.jdc.VisionPlus.controladores;
 
 import edu.jdc.VisionPlus.clases.Cita;
+import edu.jdc.VisionPlus.clases.Notificacion;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.CitaDAO;
 import edu.jdc.VisionPlus.daos.UsuarioDAO;
 import jakarta.validation.Valid;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,10 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CitaControlador {
 
     @Autowired(required = true)
-    private CitaDAO citaDao;
-
-    @Autowired
-    private UsuarioDAO usuarioDao;
+    private CitaDAO citaDao;   
 
     @GetMapping("/listCitas")
     public String listarCita(Model vista) {
@@ -60,7 +60,6 @@ public class CitaControlador {
             Timestamp fechaCita = Timestamp.valueOf(fechaCitaLocal);
             objCita.setFecha_hora(fechaCita);
             objCita.setEstado(1);
-
             citaDao.registrar(objCita);
             estado.setComplete();
             return "redirect:/listCitas";
@@ -94,5 +93,19 @@ public class CitaControlador {
             return "redirect:/adminCitas";
         }
     }
-
+    
+    @GetMapping("/nuevaNoti/{idCita}")
+    public String nuevaNotificacion(Model vista, @Valid @ModelAttribute Notificacion objNotificacion, @PathVariable(value = "idCita") Integer llavePrimaria, RedirectAttributes redireccionar){
+        Cita objEncontrado = citaDao.buscar(llavePrimaria);
+        LocalDate fecha = objEncontrado.getFecha_hora().toLocalDateTime().toLocalDate();            
+        LocalTime hora = objEncontrado.getFecha_hora().toLocalDateTime().toLocalTime();             
+        String mensaje = "Recuerde que el dia: " + fecha + " a las: " + hora + " usted tiene programada una cita oftalmologica";         
+        objNotificacion.setIdUsuario(objEncontrado.getIdPaciente());
+        objNotificacion.setMensajeNotificacion(mensaje);
+        objNotificacion.setEstadoNotificacion(1);
+        objNotificacion.setFechaEnvioNotificacion(Date.from(Instant.now()));
+        citaDao.nuevaNoti(objNotificacion);
+        citaDao.actualizarEstado(objEncontrado.getIdCita());
+        return "redirect:/adminCitas";
+    }
 }

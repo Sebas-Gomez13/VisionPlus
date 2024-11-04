@@ -39,9 +39,8 @@
                                             <td th:text="${objNotificacion.mensajeNotificacion}"></td>
                                             <td th:text="${#dates.format(objNotificacion.fechaEnvioNotificacion, 'yyyy/MMM/dd').toUpperCase()}"></td>                                            
                                             <td ><span class="alert" th:text="${objNotificacion.estadoNotificacion == 0 ? 'Inactivo' : 'Activo'}" th:classappend="${objNotificacion.estadoNotificacion == 0 ? 'alert-danger' : 'text-success'}"></span></td>                                            
-                                            <td>                                                 
-                                                &nbsp;
-                                                <a th:if="${(objNotificacion.estadoNotificacion!=0)}" th:href="@{/deleteUsuarios/}+${objNotificacion.idNotificacion}" class="btn btn-danger btn-sm"
+                                            <td>                                                                                                 
+                                                <a th:if="${(objNotificacion.estadoNotificacion!=0)}" th:href="@{/deleteNotificacion/}+${objNotificacion.idNotificacion}" class="btn btn-danger btn-sm"
                                                    onclick="return confirm('¿estas seguro de eliminar a este Usuario')">
                                                     <i class="fa fa-trash fs-5 text-white"></i>
                                                 </a>

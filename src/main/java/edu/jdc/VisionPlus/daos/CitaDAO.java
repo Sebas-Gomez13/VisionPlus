@@ -1,6 +1,7 @@
 package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.Cita;
+import edu.jdc.VisionPlus.clases.Notificacion;
 import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
@@ -8,7 +9,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.jdc.VisionPlus.repositorios.CitaRepositorio;
+import edu.jdc.VisionPlus.repositorios.NotificacionRepositorio;
 import edu.jdc.VisionPlus.repositorios.UsuarioRepositorio;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -18,6 +21,8 @@ public class CitaDAO implements Operacion<Cita>{
     private CitaRepositorio repoCita;
     @Autowired
     private UsuarioRepositorio repoUsuario;
+    @Autowired
+    private NotificacionRepositorio repoNotificacion;
 
     @Override
     public List<Cita> consultar(String orden) {
@@ -46,8 +51,7 @@ public class CitaDAO implements Operacion<Cita>{
 
     @Override
     public Integer cantidadRegistros() {
-
-    return 0;
+        return 0;
     }
     public List<Usuario> obtenerUsuariosPorRol() {
         // Llamar al método definido en el repositorio
@@ -57,6 +61,15 @@ public class CitaDAO implements Operacion<Cita>{
     public List<Usuario> obtenerUsuariosOft() {
         // Llamar al método definido en el repositorio
         return repoUsuario.findByRolUsuario(new Rol(3, ""));
+    }
+    
+    public Boolean nuevaNoti(Notificacion objNoti){
+        return repoNotificacion.save(objNoti)!= null;
+    }
+    
+    @Transactional
+    public Integer actualizarEstado(Integer llavePrimaria){
+        return repoCita.actualizarCita(llavePrimaria);
     }
     
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.jdc.VisionPlus.repositorios.NotificacionRepositorio;
 import edu.jdc.VisionPlus.repositorios.UsuarioRepositorio;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class NotificacionDAO implements Operacion<Notificacion>{
@@ -35,11 +36,12 @@ public class NotificacionDAO implements Operacion<Notificacion>{
     public Boolean actualizar(Notificacion objActualizar) {
         return repoNotificacion.save(objActualizar)!=null;
     }
-
+    
+    @Transactional
     @Override
-    public Boolean eliminar(Integer llavePrimaria) {
-        return true;
-//        return repoMarca.eliminarMarca(llavePrimaria);
+    public Boolean eliminar(Integer llavePrimaria) {        
+        int eliminado = repoNotificacion.eliminarNotificacion(llavePrimaria);
+        return eliminado > 0;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class NotificacionDAO implements Operacion<Notificacion>{
     }
     
     public List<Notificacion> buscarPaciente(){
-        return repoNotificacion.findByIdUsuario(new Usuario(1, "", "", "", "", null, "", "", null, null));
+        return repoNotificacion.findByIdUsuario(new Usuario(2, "", "", "", "", null, "", "", null, null));
     }
     
 }

@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class NotificacionControlador {
@@ -48,6 +50,26 @@ public class NotificacionControlador {
     @GetMapping("/updateNotificaciones")
     public String actualizarNotificacion(Model vista, Integer llavePrimaria) {
         return "actualizarNotificacion";
+    }
+    
+    @GetMapping(value = "/deleteNotificacion/{idNotificacion}")
+    public String eliminarTenis(@PathVariable(value = "idNotificacion") Integer codSeleccionado, RedirectAttributes redireccionar) {
+        boolean elimino = false;
+        if (codSeleccionado > 0) {
+            elimino = notificacionDao.eliminar(codSeleccionado);
+            if (elimino) {
+                redireccionar.addFlashAttribute("mensaje", "Notificacion Eliminado");
+                redireccionar.addFlashAttribute("tipo", "alert-success");
+            } else {
+                redireccionar.addFlashAttribute("mensaje", "Fallo al eliminar Notificacion");
+                redireccionar.addFlashAttribute("tipo", "alert-danger");
+
+            }
+        } else {
+            redireccionar.addFlashAttribute("mensaje", "Fallo al eliminar Tenis");
+            redireccionar.addFlashAttribute("tipo", "alert-danger");
+        }
+        return "redirect:/adminNotificaciones";
     }
 
 }
