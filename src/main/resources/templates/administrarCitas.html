@@ -43,6 +43,7 @@
           th:classappend="${objCitas.estado == 1 ? 'text-danger' : (objCitas.estado == 2 ? 'text-success' : (objCitas.estado == 3 ? 'text-success' : 'text-white'))}">
     </span>
 </td> 
+                                            <td ><span class="alert fw-bold" th:text="${objCitas.estado == 1 ? 'Pendiente' : 'Realizada'}" th:classappend="${objCitas.estado == 1 ? 'text-danger' : 'text-success'}"></span></td>                                        
                                             <td> 
                                                 <a th:href="@{/updateCitas/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-edit fs-5 text-white"></i>  

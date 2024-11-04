@@ -44,17 +44,7 @@
                                         </label>
                                         <input type="time" class="form-control" step="1800" min="08:00" max="17:00"  th:field="*{hora}">
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="estado">
-                                            <span class="rojito">*</span>Estado Cita
-                                        </label>
-                                        <select id="estado" class="form-select" th:field="*{estado}"> 
-                                            <option th:value="1" th:text="'Activo'" 
-                                                    accesskey="" th:selected="${estado == 1}">Activo</option>
-                                            <option th:value="0" th:text="'Inactivo'" 
-                                                    th:selected="${estado == 0}">Inactivo</option>
-                                        </select>
-                                    </div>
+                                    
                                     <span class="d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary col-3 fw-semibold mx-3">Registrar</button>
                                         <a th:href="@{/adminCitas}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
