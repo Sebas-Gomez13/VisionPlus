@@ -1,5 +1,5 @@
 <head th:fragment="head">
-    <title>Clothes Shop</title>
+    <title>Vision Plus</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/fontawesome/css/all.min.css}"/>
@@ -12,7 +12,7 @@
         <a class="navbar-brand" th:href="@{/}">
             <div class="d-flex justify-content-center align-items-center">
                 <img th:src="@{/img/logo.png}" alt="logo.png" style="height: 50px"/>
-                <span class="fw-bold fst-italic fs-5">Clothes Shop</span>
+                <span class="fw-bold fst-italic fs-5">Vision Plus</span>
             </div>  
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,39 +40,7 @@
                         <li><a class="dropdown-item" th:href="@{/addBrand}">Registrar</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tallas
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/listBrandTalla}">Listar</a></li>
-                        <li><a class="dropdown-item" th:href="@{/adminBrandTalla}">Administrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addBrandTalla}">Registrar</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Camisas
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/shirts}">Listar</a></li>
-                        <li><a class="dropdown-item" th:href="@{/adminShirts}">Administrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addShirts}">Registrar</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tenis
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/tenis}">Listar</a></li>
-                        <li><a class="dropdown-item" th:href="@{/adminTenis}">Administrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addTenis}">Registrar</a></li>
-                    </ul>
-                </li>
+                
             </ul>
             <div class="nabvar-nav navbar"> 
                 <span class="nav-item text-white fw-semibold fst-italic">
@@ -85,8 +53,8 @@
 
 
 <footer th:fragment="footer" class="blog-footer bg-black">
-    <p class="fst-italic fs-4">Proyecto de clase Clothes Shop</p>
-    <p class="fst-italic fs-5">Tienda de venta de accesorios</p>
+    <p class="fst-italic fs-4">Centro Oftamologico Vision Plus</p>
+    <p class="fst-italic fs-5">Somos un centro especializado en la salud y bienestar de sus ojos</p>
     <p class="fst-italic fs-6">Copyright © 2024 equipo desarrollo Ingenieria de software</p>
 
     <script th:src="@{https://unpkg.com/@popperjs/core@2/dist/umd/popper.js}"></script>
