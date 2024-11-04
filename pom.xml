@@ -70,6 +70,11 @@
             <artifactId>jakarta.validation-api</artifactId>            
         </dependency>
         <!-- Generar validaciones o constraints para los campos de la entidad en la BD -->
+        <!--Generar codificaciones y decodificaciones con formato hexagecimal-->
+        <dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+</dependency>
     </dependencies>
 
     <build>

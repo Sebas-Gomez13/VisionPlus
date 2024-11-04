@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +48,8 @@ public class UsuarioControlador {
             objUsuarios.setEstadoUsuario(1);
             objUsuarios.setRolUsuario(new Rol(4, ""));
             System.out.println(objUsuarios);
+             String claveCifrada = DigestUtils.sha512Hex(objUsuarios.getContrasenaUsuario());
+            objUsuarios.setContrasenaUsuario(claveCifrada);
             usuarioDao.registrar(objUsuarios);
             estado.setComplete();
             return "redirect:/adminUsuarios";
