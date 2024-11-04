@@ -48,7 +48,7 @@ public class UsuarioControlador {
             objUsuarios.setEstadoUsuario(1);
             objUsuarios.setRolUsuario(new Rol(4, ""));
             System.out.println(objUsuarios);
-             String claveCifrada = DigestUtils.sha512Hex(objUsuarios.getContrasenaUsuario());
+            String claveCifrada = DigestUtils.sha512Hex(objUsuarios.getContrasenaUsuario());
             objUsuarios.setContrasenaUsuario(claveCifrada);
             usuarioDao.registrar(objUsuarios);
             estado.setComplete();
@@ -103,7 +103,9 @@ public class UsuarioControlador {
             redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
         } else {
-            objActualizar.setIdUsuario(codigo);                   
+            objActualizar.setIdUsuario(codigo);        
+            String claveCifrada = DigestUtils.sha512Hex(objActualizar.getContrasenaUsuario());
+            objActualizar.setContrasenaUsuario(claveCifrada);
             boolean actualizado = usuarioDao.actualizar(objActualizar);
             if (actualizado) {
                 redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar el Usuario: " + objActualizar.getNombreUsuario() + " " + objActualizar.getApellidoUsuario());

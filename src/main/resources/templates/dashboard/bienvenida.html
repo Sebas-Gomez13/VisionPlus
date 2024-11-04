@@ -1,18 +1,15 @@
 <html>
-    <head th:replace="contenedor/tablero :: head"></head>
+    <head th:replace="contenedor/tablero:: head"></head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <section>
-            <div class="d-flex justify-content-center bg-primary text-white">
-                esta es la cabecera
-            </div>
+        <nav th:replace="contenedor/tableroDash :: cabecera"></nav>
+        <section>            
             <div class="row h-100">
                 <div class="col-3">
-                    <div class="text-center mt-5 bg-danger text-white">
-                        este es el menu lateral
+                    <div class="text-center mt-5 text-white" th:replace="contenedor/tableroDash :: menuLateral">
+                        <div ></div>
                     </div>
-
                 </div>
                 <div class="col-9">
                     <div class="d-flex justify-content-center">

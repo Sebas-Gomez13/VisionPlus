@@ -1,0 +1,110 @@
+<head th:fragment="head">
+    <title>Clothes Shop</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
+</head>
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark" th:fragment="cabecera">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">
+            <div class="d-flex justify-content-center align-items-center">
+                <img th:src="@{/img/logo.png}" alt="logo.png" style="height: 50px"/>
+                <span class="fw-bold fst-italic fs-5">Clothes Shop</span>
+            </div>  
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Usuarios
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/listUsuarios}">Listar</a></li>
+                        <li><a class="dropdown-item" th:href="@{/adminUsuarios}">Administrar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/addUsuarios}">Registrar</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Tallas
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/listBrandTalla}">Listar</a></li>
+                        <li><a class="dropdown-item" th:href="@{/adminBrandTalla}">Administrar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/addBrandTalla}">Registrar</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Camisas
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/shirts}">Listar</a></li>
+                        <li><a class="dropdown-item" th:href="@{/adminShirts}">Administrar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/addShirts}">Registrar</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Tenis
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/tenis}">Listar</a></li>
+                        <li><a class="dropdown-item" th:href="@{/adminTenis}">Administrar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/addTenis}">Registrar</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="nabvar-nav navbar"> 
+                <span class="nav-item text-white fw-semibold fst-italic">
+                    <a class="nav-link" th:href="@{/cerrarSesion}">CerrarSesion</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div th:fragment="menuLateral" class="bg-dark text-white h-100 w-50">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Usuarios
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/adminUsuarios}">Administrar Usuarios</a></li>
+                    <li><a class="dropdown-item" href="#">Agregar Usuarios</a></li>                    
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li> 
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+</div>
+
+
+<footer th:fragment="footer" class="blog-footer bg-black">
+    <p class="fst-italic fs-4">Proyecto de clase Clothes Shop</p>
+    <p class="fst-italic fs-5">Tienda de venta de accesorios</p>
+    <p class="fst-italic fs-6">Copyright © 2024 equipo desarrollo Ingenieria de software</p>
+
+    <script th:src="@{https://unpkg.com/@popperjs/core@2/dist/umd/popper.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</footer>
