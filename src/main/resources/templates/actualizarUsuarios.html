@@ -12,8 +12,8 @@
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/updateUsuarios/{idUsuario}(idUsuario =${objUsuario.idUsuario})}" th:object="${objUsuario}" method="post">
-                                    <input type="text" name="rolUsuario" class="form-control" th:field="*{fechaCreacionUsuario}" >
-                                    <input type="text" name="rolUsuario" class="form-control" th:field="*{rolUsuario.idRol}" >
+                                    <input type="date" name="fechaCreacionUsuario" class="form-control" th:field="*{fechaCreacionUsuario}" hidden>
+                                    <input type="text" name="rolUsuario" class="form-control" th:field="*{rolUsuario.idRol}" hidden>
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Nombres
@@ -32,14 +32,12 @@
                                         </label>
                                         <input type="text" name="correoUsuario" class="form-control" th:field="*{correoUsuario}">
                                     </div>
-
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Contraseña
                                         </label>
                                         <input type="text" name="correoUsuario" class="form-control" th:field="*{contrasenaUsuario}">
                                     </div>
-
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Telefono

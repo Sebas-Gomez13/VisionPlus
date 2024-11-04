@@ -12,7 +12,7 @@
                             <div th:if="${mensaje != null}">
                                 <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
                                     <span class="fw-semibold" th:text="${mensaje}"></span>
-                                    <button class="btn-close" type="button" data-bs-dissmis="alert"></button>
+                                    <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
                                 </div> 
 
                             </div>
@@ -46,7 +46,7 @@
                                             <td th:text="${objUsuario.nombreUsuario}"></td>
                                             <td th:text="${objUsuario.ApellidoUsuario}"></td>
                                             <td th:text="${objUsuario.direccionUsuario}"></td>
-                                            <td th:text="${#dates.format(objUsuario.fechaCreacionUsuario, 'dd/MMM/yyyy').toUpperCase()}"></td>
+                                            <td th:text="${#dates.format(objUsuario.fechaCreacionUsuario, 'yyyy/MMM/dd').toUpperCase()}"></td>
                                             <td th:text="${objUsuario.correoUsuario}"></td>
                                             <td th:text="${objUsuario.contrasenaUsuario}"></td>
                                             <td th:text="${objUsuario.telefonoUsuario}"></td>

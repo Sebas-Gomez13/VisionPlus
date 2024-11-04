@@ -12,6 +12,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -43,6 +44,7 @@ public class Usuario {
     private String contrasenaUsuario;
     
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fechaCreacionUsuario")
     private Date fechaCreacionUsuario;
     
@@ -188,10 +190,5 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuarios{" + "idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", ApellidoUsuario=" + ApellidoUsuario + ", correoUsuario=" + correoUsuario + ", contrasenaUsuario=" + contrasenaUsuario + ", fechaCreacionUsuario=" + fechaCreacionUsuario + ", telefonoUsuario=" + telefonoUsuario + ", direccionUsuario=" + direccionUsuario + ", estadoUsuario=" + estadoUsuario + '}';
-    }
-
-    
-    
-    
-    
+    }                
 }

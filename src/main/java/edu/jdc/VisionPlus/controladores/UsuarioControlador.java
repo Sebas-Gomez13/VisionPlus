@@ -1,6 +1,5 @@
 package edu.jdc.VisionPlus.controladores;
 
-
 import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.UsuarioDAO;
@@ -25,7 +24,6 @@ public class UsuarioControlador {
 
     @Autowired(required = true)
     private UsuarioDAO usuarioDao;
-    
 
     @GetMapping("/listUsuarios")
     public String listarUsuario(Model vista) {
@@ -44,11 +42,11 @@ public class UsuarioControlador {
     public String registrarUsuario(@Valid @ModelAttribute Usuario objUsuarios, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearUsuarios";
-
-        } else {            
+        } else {                      
             objUsuarios.setFechaCreacionUsuario(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
             objUsuarios.setEstadoUsuario(1);
             objUsuarios.setRolUsuario(new Rol(4, ""));
+            System.out.println(objUsuarios);
             usuarioDao.registrar(objUsuarios);
             estado.setComplete();
             return "redirect:/adminUsuarios";
@@ -61,7 +59,7 @@ public class UsuarioControlador {
         vista.addAttribute("arrUsuarios", arrUsuarios);
         return "administrarUsuarios";
     }
-    
+
     @GetMapping(value = "/deleteUsuarios/{idUsuario}")
     public String eliminarUsuario(@PathVariable(value = "idUsuario") Integer codSeleccionado, RedirectAttributes redireccionar) {
         boolean elimino = false;
@@ -84,9 +82,9 @@ public class UsuarioControlador {
 
     @GetMapping(value = {"/updateUsuarios/{idUsuario}"})
     public String actualizarUsuario(Model vista, @PathVariable(value = "idUsuario") Integer llavePrimaria, RedirectAttributes redireccionar) {
-        Usuario objEncontrado = usuarioDao.buscar(llavePrimaria);        
+        Usuario objEncontrado = usuarioDao.buscar(llavePrimaria);
         if (objEncontrado != null) {
-            vista.addAttribute("objUsuario", objEncontrado);            
+            vista.addAttribute("objUsuario", objEncontrado);
             return "actualizarUsuarios";
         } else {
             redireccionar.addFlashAttribute("mensaje", "Fallo al consultar al Paciente");
@@ -94,28 +92,27 @@ public class UsuarioControlador {
             return "redirect:/adminUsuarios";
         }
     }
-    
+
     @PostMapping(value = {"/updateUsuarios/{idUsuario}"})
     public String modificarUsuario(@PathVariable(value = "idUsuario") Integer codigo, @Valid @ModelAttribute("objUsuario") Usuario objActualizar,
             BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {
- 
-         Usuario usuarioExistente = usuarioDao.buscar(codigo);
-         System.out.println(codigo);
-         objActualizar.setFechaCreacionUsuario(usuarioExistente.getFechaCreacionUsuario());
-                System.out.println(objActualizar);
+        Usuario usuarioExistente = usuarioDao.buscar(codigo);
+        System.out.println(codigo);
+        objActualizar.setFechaCreacionUsuario(usuarioExistente.getFechaCreacionUsuario());
+        objActualizar.setRolUsuario(new Rol(4, ""));
+        System.out.println(respuesta);
+        System.out.println(objActualizar);        
         if (respuesta.hasErrors()) {
-            redireccionar.addFlashAttribute("mensaje", "fallo al actualizar el objeto");
+            redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
         } else {
-            objActualizar.setIdUsuario(codigo);
-            objActualizar.setRolUsuario(objActualizar.getRolUsuario());
-            System.out.println(objActualizar);
+            objActualizar.setIdUsuario(codigo);            
             boolean actualizado = usuarioDao.actualizar(objActualizar);
             if (actualizado) {
-                redireccionar.addFlashAttribute("mensaje", "exito al actualizar el Usuario: " + objActualizar.getNombreUsuario() + " " + objActualizar.getApellidoUsuario());
+                redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar el Usuario: " + objActualizar.getNombreUsuario() + " " + objActualizar.getApellidoUsuario());
                 redireccionar.addFlashAttribute("tipo", "alert-success");
             } else {
-                redireccionar.addFlashAttribute("mensaje", "fallo al actualizar el objeto");
+                redireccionar.addFlashAttribute("mensaje", "Fallo al Actualizar el Objeto");
                 redireccionar.addFlashAttribute("tipo", "alert-danger");
             }
         }
