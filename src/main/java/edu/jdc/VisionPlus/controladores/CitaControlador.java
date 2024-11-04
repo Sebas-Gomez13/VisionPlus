@@ -81,9 +81,7 @@ public class CitaControlador {
         List<Usuario> arrOftalmologo = citaDao.obtenerUsuariosOft();
         if (objEncontrado != null) {
             LocalDate fecha = objEncontrado.getFecha_hora().toLocalDateTime().toLocalDate();            
-            LocalTime hora = objEncontrado.getFecha_hora().toLocalDateTime().toLocalTime();
-            System.out.println(fecha);
-            System.out.println(hora);
+            LocalTime hora = objEncontrado.getFecha_hora().toLocalDateTime().toLocalTime();            
             objEncontrado.setFecha(fecha);
             objEncontrado.setHora(hora);
             vista.addAttribute("objCitas", objEncontrado);
