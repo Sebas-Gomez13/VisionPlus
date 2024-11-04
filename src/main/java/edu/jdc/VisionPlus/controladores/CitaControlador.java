@@ -29,12 +29,11 @@ public class CitaControlador {
 
     @GetMapping("/addCitas")
     public String crearCita(Model vista) {
-        List<Usuario> arrOftalmologo= citaDao.buscarOftamologo();
-        vista.addAttribute("arrOftalmologo",arrOftalmologo);
-        List<Usuario> arrPaciente= citaDao.buscarPaciente();
-        vista.addAttribute("arrPaciente",arrPaciente);
+        List<Usuario> arregloCitas = citaDao.obtenerUsuariosPorRol();
+        List<Usuario> arregloCitaOft=citaDao.obtenerUsuariosOft();
         vista.addAttribute("objCita", new Cita());
-        
+        vista.addAttribute("arrCita", arregloCitas);
+        vista.addAttribute("arrCitaOf", arregloCitaOft);
         return "crearCita";
     }
 
@@ -65,6 +64,13 @@ public class CitaControlador {
     @GetMapping("/usuarios/rol/3")
     public String obtenerUsuariosRol3(Model vista) {
         List<Usuario> arregloCitas = citaDao.obtenerUsuariosPorRol();
+        vista.addAttribute("arrCitas", arregloCitas);        
+        return "listarCitas";
+    }
+    
+    @GetMapping("/usuarios/rol/4")
+    public String obtenerUsuariosRol4(Model vista) {
+        List<Usuario> arregloCitas = citaDao.obtenerUsuariosOft();
         vista.addAttribute("arrCitas", arregloCitas);        
         return "listarCitas";
     }

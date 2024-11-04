@@ -54,4 +54,9 @@ public class CitaDAO implements Operacion<Cita>{
         return repoUsuario.findByRolUsuario(new Rol(4, ""));
     }
     
+    public List<Usuario> obtenerUsuariosOft() {
+        // Llamar al método definido en el repositorio
+        return repoUsuario.findByRolUsuario(new Rol(3, ""));
+    }
+    
 }

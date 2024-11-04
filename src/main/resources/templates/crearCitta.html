@@ -3,9 +3,9 @@
     <body>
         <main>
             <nav th:replace="/contenedor/tablero ::cabecera"></nav>
-                <div class="container-fluid mt-4">
+                <div class="container-fluid mt-5">
                     <div class="d-flex justify-content-center">
-                        <div class="col-4">
+                        <div class="col-5">
                             <div class="card">
                                 <div class="card-header bg-primary text-white">
                                     <h4 class="fw-semibold fst-italic"> Formulario Registro Cita</h4>
@@ -18,26 +18,26 @@
                                             </label>
                                             <select id="idPaciente" class="form-select" th:field="*{idPaciente}">
                                                 <option value="null">Seleccione un Paciente</option>
-                                                <option th:each="objUsuario:${arrPaciente}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idPaciente}"></option>
+                                                <option th:each="objUsuario:${arrCita}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
                                             </select>
-                                            <span class="rojito" th:if="${objCita.rolUsuario==null}"th:errors="*{rolUsuario}">Seleccione una marca</span>     
+                                            <span class="rojito" th:if="${objCita.idPaciente==null}"th:errors="*{idPaciente}">Seleccione un Paciente</span>     
                                         </div>
-                                        <div class="mb-3">
+                                       <div class="mb-3">
                                             <label for="idOftalmologo" class="form-label">
                                                 <span class="rojito">*</span> Oftalmologo
                                             </label>
                                             <select id="idOftalmologo" class="form-select" th:field="*{idOftalmologo}">
                                                 <option value="null">Seleccione un Oftalmologo</option>
-                                                <option th:each="objUsuario:${arrOftalmologo}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idOftalmologo}"></option>
+                                                <option th:each="objUsuario:${arrCitaOf}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
                                             </select>
-                                            <span class="rojito" th:if="${objCita.idOftalmologo==null}"th:errors="*{rolUsuario}">Seleccione un Oftalmologo</span>     
+                                            <span class="rojito" th:if="${objCita.idOftalmologo==null}"th:errors="*{idOftalmologo}">Seleccione un Oftalmologo</span>     
                                         </div>
-                                        <div class="mb-3">
+                                        <!--<div class="mb-3">
                                             <label for="color" class="form-label">
                                                 <span class="rojito">*</span>Fecha y Hora de la cita
                                             </label>
                                             <input type="date" name="color" class="form-control" th:field="*{color}">
-                                        </div>
+                                        </div>-->
                                          <div class="mb-3">
                                         <label class="form-label" for="estado">
                                             <span class="rojito">*</span>Estado Cita
@@ -66,5 +66,6 @@
                 </div>
         </main>
     </body>
+    
     <footer th:replace="contenedor/tablero :: footer"></footer>
 </html>
