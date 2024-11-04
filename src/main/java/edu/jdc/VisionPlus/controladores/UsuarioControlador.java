@@ -2,6 +2,7 @@ package edu.jdc.VisionPlus.controladores;
 
 import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
+import edu.jdc.VisionPlus.daos.RolDAO;
 import edu.jdc.VisionPlus.daos.UsuarioDAO;
 import jakarta.validation.Valid;
 import java.time.LocalDate;
@@ -25,6 +26,9 @@ public class UsuarioControlador {
 
     @Autowired(required = true)
     private UsuarioDAO usuarioDao;
+    
+    @Autowired(required=true)
+    private RolDAO rolDao;
 
     @GetMapping("/listUsuarios")
     public String listarUsuario(Model vista) {
@@ -35,7 +39,9 @@ public class UsuarioControlador {
 
     @GetMapping("/addUsuarios")
     public String crearUsuario(Model vista) {
+        List<Rol> arrRol = rolDao.consultar("");
         vista.addAttribute("objUsuario", new Usuario());
+        vista.addAttribute("arrRoles", arrRol);
         return "crearUsuarios";
     }
 
@@ -46,8 +52,6 @@ public class UsuarioControlador {
         } else {                      
             objUsuarios.setFechaCreacionUsuario(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
             objUsuarios.setEstadoUsuario(1);
-            objUsuarios.setRolUsuario(new Rol(4, ""));
-            System.out.println(objUsuarios);
             String claveCifrada = DigestUtils.sha512Hex(objUsuarios.getContrasenaUsuario());
             objUsuarios.setContrasenaUsuario(claveCifrada);
             usuarioDao.registrar(objUsuarios);
