@@ -41,7 +41,7 @@
                                             <td th:text="${objCitas.idOftalmologo.nombreUsuario + ' ' + objCitas.idOftalmologo.ApellidoUsuario}"></td>
                                             <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MM-dd')}"></td>
                                             <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>                                        
-                                            <td ><span class="alert fw-bold" th:text="${objCitas.estado == 1 ? 'Enviado' : 'Leido'}" th:classappend="${objCitas.estado == 1 ? 'text-danger' : 'text-success'}"></span></td>                                        
+                                            <td ><span class="alert fw-bold" th:text="${objCitas.estado == 1 ? 'Pendiente' : 'Realizada'}" th:classappend="${objCitas.estado == 1 ? 'text-danger' : 'text-success'}"></span></td>                                        
                                             <td> 
                                                 <a th:href="@{/updateCitas/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-edit fs-5 text-white"></i>  
