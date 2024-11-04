@@ -1,5 +1,6 @@
 package edu.jdc.VisionPlus.repositorios;
 
+import edu.jdc.VisionPlus.clases.Notificacion;
 import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import java.util.List;
@@ -14,5 +15,6 @@ public interface UsuarioRepositorio extends CrudRepository<Usuario, Integer>{
     public Integer eliminarUsuario(@Param("llavePrimaria") Integer llavePrimaria);    
 
         List<Usuario> findByRolUsuario(Rol rolUsuario);
+        List<Usuario> findByIdUsuario(Integer idUsuario);
 
 }

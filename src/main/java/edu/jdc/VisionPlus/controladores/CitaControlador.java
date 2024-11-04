@@ -4,6 +4,11 @@ import edu.jdc.VisionPlus.clases.Cita;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.CitaDAO;
 import jakarta.validation.Valid;
+import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,12 +43,18 @@ public class CitaControlador {
     }
 
     @PostMapping("/addCitas")
-    public String registrarCita(@Valid @ModelAttribute Cita objCita, BindingResult respuesta, Model vista, SessionStatus estado) {
+    public String registrarCita(@Valid @ModelAttribute Cita objCita, BindingResult respuesta, Model vista, SessionStatus estado) {        
+        System.out.println(objCita.getFecha());
+        System.out.println(objCita.getHora());
         if (respuesta.hasErrors()) {
             return "crearCita";
-
         } else {
-            objCita.setEstado(1);
+            LocalDate fecha = objCita.getFecha();
+            LocalTime hora = objCita.getHora();                        
+            LocalDateTime fechaCitaLocal = LocalDateTime.of(fecha, hora);            
+            Timestamp fechaCita = Timestamp.valueOf(fechaCitaLocal);
+            objCita.setFecha_hora(fechaCita);
+            objCita.setEstado(1);            
             
             citaDao.registrar(objCita);
             estado.setComplete();
@@ -61,18 +72,5 @@ public class CitaControlador {
         return "actualizarCita";
     }
     
-    @GetMapping("/usuarios/rol/3")
-    public String obtenerUsuariosRol3(Model vista) {
-        List<Usuario> arregloCitas = citaDao.obtenerUsuariosPorRol();
-        vista.addAttribute("arrCitas", arregloCitas);        
-        return "listarCitas";
-    }
-    
-    @GetMapping("/usuarios/rol/4")
-    public String obtenerUsuariosRol4(Model vista) {
-        List<Usuario> arregloCitas = citaDao.obtenerUsuariosOft();
-        vista.addAttribute("arrCitas", arregloCitas);        
-        return "listarCitas";
-    }
     
 }

@@ -11,22 +11,22 @@
                         <div class="mt-2">
                             <table class="table table-sm table-striped table-hover">
                                 <thead>
-                                    <tr class="table table-dark bg-dark">
-                                        <th>Codigo</th>
-                                        <th>Tipo</th>
-                                        <th>Material</th>
-                                        <th>Color</th>
-                                        <th>valor</th>
-                                        <th>Marca</th>
+                                    <tr class="table table-dark bg-dark">                                        
+                                        <th>Paciente</th>
+                                        <th>Oftalmologo</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Estado</th>                                        
                                     </tr>
                                 </thead>
                                 
                                 <tbody>
                                     <tr th:each="objCitas:${arrCitas}">
-                                        <td th:text="${objCitas.idUsuario}"></td>
-                                        <td th:text="${objCitas.nombreUsuario}"></td>
-                                        <td th:text="${objCitas.ApellidoUsuario}"></td>
-                                        <td th:text="${objCitas.rolUsuario.nombreRol}"></td>
+                                        <td th:text="${objCitas.idPaciente.nombreUsuario + ' ' + objCitas.idPaciente.ApellidoUsuario}"></td>
+                                        <td th:text="${objCitas.idOftalmologo.nombreUsuario + ' ' + objCitas.idOftalmologo.ApellidoUsuario}"></td>
+                                        <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MM-dd')}"></td>
+                                        <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>                                        
+                                        <td ><span class="alert fw-bold" th:text="${objCitas.estado == 1 ? 'Enviado' : 'Leido'}" th:classappend="${objCitas.estado == 1 ? 'text-danger' : 'text-success'}"></span></td>
                                         
                                     </tr>
                                 </tbody>

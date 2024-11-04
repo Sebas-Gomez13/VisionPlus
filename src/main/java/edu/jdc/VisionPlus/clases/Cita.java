@@ -8,8 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
-import java.security.Timestamp;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 
@@ -39,17 +42,27 @@ public class Cita {
     @Column(name = "estado")    
     private Integer estado;
     
+    @Transient
+    private LocalDate fecha;
+    
+    @Transient
+    private LocalTime hora;
+    
     public Cita(){
         
     }
 
-    public Cita(Integer idCita, Usuario idPaciente, Usuario idOftalmologo, Timestamp fecha_hora, Integer estado) {
+    public Cita(Integer idCita, Usuario idPaciente, Usuario idOftalmologo, Timestamp fecha_hora, Integer estado, LocalDate fecha, LocalTime hora) {
         this.idCita = idCita;
         this.idPaciente = idPaciente;
         this.idOftalmologo = idOftalmologo;
         this.fecha_hora = fecha_hora;
         this.estado = estado;
+        this.fecha = fecha;
+        this.hora = hora;
     }
+    
+    
     
 
     public Integer getIdCita() {
@@ -92,6 +105,22 @@ public class Cita {
 
     public void setIdOftalmologo(Usuario idOftalmologo) {
         this.idOftalmologo = idOftalmologo;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
     
     

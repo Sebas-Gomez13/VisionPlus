@@ -1,16 +1,20 @@
 package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.Notificacion;
+import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.jdc.VisionPlus.repositorios.NotificacionRepositorio;
+import edu.jdc.VisionPlus.repositorios.UsuarioRepositorio;
 
 @Service
 public class NotificacionDAO implements Operacion<Notificacion>{
     @Autowired(required = true)
-    private NotificacionRepositorio repoNotificacion;
+    private NotificacionRepositorio repoNotificacion;    
+    @Autowired
+    private UsuarioRepositorio repoUsuario;
 
     @Override
     public List<Notificacion> consultar(String orden) {
@@ -42,6 +46,10 @@ public class NotificacionDAO implements Operacion<Notificacion>{
     public Integer cantidadRegistros() {
         //         return repoCita.cantidadMarcas();
     return 0;
+    }
+    
+    public List<Notificacion> buscarPaciente(){
+        return repoNotificacion.findByIdUsuario(new Usuario(1, "", "", "", "", null, "", "", null, null));
     }
     
 }

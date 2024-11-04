@@ -20,12 +20,12 @@ public class Notificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_notificacion")
-    private Integer idNotifcacion;
+    private Integer idNotificacion;
     
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
-    private Usuario IdUsuario;
+    private Usuario idUsuario;
     
     @NotNull
     @Size(min = 3, max = 250)
@@ -44,9 +44,9 @@ public class Notificacion {
         
     }
 
-    public Notificacion(Integer idNotifcacion, Usuario IdUsuario, String mensajeNotificacion, Date fechaEnvioNotificacion, Integer estadoNotificacion) {
-        this.idNotifcacion = idNotifcacion;
-        this.IdUsuario = IdUsuario;
+    public Notificacion(Integer idNotificacion, Usuario idUsuario, String mensajeNotificacion, Date fechaEnvioNotificacion, Integer estadoNotificacion) {
+        this.idNotificacion = idNotificacion;
+        this.idUsuario = idUsuario;
         this.mensajeNotificacion = mensajeNotificacion;
         this.fechaEnvioNotificacion = fechaEnvioNotificacion;
         this.estadoNotificacion = estadoNotificacion;
@@ -54,24 +54,22 @@ public class Notificacion {
 
     
 
-    public Integer getIdNotifcacion() {
-        return idNotifcacion;
+    public Integer getIdNotificacion() {
+        return idNotificacion;
     }
 
-    public void setIdNotifcacion(Integer idNotifcacion) {
-        this.idNotifcacion = idNotifcacion;
+    public void setIdNotificacion(Integer idNotificacion) {
+        this.idNotificacion = idNotificacion;
     }
 
     public Usuario getIdUsuario() {
-        return IdUsuario;
+        return idUsuario;
     }
 
-    public void setIdUsuario(Usuario IdUsuario) {
-        this.IdUsuario = IdUsuario;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
-
-    
-
+        
     public String getMensajeNotificacion() {
         return mensajeNotificacion;
     }
@@ -98,8 +96,8 @@ public class Notificacion {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.idNotifcacion);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.idNotificacion);
         return hash;
     }
 
@@ -115,12 +113,17 @@ public class Notificacion {
             return false;
         }
         final Notificacion other = (Notificacion) obj;
-        return Objects.equals(this.idNotifcacion, other.idNotifcacion);
+        return Objects.equals(this.idNotificacion, other.idNotificacion);
     }
 
     @Override
     public String toString() {
-        return "Notificaciones{" + "idNotifcacion=" + idNotifcacion + ", IdUsuario=" + IdUsuario + ", mensajeNotificacion=" + mensajeNotificacion + ", fechaEnvioNotificacion=" + fechaEnvioNotificacion + ", estadoNotificacion=" + estadoNotificacion + '}';
+        return "Notificacion{" + "idNotificacion=" + idNotificacion + ", idUsuario=" + idUsuario + ", mensajeNotificacion=" + mensajeNotificacion + ", fechaEnvioNotificacion=" + fechaEnvioNotificacion + ", estadoNotificacion=" + estadoNotificacion + '}';
     }
+
+    
+
+    
+
     
 }

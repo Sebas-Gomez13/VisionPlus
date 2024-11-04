@@ -1,6 +1,7 @@
 package edu.jdc.VisionPlus.controladores;
 
 import edu.jdc.VisionPlus.clases.Notificacion;
+import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.NotificacionDAO;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -17,14 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 public class NotificacionControlador {
 
     @Autowired(required = true)
-    private NotificacionDAO notificacionDao;
-
-    @GetMapping("/listNotificaciones")
-    public String listarNotificacion(Model vista) {
-        List<Notificacion> arregloNotificaciones = notificacionDao.consultar("");
-        vista.addAttribute("arrNotificaciones", arregloNotificaciones);
-        return "listarNotificacion";
-    }
+    private NotificacionDAO notificacionDao;   
 
     @GetMapping("/addNotificaciones")
     public String crearNotificacion(Model vista) {
@@ -46,7 +40,9 @@ public class NotificacionControlador {
 
     @GetMapping("/adminNotificaciones")
     public String administrarNotificacion(Model vista) {
-        return "administrarNotificacion";
+        List<Notificacion> arregloNotificaciones = notificacionDao.buscarPaciente();
+        vista.addAttribute("arrNotificaciones", arregloNotificaciones);
+        return "administrarNotificaciones";
     }
 
     @GetMapping("/updateNotificaciones")
