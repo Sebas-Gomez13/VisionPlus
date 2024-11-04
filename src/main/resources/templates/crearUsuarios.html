@@ -16,39 +16,39 @@
                                         <label class="form-label">
                                             <span class="rojito">*</span> Nombres
                                         </label>
-                                        <input type="text" name="nombreUsuario" class="form-control" th:field="*{nombreUsuario}">
+                                        <input type="text" name="nombreUsuario" class="form-control" th:field="*{nombreUsuario}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Apellidos
                                         </label>
-                                        <input type="text" name="apellidoUsuario" class="form-control" th:field="*{apellidoUsuario}">
+                                        <input type="text" name="apellidoUsuario" class="form-control" th:field="*{apellidoUsuario}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Correo
                                         </label>
-                                        <input type="text" name="correoUsuario" class="form-control" th:field="*{correoUsuario}">
+                                        <input type="email" name="correoUsuario" class="form-control" th:field="*{correoUsuario}" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Contraseña
                                         </label>
-                                        <input type="text" name="correoUsuario" class="form-control" th:field="*{contrasenaUsuario}">
+                                        <input type="password" name="contrasenaUsuario" class="form-control" th:field="*{contrasenaUsuario}" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Telefono
                                         </label>
-                                        <input type="text" name="telefonoUsuario" class="form-control" th:field="*{telefonoUsuario}">
+                                        <input type="text" name="telefonoUsuario" class="form-control" th:field="*{telefonoUsuario}" maxlength="10" minlength="10" pattern="/d" required>
                                     </div>                                        
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Direccion
                                         </label>
-                                        <input type="text" name="direccionUsuario" class="form-control" th:field="*{direccionUsuario}">
+                                        <input type="text" name="direccionUsuario" class="form-control" th:field="*{direccionUsuario}" required>
                                     </div>
                                     <span class="d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary col-3 fw-semibold mx-3">Registrar</button>

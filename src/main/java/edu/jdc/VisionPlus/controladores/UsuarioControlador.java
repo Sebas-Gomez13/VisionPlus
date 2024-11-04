@@ -103,7 +103,7 @@ public class UsuarioControlador {
             redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
         } else {
-            objActualizar.setIdUsuario(codigo);            
+            objActualizar.setIdUsuario(codigo);                   
             boolean actualizado = usuarioDao.actualizar(objActualizar);
             if (actualizado) {
                 redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar el Usuario: " + objActualizar.getNombreUsuario() + " " + objActualizar.getApellidoUsuario());

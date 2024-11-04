@@ -31,8 +31,7 @@
                                             <th>Apellidos</th>
                                             <th>Direccion</th>
                                             <th>Fecha</th>
-                                            <th>Correo</th>
-                                            <th>Contrasena</th>                                        
+                                            <th>Correo</th>                                            
                                             <th>Telefono</th>
                                             <th>Estado</th>
                                             <th>Rol</th>
@@ -47,8 +46,7 @@
                                             <td th:text="${objUsuario.ApellidoUsuario}"></td>
                                             <td th:text="${objUsuario.direccionUsuario}"></td>
                                             <td th:text="${#dates.format(objUsuario.fechaCreacionUsuario, 'yyyy/MMM/dd').toUpperCase()}"></td>
-                                            <td th:text="${objUsuario.correoUsuario}"></td>
-                                            <td th:text="${objUsuario.contrasenaUsuario}"></td>
+                                            <td th:text="${objUsuario.correoUsuario}"></td>                                            
                                             <td th:text="${objUsuario.telefonoUsuario}"></td>
                                             <td ><span style="padding:5px; margin-top: 30%" class="alert" th:text="${objUsuario.estadoUsuario == 0 ? 'Inactivo' : 'Activo'}" th:classappend="${objUsuario.estadoUsuario == 0 ? 'alert-danger' : 'text-success'}"></span></td>
                                             <td th:text="${objUsuario.rolUsuario.nombreRol}"></td>

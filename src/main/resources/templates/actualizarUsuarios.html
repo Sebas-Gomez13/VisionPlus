@@ -30,19 +30,19 @@
                                         <label class="form-label">
                                             <span class="rojito">*</span> Correo
                                         </label>
-                                        <input type="text" name="correoUsuario" class="form-control" th:field="*{correoUsuario}">
+                                        <input type="email" name="correoUsuario" class="form-control" th:field="*{correoUsuario}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Contraseña
                                         </label>
-                                        <input type="text" name="correoUsuario" class="form-control" th:field="*{contrasenaUsuario}">
+                                        <input type="password" name="contrasenaUsuario" class="form-control" th:field="*{contrasenaUsuario}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito">*</span> Telefono
                                         </label>
-                                        <input type="text" name="telefonoUsuario" class="form-control" th:field="*{telefonoUsuario}">
+                                        <input type="text" name="telefonoUsuario" class="form-control" th:field="*{telefonoUsuario}" th:value="${telefonoUsuario}"  maxlength="10" minlength="10" required>
                                     </div>                                        
                                     <div class="mb-3">
                                         <label class="form-label">
