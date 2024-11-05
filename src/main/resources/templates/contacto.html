@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 
 <html>
-    <head th:replace="/contenedor/tablero :: head"></head>
+    <head th:replace="/contenedor/tablero :: head">
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/estilosContacto.css}"/>
+    </head>
     <body>
         <main>
             <nav th:replace="/contenedor/tablero :: cabecera"></nav>
             <section>
 
-                <div class="p-5 m-4 text-white fondo-bienvenidaC rounded-3">
-                    <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">
-                            CONTACTOS
-                        </h1>
-                        <h3>Daniel Felipe Leuro Camacho</h3>
-                        <ul class="fs-5 fst-italic">
-                            <li>Instragram: felipe_camacho8</li>
-                            <li>whatsapp: 3212018869</li>
-                        </ul>
+                 <img th:src="@{/img/contacto.jpg}">
 
-                    </div>
+        <h1>Contenido centrado en la imagen de fondo</h1>
+    </div>
                 </div>
             </section>
         </main>

@@ -1,7 +1,6 @@
 .blog-footer{
     padding: 2.5rem;
     text-align: center;
-    border-top: 5px solid black;
 }
 
 section{
@@ -19,10 +18,11 @@ section{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px; /* Distancia entre cada contenedor */
+    
 }
 
 .photo {
-    border: 1px solid #cccccc;
+    border: 3px solid #916ea7;
     border-radius: 5px;
     overflow: hidden;
     z-index: 2;
@@ -45,6 +45,7 @@ section{
     margin: 0;
     transition: transform 0.3s ease-in-out;
     z-index: 1;
+    
 }
 .container {
     max-width: 1200px;

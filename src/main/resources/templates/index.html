@@ -1,54 +1,50 @@
 <html>
-    <header th:replace = "contenedor/tablero :: head"></header>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/fontawesome/css/all.min.css}"/>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
-    <body>
+    <header th:replace = "contenedor/tablero :: head">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/fontawesome/css/all.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
+    </header>
+
+    <body class="mb-5">
         <main>
             <nav th:replace="contenedor/tablero :: cabecera"></nav>
-            <section>
-                <img th:src="@{/img/index.png}">
-            </section>
-                <div class="container">
-        <div class="row">
-            <div class="col-md-12" style="padding-top: 20px; padding-bottom: 20px;">
-                <h1 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Productos</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="photo">
-                <img th:src="@{/img/gafas1.png}">
-                    <h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Gafas de Lujo</h3>
+            <img th:src="@{/img/index.png}">
+            <div class="container-fluid mt-5 mb-5">
+                <div class="row">
+                    <div class="col-md-12" style="padding-top: 20px; padding-bottom: 20px;">
+                        <center> <h1 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue ;">Productos</h1></center>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-3">
+                        <div class="photo">
+                            <img th:src="@{/img/gafas1.png}">
+                            <center><h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Gafas de Lujo</h3></center>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="photo">
+                            <img th:src="@{/img/gafas1.png}">
+                            <center><h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Lentes de Contacto</h3></center>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="photo">
+                            <img th:src="@{/img/gafas1.png}">
+                            <center><h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Liquido de Gafas</h3></center>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="photo">
+                            <img th:src="@{/img/gafas1.png}">
+                            <center><h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Gafas de Niños</h3></center>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="photo">
-                <img th:src="@{/img/gafas1.png}">
-                    <h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Lentes de Contacto</h3>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="photo">
-                <img th:src="@{/img/gafas1.png}">
-                    <h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Liquido de Gafas</h3>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="photo">
-                <img th:src="@{/img/gafas1.png}">
-                    <h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Gafas de Niños</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-        </main>
-        <div>
-            
-        </div>
-        
+        </main>        
     </body>
-    &nbsp;
-    <footer th:replace="contenedor/tablero :: footer"></footer>
+
+    <footer class="mt-5"  th:replace="contenedor/tablero :: footer"></footer>
 </html>
