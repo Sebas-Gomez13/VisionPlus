@@ -1,17 +1,54 @@
 <html>
     <header th:replace = "contenedor/tablero :: head"></header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
     <body>
         <main>
             <nav th:replace="contenedor/tablero :: cabecera"></nav>
             <section>
                 <img th:src="@{/img/index.png}">
             </section>
-            <section class="bg-secondary-subtle">
-                <!-- ACA HACEN UN MAQUETADO ELEMENTO PARA MOSTRAR LO QUE HACE LA PLATAFORMA-->
-
-            </section>
+                <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding-top: 20px; padding-bottom: 20px;">
+                <h1 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Productos</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="photo">
+                <img th:src="@{/img/gafas1.png}">
+                    <h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Gafas de Lujo</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="photo">
+                <img th:src="@{/img/gafas1.png}">
+                    <h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Lentes de Contacto</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="photo">
+                <img th:src="@{/img/gafas1.png}">
+                    <h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Liquido de Gafas</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="photo">
+                <img th:src="@{/img/gafas1.png}">
+                    <h3 style="font-weight: bold; font-size: 23px; color: rgb(80, 80, 82) ;border-color: blue   ;">Gafas de Niños</h3>
+                </div>
+            </div>
+        </div>
+    </div>
         </main>
+        <div>
+            
+        </div>
+        
     </body>
-
+    &nbsp;
     <footer th:replace="contenedor/tablero :: footer"></footer>
 </html>
