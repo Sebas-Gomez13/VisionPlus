@@ -1,0 +1,75 @@
+.inicio{
+    background: linear-gradient(to right, #d0ebff 50%, #ffffff 50%);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imagenes{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+/* Imagen base */
+.imagen-fondo {
+
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.6s ease;
+}
+.imagen-fondo:hover{
+    transform: scale(1.1);
+}
+/* Imagen superpuesta */
+.imagen-superior {
+    position: absolute;
+    top: 180px; /* Ajusta la posición vertical */
+    left: 42%; /* Ajusta la posición horizontal */
+    display: flex;
+    max-width: 100%;
+    height: auto
+
+}
+.imagenes{
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(80, 80, 82) ;
+    border-color: blue ;
+}
+h1{
+    font-weight: bold;
+    font-size: 30px;
+    border-color: blue;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+h3{
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(80, 80, 82) ;
+    border-color: blue ;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.boton{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 20px
+}
+.btn-with-image {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.btn-icon {
+    width: 100px; /* Ajusta el tamaño de la imagen */
+    height: 50px;
+}
