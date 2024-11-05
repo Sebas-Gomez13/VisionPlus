@@ -53,7 +53,7 @@ public class NotificacionControlador {
     }
     
     @GetMapping(value = "/deleteNotificacion/{idNotificacion}")
-    public String eliminarTenis(@PathVariable(value = "idNotificacion") Integer codSeleccionado, RedirectAttributes redireccionar) {
+    public String eliminarNotificacion(@PathVariable(value = "idNotificacion") Integer codSeleccionado, RedirectAttributes redireccionar) {
         boolean elimino = false;
         if (codSeleccionado > 0) {
             elimino = notificacionDao.eliminar(codSeleccionado);

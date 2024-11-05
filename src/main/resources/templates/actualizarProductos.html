@@ -1,0 +1,63 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="/contenedor/tablero ::cabecera"></nav>            
+            <div class="container-fluid mt-4 mb-4">
+                <div class="d-flex justify-content-center">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="fw-semibold fst-italic"> Formulario editar Productos</h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/updateProducto/{idProducto}(idProducto =${objProducto.idProducto})}" th:object="${objProducto}" method="post">
+                                    <div class="mb-3">
+                                        <label for="idUsuario" class="form-label">
+                                            <span class="rojito">*</span> Usuario
+                                        </label>
+                                        <select id="idUsuario" class="form-select" th:field="*{idUsuario}">
+                                            <option th:each="objUsuario:${arrUsuarios}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Nombre Producto
+                                        </label>
+                                        <input type="text" name="nombreProducto" class="form-control" th:field="*{nombreProducto}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Descripción Producto
+                                        </label>
+                                        <input type="text" name="descripcion" class="form-control" th:field="*{descripcion}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Imagen Producto
+                                        </label>
+                                        <input type="text" name="imagenUrl" class="form-control" th:field="*{imagenUrl}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Categoria Producto
+                                        </label>
+                                        <select th:field="*{categoria}" class="form-control">
+                                            <option value="0">Gafas</option>
+                                            <option value="1">Lentes de Contacto</option>
+                                        </select>
+                                    </div>
+                                    <span class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                        <a th:href="@{/adminProducto}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                    </span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>

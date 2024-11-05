@@ -110,7 +110,7 @@ public class CitaControlador {
     }
     
     @GetMapping(value = "/deleteCitas/{idCita}")
-    public String eliminarTenis(@PathVariable(value = "idCita") Integer codSeleccionado, RedirectAttributes redireccionar) {
+    public String eliminarCita(@PathVariable(value = "idCita") Integer codSeleccionado, RedirectAttributes redireccionar) {
         boolean elimino = false;
         if (codSeleccionado > 0) {
             elimino = citaDao.eliminar(codSeleccionado);

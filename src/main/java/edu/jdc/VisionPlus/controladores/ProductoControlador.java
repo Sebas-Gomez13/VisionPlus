@@ -6,6 +6,7 @@ import edu.jdc.VisionPlus.daos.ProductoDAO;
 import edu.jdc.VisionPlus.daos.UsuarioDAO;
 import jakarta.validation.Valid;
 import java.util.List;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,16 +67,35 @@ public class ProductoControlador {
     public String actualizarProducto(Model vista, @PathVariable(value="idProducto") Integer llavePrimaria,RedirectAttributes redireccionar) {
         Producto objEncontrado = productoDao.buscar(llavePrimaria);
         List<Usuario> arrUsuarios= productoDao.obtenerUsuarios();
+       
         if(objEncontrado!=null){
             vista.addAttribute("objProducto", objEncontrado);
-            vista.addAttribute("arrProducto", arrUsuarios);
-            return "actualizarProducto";
+            vista.addAttribute("arrUsuarios", arrUsuarios);
+            return "actualizarProductos";
         }else{
             redireccionar.addFlashAttribute("mensaje", "Fallo al consultar el Producto");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
-           return "actualizarProducto"; 
+           return "actualizarProductos"; 
         }
         
     }
-
+    @PostMapping(value = {"/updateProducto/{idProducto}"})
+    public String modificarProducto(@PathVariable(value = "idProducto") Integer codigo, @Valid @ModelAttribute("objProducto") Producto objActualizar,
+            BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {                
+        if (respuesta.hasErrors()) {
+            redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
+            redireccionar.addFlashAttribute("tipo", "alert-danger");
+        } else {
+            objActualizar.setIdProducto(codigo);        
+            boolean actualizado = productoDao.actualizar(objActualizar);
+            if (actualizado) {
+                redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar el Producto: " + objActualizar.getNombreProducto());
+                redireccionar.addFlashAttribute("tipo", "alert-success");
+            } else {
+                redireccionar.addFlashAttribute("mensaje", "Fallo al Actualizar el Objeto");
+                redireccionar.addFlashAttribute("tipo", "alert-danger");
+            }
+        }
+        return "redirect:/adminProducto";
+    }
 }

@@ -41,16 +41,25 @@
                                             <td th:text="${objProductos.nombreProducto}"></td>
                                             <td th:text="${objProductos.descripcion}"></td>
                                             <td th:text="${objProductos.imagenUrl}"></td>
-                                            <td th:text="${objProductos.categoria}"></td>
+                                            <td>
+                                                <span class="alert fw-bold"
+                                                      th:text="${objProductos.categoria== 0 ? 'Gafas' : (objProductos.categoria == 1 ? 'Lentes de Contacto' : (objProductos.categoria == 2 ? 'Monturas' : 'Desconocido'))}"
+                                                </span>
+                                            </td>                                         
                                             <td th:text="${objProductos.cantidadVisitas}"></td>
                                             <td th:text="${objProductos.idUsuario.nombreUsuario}"></td>
                                                                                 
-                                   <a th:if="${(objProducto)}" th:href="@{/deleteUsuarios/}+${objCitas.idCita}" class="btn btn-danger btn-sm"
-                                                   onclick="return confirm('¿estas seguro de eliminar a este Usuario')">
+                                            <td>
+                                                <a th:href="@{/updateProducto/}+${objProductos.idProducto}" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-edit fs-5 text-white"></i>  
+                                                </a>
+                                                <a th:if="${(objProductos)}" th:href="@{/deleteProductos/}+${objProductos.idProducto}" class="btn btn-danger btn-sm"
+                                                   onclick="return confirm('¿estas seguro de eliminar a este producto')">
                                                     <i class="fa fa-trash fs-5 text-white"></i>
                                                 </a>
-                                                <a th:unless="${objCitas.estado!=0}"  class="btn btn-secondary btn-sm"
-                                                   onclick="return alert('El usuario ya se encuentra inactivo')">
+                                                &nbsp;
+                                                <a th:unless="${objProductos}" class="btn btn-secondary btn-sm"
+                                                   onclick="return alert('El producto se elimino')">
                                                     <i class="fa fa-trash fs-5 text-white"></i>
                                                 </a>
                                             </td>

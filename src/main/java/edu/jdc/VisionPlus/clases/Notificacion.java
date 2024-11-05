@@ -33,7 +33,7 @@ public class Notificacion {
     private String mensajeNotificacion;
     
     @NotNull    
-    @Column(name = "fehca_envio_notificacion")
+    @Column(name = "fecha_envio_notificacion")
     private Date fechaEnvioNotificacion;
     
     @NotNull    
