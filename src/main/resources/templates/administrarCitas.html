@@ -39,16 +39,16 @@
                                             <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>                                        
                                             <td>
                                                 <span class="alert fw-bold"
-                                                      th:text="${objCitas.estado == 1 ? 'Pendiente' : (objCitas.estado == 2 ? 'Notificación Enviada' : (objCitas.estado == 3 ? 'Finalizada' : 'Desconocido'))}"
-                                                      th:classappend="${objCitas.estado == 1 ? 'text-danger' : (objCitas.estado == 2 ? 'text-success' : (objCitas.estado == 3 ? 'text-success' : 'text-white'))}">
+                                                      th:text="${objCitas.estado == 1 ? 'Pendiente' : (objCitas.estado == 2 ? 'Notificación Enviada' : (objCitas.estado == 3 ? 'Finalizada' : (objCitas.estado == 4 ? 'Cita Cancelada' : 'Desconocido')))}"
+                                                      th:classappend="${objCitas.estado == 1 ? 'text-danger' : (objCitas.estado == 2 ? 'text-success' : (objCitas.estado == 3 ? 'text-success' : 'text-danger'))}">
                                                 </span>
                                             </td>                                             
-                                            <td> 
+                                            <td style="text-align: center"> 
                                                 <a th:href="@{/updateCitas/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-edit fs-5 text-white"></i>  
                                                 </a>
                                                 &nbsp;
-                                                <a th:if="${(objCitas.estado!=0)}" th:href="@{/deleteCitas/}+${objCitas.idCita}" class="btn btn-danger btn-sm"
+                                                <a th:if="${(objCitas.estado!=3) and (objCitas.estado!=4)}" th:href="@{/deleteCitas/}+${objCitas.idCita}" class="btn btn-danger btn-sm"
                                                    onclick="return confirm('¿estas seguro de eliminar a este Usuario')">
                                                     <i class="fa fa-trash fs-5 text-white"></i>
                                                 </a>
@@ -57,8 +57,12 @@
                                                     <i class="fa fa-trash fs-5 text-white"></i>
                                                 </a>
                                                 &nbsp;
-                                                <a th:if="${(objCitas.estado != 2) and (objCitas.estado != 3)}" th:href="@{/nuevaNoti/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
+                                                <a th:if="${(objCitas.estado != 2) and (objCitas.estado != 4) and (objCitas.estado != 3)}" th:href="@{/nuevaNoti/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-plus fs-5 text-white"></i>  
+                                                </a>
+                                                &nbsp;
+                                                <a th:if="${(objCitas.estado != 4) and (objCitas.estado != 3)}" th:href="@{/confirmarCita/}+${objCitas.idCita}" class="btn btn-success btn-sm">
+                                                    <i class="fa fa-check fs-5 text-white"></i>  
                                                 </a>
                                             </td>
                                         </tr>

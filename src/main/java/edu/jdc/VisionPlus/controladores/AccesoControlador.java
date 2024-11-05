@@ -40,7 +40,6 @@ public class AccesoControlador {
         } else {
             String ClaveCifrada = DigestUtils.sha512Hex(objAcceso.getContrasenaUsuario());
             objAcceso.setContrasenaUsuario(ClaveCifrada);
-
             DatoSesion objSesion = daoAcceso.inicioDeSesion(objAcceso);
             if (objSesion != null) {
                 System.out.println(objSesion.toString());

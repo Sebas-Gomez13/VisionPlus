@@ -32,7 +32,6 @@ public class NotificacionControlador {
     public String registrarNotificacion(@Valid @ModelAttribute Notificacion objNotificaciones, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearNotificacion";
-
         } else {
             notificacionDao.registrar(objNotificaciones);
             estado.setComplete();

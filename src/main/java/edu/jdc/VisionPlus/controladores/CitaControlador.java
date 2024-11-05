@@ -104,8 +104,20 @@ public class CitaControlador {
         objNotificacion.setMensajeNotificacion(mensaje);
         objNotificacion.setEstadoNotificacion(1);
         objNotificacion.setFechaEnvioNotificacion(Date.from(Instant.now()));
-        citaDao.nuevaNoti(objNotificacion);
-        citaDao.actualizarEstado(objEncontrado.getIdCita(), 2);
+        boolean noti = citaDao.nuevaNoti(objNotificacion);
+        if(noti){
+            Integer actu = citaDao.actualizarEstado(objEncontrado.getIdCita(), 2);
+            if(actu > 0){
+                redireccionar.addFlashAttribute("mensaje", "Notificacion Enviada Correctamente");
+                redireccionar.addFlashAttribute("tipo", "alert-success");
+            } else {
+                redireccionar.addFlashAttribute("mensaje", "Fallo al Enviar la Notificacion");
+                redireccionar.addFlashAttribute("tipo", "alert-danger");
+            }
+        } else {
+            redireccionar.addFlashAttribute("mensaje", "Fallo al Enviar la Notificacion");
+                redireccionar.addFlashAttribute("tipo", "alert-danger");
+        }    
         return "redirect:/adminCitas";
     }
     
@@ -120,12 +132,18 @@ public class CitaControlador {
             } else {
                 redireccionar.addFlashAttribute("mensaje", "Fallo al Cancelar la Cita");
                 redireccionar.addFlashAttribute("tipo", "alert-danger");
-
             }
         } else {
             redireccionar.addFlashAttribute("mensaje", "Fallo al Cancelar la Cita");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
         }
+        return "redirect:/adminCitas";
+    }
+    
+    @GetMapping(value = "/confirmarCita/{idCita}")
+    public String terminarCita(Model vista, @PathVariable(value = "idCita") Integer llavePrimaria, RedirectAttributes redireccionar) {
+        Cita objEncontrado = citaDao.buscar(llavePrimaria);
+        citaDao.actualizarEstado(objEncontrado.getIdCita(), 3);
         return "redirect:/adminCitas";
     }
 }

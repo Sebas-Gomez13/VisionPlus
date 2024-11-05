@@ -32,8 +32,7 @@ public class AccesoDao implements Sesion {
             objSesion.setNombreUsuario(datosConsulta[1].toString());
             objSesion.setApellidosUsuario(datosConsulta[2].toString());
             objSesion.setCorreoAcceso(datosConsulta[3].toString());
-            objSesion.setNombreRol(datosConsulta[4].toString());
-                       
+            objSesion.setNombreRol(datosConsulta[4].toString());                       
         }
         return objSesion;
     }
