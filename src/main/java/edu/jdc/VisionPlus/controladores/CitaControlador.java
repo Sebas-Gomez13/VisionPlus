@@ -62,7 +62,7 @@ public class CitaControlador {
             objCita.setEstado(1);
             citaDao.registrar(objCita);
             estado.setComplete();
-            return "redirect:/listCitas";
+            return "redirect:/adminCitas";
         }
     }
 
