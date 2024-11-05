@@ -7,12 +7,14 @@
     <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
 </head>
 
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark" th:fragment="cabecera">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to left, #d0ebff 45%, #ffffff 53%)" th:fragment="cabecera">
+  <!-- Contenido del navbar -->
+
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">
             <div class="d-flex justify-content-center align-items-center">
-                <img th:src="@{/img/logo.png}" alt="logo.png" style="height: 50px"/>
-                <span class="fw-bold fst-italic fs-5">Vision Plus</span>
+                <img th:src="@{/img/logoVision.png}" alt="logoVision.png" style="height: 40px"/>
+                <span  style="color:#916ea7; font-size: 25px; " class="fw-bold ">Vision Plus</span>
             </div>  
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,30 +23,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
+                    <a style="color:#0e6379; font-size: 20px; font-weight: bold" class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/contact}">Contacto</a>
+                    <a style="color:#0e6379; font-size: 20px; font-weight: bold" class="nav-link" th:href="@{/contact}">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/aboutMe}">Acerca de</a>
+                    <a style="color:#0e6379; font-size: 20px; font-weight: bold" class="nav-link" th:href="@{/aboutMe}">Acerca de</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Marcas
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/listBrand}">Listar</a></li>
-                        <li><a class="dropdown-item" th:href="@{/adminBrand}">Administrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addBrand}">Registrar</a></li>
-                    </ul>
-                </li>
+                
                 
             </ul>
             <div class="nabvar-nav navbar"> 
                 <span class="nav-item text-white fw-semibold fst-italic">
-                    <a class="nav-link" th:href="@{/signin}">Inicio de Sesion</a>
+                    <a style="color:#0e6379; font-size: 20px; font-weight: bold"class="nav-link" th:href="@{/signin}">Inicio de Sesion</a>
                 </span>
             </div>
         </div>
