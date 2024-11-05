@@ -13,7 +13,6 @@
 }
 /* Imagen base */
 .imagen-fondo {
-
     max-width: 100%;
     height: auto;
     transition: transform 0.6s ease;
@@ -54,6 +53,10 @@ h3{
     justify-content: center;
     align-content: center;
 }
+.titulo{
+        position: absolute;
+
+}
 .boton{
     display: flex;
     align-content: center;
@@ -87,6 +90,15 @@ h3{
     border:1px solid red;
 }
 
-.productos{
-    background: blue;
+
+.imagen-collapse .eye{  
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+.texto{
+    position: absolute;
+    top: 600px; /* Ajusta la posición vertical */
+    color: black;
+    font-size: 30px;
 }
