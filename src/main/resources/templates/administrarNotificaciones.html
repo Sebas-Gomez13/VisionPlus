@@ -13,14 +13,7 @@
                                     <span class="fw-semibold" th:text="${mensaje}"></span>
                                     <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
                                 </div> 
-
-                            </div>
-                            <div class="text-end">
-                                <a th:href="@{/addNotificacion}" class="btn btn-info text-white">
-                                    Nueva Notificacion
-                                </a>
-                            </div>
-
+                            </div>                            
                             <div class="mt-2">
                                 <table class="table table-sm table-striped table-hover">
                                     <thead>
@@ -38,9 +31,9 @@
                                             <td th:text="${objNotificacion.idUsuario.nombreUsuario + ' ' + objNotificacion.idUsuario.ApellidoUsuario}"></td>
                                             <td th:text="${objNotificacion.mensajeNotificacion}"></td>
                                             <td th:text="${#dates.format(objNotificacion.fechaEnvioNotificacion, 'yyyy/MMM/dd').toUpperCase()}"></td>                                            
-                                            <td ><span class="alert" th:text="${objNotificacion.estadoNotificacion == 0 ? 'Inactivo' : 'Activo'}" th:classappend="${objNotificacion.estadoNotificacion == 0 ? 'alert-danger' : 'text-success'}"></span></td>                                            
+                                            <td class="alert" th:text="${objNotificacion.estadoNotificacion == 1 ? 'Nueva' : 'Leido'}" th:classappend="${objNotificacion.estadoNotificacion == 1 ? 'text-success' : 'text-danger'}"></td>                                            
                                             <td>                                                                                                 
-                                                <a th:if="${(objNotificacion.estadoNotificacion!=0)}" th:href="@{/deleteNotificacion/}+${objNotificacion.idNotificacion}" class="btn btn-danger btn-sm"
+                                                <a th:if="${(objNotificacion.estadoNotificacion!=1)}" th:href="@{/deleteNotificacion/}+${objNotificacion.idNotificacion}" class="btn btn-danger btn-sm"
                                                    onclick="return confirm('¿estas seguro de eliminar a este Usuario')">
                                                     <i class="fa fa-trash fs-5 text-white"></i>
                                                 </a>
