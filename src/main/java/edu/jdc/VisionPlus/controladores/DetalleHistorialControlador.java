@@ -76,7 +76,7 @@ public class DetalleHistorialControlador {
         } else {
             redireccionar.addFlashAttribute("mensaje", "Fallo al consultar al Paciente");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
-            return "redirect:/adminHistoriales";
+            return "redirect:/adminDetalleHistorial/"+objEncontrado.getIdHistorial().getIdHistorial();
         }
 
     }
