@@ -34,12 +34,11 @@
                                             <td class="alert" th:text="${objNotificacion.estadoNotificacion == 1 ? 'Nueva' : 'Leido'}" th:classappend="${objNotificacion.estadoNotificacion == 1 ? 'text-success' : 'text-danger'}"></td>                                            
                                             <td>                                                                                                 
                                                 <a th:if="${(objNotificacion.estadoNotificacion!=1)}" th:href="@{/deleteNotificacion/}+${objNotificacion.idNotificacion}" class="btn btn-danger btn-sm"
-                                                   onclick="return confirm('¿estas seguro de eliminar a este Usuario')">
+                                                   onclick="return confirm('¿estas seguro de eliminar esta Notificacion')">
                                                     <i class="fa fa-trash fs-5 text-white"></i>
-                                                </a>
-                                                <a th:unless="${objNotificacion.estadoNotificacion !=0}"  class="btn btn-secondary btn-sm"
-                                                   onclick="return alert('El usuario ya se encuentra inactivo')">
-                                                    <i class="fa fa-trash fs-5 text-white"></i>
+                                                </a>                                                
+                                                <a th:if="${(objNotificacion.estadoNotificacion!=0)}" th:href="@{/updateNotificaciones/}+${objNotificacion.idNotificacion}" class="btn btn-success btn-sm">
+                                                    <i class="fa fa-check fs-5 text-white"></i>
                                                 </a>
                                             </td>
                                         </tr>

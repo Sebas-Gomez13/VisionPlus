@@ -47,7 +47,7 @@ public class NotificacionControlador {
     }
 
     @GetMapping("/updateNotificaciones/{idNotificacion}")
-    public String actualizarNotificacion(Model vista, @PathVariable(value = "idCita") Integer llavePrimaria, RedirectAttributes redireccionar) {
+    public String actualizarNotificacion(Model vista, @PathVariable(value = "idNotificacion") Integer llavePrimaria, RedirectAttributes redireccionar) {
         Notificacion objEncontrado = notificacionDao.buscar(llavePrimaria);
         objEncontrado.setEstadoNotificacion(0);
         notificacionDao.actualizar(objEncontrado);
