@@ -97,6 +97,10 @@ h3{
     font-size: 30px;
 }
 
+.eye{
+    width: 100%;
+}
+
 .product-card {
     text-align: center;
     border-radius: 50%;
