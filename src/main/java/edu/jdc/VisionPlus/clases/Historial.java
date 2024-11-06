@@ -28,43 +28,17 @@ public class Historial {
     @JoinColumn(name = "id_paciente", nullable = false)
     private Usuario idPaciente;
     
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_oftalmologo", nullable = false)
-    private Usuario idOftamologo;
     
-    @NotNull
-    @Column(name="fecha_consulta")
-    private Date fecha_consulta;
-    
-    @NotNull
-    @Size(min=3, max=250)
-    @Column(name="diagnostico")
-    private String Diagnostico;
-    
-    @NotNull
-    @Size(min=3, max=250)
-    @Column(name="descripcion")
-    private String Descripcion;
-    
-    @NotNull
-    @Size(min=3, max=250)
-    @Column(name="prescripcion")
-    private String prescripcion;
     
     public Historial(){
         
     }
 
-    public Historial(Integer idHistorial, Usuario idPaciente, Usuario idOftamologo, Date fecha_consulta, String Diagnostico, String Descripcion, String prescripcion) {
+    public Historial(Integer idHistorial, Usuario idPaciente) {
         this.idHistorial = idHistorial;
         this.idPaciente = idPaciente;
-        this.idOftamologo = idOftamologo;
-        this.fecha_consulta = fecha_consulta;
-        this.Diagnostico = Diagnostico;
-        this.Descripcion = Descripcion;
-        this.prescripcion = prescripcion;
     }
+
 
     public Integer getIdHistorial() {
         return idHistorial;
@@ -82,45 +56,7 @@ public class Historial {
         this.idPaciente = idPaciente;
     }
 
-    public Usuario getIdOftamologo() {
-        return idOftamologo;
-    }
 
-    public void setIdOftamologo(Usuario idOftamologo) {
-        this.idOftamologo = idOftamologo;
-    }
-
-    public Date getFecha_consulta() {
-        return fecha_consulta;
-    }
-
-    public void setFecha_consulta(Date fecha_consulta) {
-        this.fecha_consulta = fecha_consulta;
-    }
-
-    public String getDiagnostico() {
-        return Diagnostico;
-    }
-
-    public void setDiagnostico(String Diagnostico) {
-        this.Diagnostico = Diagnostico;
-    }
-
-    public String getDescripcion() {
-        return Descripcion;
-    }
-
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
-    }
-
-    public String getPrescripcion() {
-        return prescripcion;
-    }
-
-    public void setPrescripcion(String prescripcion) {
-        this.prescripcion = prescripcion;
-    }   
 
     @Override
     public int hashCode() {
@@ -146,7 +82,8 @@ public class Historial {
 
     @Override
     public String toString() {
-        return "Historiales{" + "idHistorial=" + idHistorial + ", idPaciente=" + idPaciente + ", idOftamologo=" + idOftamologo + ", fecha_consulta=" + fecha_consulta + ", Diagnostico=" + Diagnostico + ", Descripcion=" + Descripcion + ", prescripcion=" + prescripcion + '}';
+        return "Historial{" + "idHistorial=" + idHistorial + ", idPaciente=" + idPaciente + '}';
     }
+
     
 }
