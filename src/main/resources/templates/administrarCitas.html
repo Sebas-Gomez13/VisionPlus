@@ -44,23 +44,20 @@
                                                 </span>
                                             </td>                                             
                                             <td style="text-align: center"> 
-                                                <a th:href="@{/updateCitas/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
+                                                <a th:if="${(objCitas.estado!=3) and (objCitas.estado!=4)}" th:href="@{/updateCitas/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-edit fs-5 text-white"></i>  
-                                                </a>
-                                                &nbsp;
+                                                </a>                                                
                                                 <a th:if="${(objCitas.estado!=3) and (objCitas.estado!=4)}" th:href="@{/deleteCitas/}+${objCitas.idCita}" class="btn btn-danger btn-sm"
-                                                   onclick="return confirm('¿estas seguro de eliminar a este Usuario')">
+                                                   onclick="return confirm('¿estas seguro de eliminar esta Cita')">
                                                     <i class="fa fa-trash fs-5 text-white"></i>
                                                 </a>
                                                 <a th:unless="${objCitas.estado!=0}"  class="btn btn-secondary btn-sm"
                                                    onclick="return alert('El usuario ya se encuentra inactivo')">
                                                     <i class="fa fa-trash fs-5 text-white"></i>
-                                                </a>
-                                                &nbsp;
+                                                </a>                                                
                                                 <a th:if="${(objCitas.estado != 2) and (objCitas.estado != 4) and (objCitas.estado != 3)}" th:href="@{/nuevaNoti/}+${objCitas.idCita}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-plus fs-5 text-white"></i>  
-                                                </a>
-                                                &nbsp;
+                                                </a>                                                
                                                 <a th:if="${(objCitas.estado != 4) and (objCitas.estado != 3)}" th:href="@{/confirmarCita/}+${objCitas.idCita}" class="btn btn-success btn-sm">
                                                     <i class="fa fa-check fs-5 text-white"></i>  
                                                 </a>

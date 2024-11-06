@@ -46,9 +46,12 @@ public class NotificacionControlador {
         return "administrarNotificaciones";
     }
 
-    @GetMapping("/updateNotificaciones")
-    public String actualizarNotificacion(Model vista, Integer llavePrimaria) {
-        return "actualizarNotificacion";
+    @GetMapping("/updateNotificaciones/{idNotificacion}")
+    public String actualizarNotificacion(Model vista, @PathVariable(value = "idCita") Integer llavePrimaria, RedirectAttributes redireccionar) {
+        Notificacion objEncontrado = notificacionDao.buscar(llavePrimaria);
+        objEncontrado.setEstadoNotificacion(0);
+        notificacionDao.actualizar(objEncontrado);
+        return "redirect:/adminNotificaciones";
     }
     
     @GetMapping(value = "/deleteNotificacion/{idNotificacion}")
