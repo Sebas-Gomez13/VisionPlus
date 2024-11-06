@@ -19,7 +19,7 @@ public class DetalleHistorial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_detalleHistorial")
-    private Integer idDetalleHistorial;
+    private Historial idDetalleHistorial;
     
     @NotNull
     @ManyToOne
@@ -53,7 +53,7 @@ public class DetalleHistorial {
     public DetalleHistorial() {
     }
 
-    public DetalleHistorial(Integer idDetalleHistorial, Usuario idOftamologo, Historial idHistorial, Date fecha_consulta, String Diagnostico, String Descripcion, String prescripcion) {
+    public DetalleHistorial(Historial idDetalleHistorial, Usuario idOftamologo, Historial idHistorial, Date fecha_consulta, String Diagnostico, String Descripcion, String prescripcion) {
         this.idDetalleHistorial = idDetalleHistorial;
         this.idOftamologo = idOftamologo;
         this.idHistorial = idHistorial;
@@ -63,13 +63,14 @@ public class DetalleHistorial {
         this.prescripcion = prescripcion;
     }
 
-    public Integer getIdDetalleHistorial() {
+    public Historial getIdDetalleHistorial() {
         return idDetalleHistorial;
     }
 
-    public void setIdDetalleHistorial(Integer idDetalleHistorial) {
+    public void setIdDetalleHistorial(Historial idDetalleHistorial) {
         this.idDetalleHistorial = idDetalleHistorial;
     }
+
 
     public Usuario getIdOftamologo() {
         return idOftamologo;
