@@ -6,12 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import java.util.Date;
 import java.util.Objects;
 
 
@@ -27,9 +24,7 @@ public class Historial {
     @OneToOne
     @JoinColumn(name = "id_paciente", nullable = false)
     private Usuario idPaciente;
-    
-    
-    
+            
     public Historial(){
         
     }
@@ -55,8 +50,6 @@ public class Historial {
     public void setIdPaciente(Usuario idPaciente) {
         this.idPaciente = idPaciente;
     }
-
-
 
     @Override
     public int hashCode() {

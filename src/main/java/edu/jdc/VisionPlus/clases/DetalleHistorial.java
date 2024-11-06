@@ -19,17 +19,17 @@ public class DetalleHistorial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_detalleHistorial")
-    private Historial idDetalleHistorial;
-    
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_oftalmologo", nullable = false)
-    private Usuario idOftamologo;
+    private Integer idDetalleHistorial;
     
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_historial", nullable = false)
     private Historial idHistorial;
+    
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_oftalmologo", nullable = false)
+    private Usuario idOftamologo;        
     
     @NotNull
     @Column(name="fecha_consulta")
@@ -53,24 +53,23 @@ public class DetalleHistorial {
     public DetalleHistorial() {
     }
 
-    public DetalleHistorial(Historial idDetalleHistorial, Usuario idOftamologo, Historial idHistorial, Date fecha_consulta, String Diagnostico, String Descripcion, String prescripcion) {
+    public DetalleHistorial(Integer idDetalleHistorial, Historial idHistorial, Usuario idOftamologo, Date fecha_consulta, String Diagnostico, String Descripcion, String prescripcion) {
         this.idDetalleHistorial = idDetalleHistorial;
-        this.idOftamologo = idOftamologo;
         this.idHistorial = idHistorial;
+        this.idOftamologo = idOftamologo;
         this.fecha_consulta = fecha_consulta;
         this.Diagnostico = Diagnostico;
         this.Descripcion = Descripcion;
         this.prescripcion = prescripcion;
     }
 
-    public Historial getIdDetalleHistorial() {
+    public Integer getIdDetalleHistorial() {
         return idDetalleHistorial;
     }
 
-    public void setIdDetalleHistorial(Historial idDetalleHistorial) {
+    public void setIdDetalleHistorial(Integer idDetalleHistorial) {
         this.idDetalleHistorial = idDetalleHistorial;
-    }
-
+    }   
 
     public Usuario getIdOftamologo() {
         return idOftamologo;
@@ -144,9 +143,9 @@ public class DetalleHistorial {
 
     @Override
     public String toString() {
-        return "DetalleHistorial{" + "idDetalleHistorial=" + idDetalleHistorial + ", idOftamologo=" + idOftamologo + ", idHistorial=" + idHistorial + ", fecha_consulta=" + fecha_consulta + ", Diagnostico=" + Diagnostico + ", Descripcion=" + Descripcion + ", prescripcion=" + prescripcion + '}';
+        return "DetalleHistorial{" + "idDetalleHistorial=" + idDetalleHistorial + ", idHistorial=" + idHistorial + ", idOftamologo=" + idOftamologo + ", fecha_consulta=" + fecha_consulta + ", Diagnostico=" + Diagnostico + ", Descripcion=" + Descripcion + ", prescripcion=" + prescripcion + '}';
     }
+
     
-    
-    
+            
 }
