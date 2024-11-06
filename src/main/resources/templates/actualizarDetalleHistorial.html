@@ -1,0 +1,54 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="/contenedor/tablero ::cabecera"></nav>            
+            <div class="container-fluid mt-4 mb-4">
+                <div class="d-flex justify-content-center">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="fw-semibold fst-italic"> Formulario editar Usuarios</h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/updateDetalleHistorial/{idDetalleHistorial}(idDetalleHistorial =${objDetalleHistorial.idDetalleHistorial})}" th:object="${objDetalleHistorial}" method="post">                                    
+                                     <div class="mb-3">
+                                        <label for="idOftalmologo" class="form-label">
+                                            <span class="rojito">*</span> Oftalmologo
+                                        </label>
+                                        <select id="idOftalmologo" class="form-select" th:field="*{idOftamologo}">                                            
+                                            <option th:each="objUsuario:${arrDetalleOf}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
+                                        </select>                                        
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Diagnóstico
+                                        </label>
+                                        <input type="text" name="daignostico" class="form-control" th:field="*{diagnostico}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Descripçión
+                                        </label>
+                                        <input type="text" name="descripcion" class="form-control" th:field="*{descripcion}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Precripción
+                                        </label>
+                                        <input type="text" name="prescripcion" class="form-control" th:field="*{prescripcion}" required>
+                                    </div>
+                                    <span class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                        <a th:href="@{/adminUsuarios}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                    </span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>

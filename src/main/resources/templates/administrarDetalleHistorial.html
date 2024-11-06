@@ -1,0 +1,59 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="contenedor/tablero :: cabecera"></nav>
+            <section>
+                <div class="container-fluid mt-4">
+                    <h4 class="fw-semibold fst-italic text-center">Ver Historial: 
+                        <span th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:text="${arrDetalle[0].idHistorial.idPaciente.nombreUsuario + ' ' + arrDetalle[0].idHistorial.idPaciente.apellidoUsuario}"></span>
+                    </h4>
+                    <div class="d-flex justify-content-center ">
+                        <div class="col-md-10">
+                            <div th:if="${mensaje != null}">
+                                <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
+                                    <span class="fw-semibold" th:text="${mensaje}"></span>
+                                    <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
+                                </div> 
+                            </div>
+                            <div class="text-end">
+                                <a th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:href="@{/addDetalleHistorial/}+${arrDetalle[0].idHistorial.idHistorial}" class="btn btn-info text-white">
+                                    Agregar Detalle
+                                </a>
+                            </div>
+                            <div class="mt-2">
+                                <table class="table table-sm table-striped table-hover">
+                                    <thead>
+                                        <tr class="table table-dark bg-dark">                                            
+                                            <th>Oftalmologo</th>
+                                            <th>Fecha Consulta</th>
+                                            <th>Diagnóstico</th>
+                                            <th>Descripción</th>
+                                            <th>Prescripción</th>
+                                            <th style="">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="objDetalleHistorial:${arrDetalle}" >                                                                                        
+                                            <td th:text="${objDetalleHistorial.idOftamologo.nombreUsuario+' '+objDetalleHistorial.idOftamologo.ApellidoUsuario}"></td>
+                                            <td th:text="${#dates.format(objDetalleHistorial.fecha_consulta,'yyyy-MMM-dd').toUpperCase}"></td>
+                                            <td th:text="${objDetalleHistorial.diagnostico}"></td>
+                                            <td th:text="${objDetalleHistorial.descripcion}"></td>
+                                            <td th:text="${objDetalleHistorial.prescripcion}"></td>
+                                            <td>
+                                                <a th:href="@{/updateDetalleHistorial/}+${objDetalleHistorial.idDetalleHistorial}" class="btn btn-success btn-sm">
+                                                    <i class="fa fa-edit fs-5 text-white"></i>  
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>

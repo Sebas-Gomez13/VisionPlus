@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DetalleHistorialRepositorio extends CrudRepository <DetalleHistorial,Integer>{
-     List<DetalleHistorial> findByIdDetalleHistorial(Historial idDetalleHistorial);
+     List<DetalleHistorial> findByIdHistorial(Historial idDetalleHistorial);
 }

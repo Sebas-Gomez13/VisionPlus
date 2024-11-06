@@ -19,11 +19,11 @@ public class HistorialControlador {
     @Autowired(required = true)
     private HistorialDAO historialDao;
 
-    @GetMapping("/listHistoriales")
-    public String listarHistorial(Model vista) {
+    @GetMapping("/adminHistoriales")
+    public String administrarHistorial(Model vista) {
         List<Historial> arregloHistoriales = historialDao.consultar("");
         vista.addAttribute("arrHistoriales", arregloHistoriales);
-        return "listarHistoriales";
+        return "administrarHistoriales";
     }
 
     @GetMapping("/addHistoriales")
@@ -43,11 +43,7 @@ public class HistorialControlador {
             return "redirect:/listHistoriales";
         }
     }
-
-    @GetMapping("/adminHistoriales")
-    public String administrarHistorial(Model vista) {
-        return "administrarHistorial";
-    }
+    
 
     @GetMapping("/updateHistoriales")
     public String actualizarHistorial(Model vista, Integer llavePrimaria) {

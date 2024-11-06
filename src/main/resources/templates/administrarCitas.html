@@ -35,7 +35,7 @@
                                         <tr th:each="objCitas:${arrCitas}">
                                             <td th:text="${objCitas.idPaciente.nombreUsuario + ' ' + objCitas.idPaciente.ApellidoUsuario}"></td>
                                             <td th:text="${objCitas.idOftalmologo.nombreUsuario + ' ' + objCitas.idOftalmologo.ApellidoUsuario}"></td>
-                                            <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MM-dd')}"></td>
+                                            <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MMM-dd').toUpperCase}"></td>
                                             <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>                                        
                                             <td>
                                                 <span class="alert fw-bold"

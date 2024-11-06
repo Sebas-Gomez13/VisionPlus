@@ -1,8 +1,9 @@
 package edu.jdc.VisionPlus.daos;
 
+import edu.jdc.VisionPlus.clases.Historial;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
-import edu.jdc.VisionPlus.repositorios.RolRepositorio;
+import edu.jdc.VisionPlus.repositorios.HistorialRepositorio;
 import edu.jdc.VisionPlus.repositorios.UsuarioRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,9 @@ public class UsuarioDAO implements Operacion<Usuario> {
 
     @Autowired(required = true)
     private UsuarioRepositorio repoUsuario;
-    
 
+    @Autowired(required = true)
+    private HistorialRepositorio repoHistorial;
 
     @Override
     public List<Usuario> consultar(String orden) {
@@ -46,11 +48,11 @@ public class UsuarioDAO implements Operacion<Usuario> {
 
     @Override
     public Integer cantidadRegistros() {
-
         return 0;
     }
     
-  
-    
+    public boolean nuevoHistorial(Historial objHistorial){
+        return repoHistorial.save(objHistorial) != null;
+    }
 
 }

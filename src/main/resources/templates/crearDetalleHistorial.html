@@ -1,0 +1,58 @@
+<html>
+    <head th:replace="contenedor/tablero :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="/contenedor/tablero ::cabecera"></nav>            
+            <div class="container-fluid mt-4">
+                <div class="d-flex justify-content-center">
+                    <div class="col-6">
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="fw-semibold fst-italic"> Formulario Nuevo Detalle Historial</h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/addDetalleHistorial}" th:object="${objDetalleHistorial}" method="post">
+                                    <input type="text" th:field="*{idHistorial.idHistorial}" hidden>
+                                     <div class="mb-3">
+                                        <label for="idOftalmologo" class="form-label">
+                                            <span class="rojito">*</span> Oftalmologo
+                                        </label>
+                                        <select id="idOftalmologo" class="form-select" th:field="*{idOftamologo}">
+                                            <option value="null">Seleccione un Oftalmologo</option>
+                                            <option th:each="objUsuario:${arrDetalleOf}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
+                                        </select>
+                                        <span class="rojito" th:if="${objDetalleHistorial.idOftamologo==null}"th:errors="*{idOftamologo}">Seleccione un Oftalmologo</span>     
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Diagnóstico
+                                        </label>
+                                        <input type="text" name="daignostico" class="form-control" th:field="*{diagnostico}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Descripçión
+                                        </label>
+                                        <input type="text" name="descripcion" class="form-control" th:field="*{descripcion}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito">*</span> Precripción
+                                        </label>
+                                        <input type="text" name="prescripcion" class="form-control" th:field="*{prescripcion}" required>
+                                    </div>
+                                 
+                                    <span class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary col-3 fw-semibold mx-3">Registrar</button>
+                                        <a th:href="@{/adminDetalleHistorial/}+${idHistorial}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                    </span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </main>
+    </body>
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>

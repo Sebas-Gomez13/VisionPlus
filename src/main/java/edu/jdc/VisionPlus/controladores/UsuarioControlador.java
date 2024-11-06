@@ -1,5 +1,6 @@
 package edu.jdc.VisionPlus.controladores;
 
+import edu.jdc.VisionPlus.clases.Historial;
 import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.RolDAO;
@@ -56,6 +57,12 @@ public class UsuarioControlador {
             String claveCifrada = DigestUtils.sha512Hex(objUsuarios.getContrasenaUsuario());
             objUsuarios.setContrasenaUsuario(claveCifrada);
             usuarioDao.registrar(objUsuarios);
+            int rol = objUsuarios.getRolUsuario().getIdRol();
+            if( rol == 4){
+                Historial objHistorial = new Historial();            
+                objHistorial.setIdPaciente(objUsuarios);
+                usuarioDao.nuevoHistorial(objHistorial);
+            }            
             estado.setComplete();
             return "redirect:/adminUsuarios";
         }
