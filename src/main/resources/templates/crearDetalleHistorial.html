@@ -12,7 +12,7 @@
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/addDetalleHistorial}" th:object="${objDetalleHistorial}" method="post">
-                                    <input type="text" th:field="*{idHistorial.idHistorial}" hidden>
+                                    <input type="text" th:field="*{idHistorial.idHistorial}">
                                      <div class="mb-3">
                                         <label for="idOftalmologo" class="form-label">
                                             <span class="rojito">*</span> Oftalmologo
@@ -44,7 +44,7 @@
                                  
                                     <span class="d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary col-3 fw-semibold mx-3">Registrar</button>
-                                        <a th:href="@{/adminDetalleHistorial/}+${idHistorial}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                        <a th:href="@{/adminDetalleHistoriales/}+${idHistorial}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
                                     </span>
                                 </form>
                             </div>

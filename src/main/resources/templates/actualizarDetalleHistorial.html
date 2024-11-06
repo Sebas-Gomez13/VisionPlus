@@ -12,6 +12,7 @@
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/updateDetalleHistorial/{idDetalleHistorial}(idDetalleHistorial =${objDetalleHistorial.idDetalleHistorial})}" th:object="${objDetalleHistorial}" method="post">                                    
+                                    <input type="text" th:field="*{idHistorial.idHistorial}">
                                      <div class="mb-3">
                                         <label for="idOftalmologo" class="form-label">
                                             <span class="rojito">*</span> Oftalmologo

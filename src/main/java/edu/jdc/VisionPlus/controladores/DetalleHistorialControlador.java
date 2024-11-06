@@ -76,7 +76,7 @@ public class DetalleHistorialControlador {
         } else {
             redireccionar.addFlashAttribute("mensaje", "Fallo al consultar al Paciente");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
-            return "redirect:/adminHistoriales/";
+            return "redirect:/adminHistoriales";
         }
 
     }
@@ -85,21 +85,23 @@ public class DetalleHistorialControlador {
     public String modificarUsuario(@PathVariable(value = "idDetalleHistorial") Integer codigo, @Valid @ModelAttribute("objDetalleHistorial") DetalleHistorial objActualizar,
             BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {
         if (respuesta.hasErrors()) {
-            redireccionar.addFlashAttribute("mensaje", "Fallo al Actualizar el Objeto");
+            redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
         } else {
-            objActualizar.setIdDetalleHistorial(codigo);                        
-            System.out.println(objActualizar);
+            objActualizar.setIdDetalleHistorial(codigo);
+            Historial historial = detalleHistorialDao.buscarHistorial(objActualizar.getIdHistorial().getIdHistorial());             
+            objActualizar.setIdHistorial(historial);
+            objActualizar.setFecha_consulta(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
             boolean actualizado = detalleHistorialDao.actualizar(objActualizar);
             if (actualizado) {
-                redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar el Historial: " + objActualizar.getIdHistorial().getIdPaciente().getNombreUsuario()+ " " + objActualizar.getIdHistorial().getIdPaciente().getApellidoUsuario());
+                redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar el Historial: "+objActualizar.getIdHistorial().getIdPaciente().getNombreUsuario() + ' ' + objActualizar.getIdHistorial().getIdPaciente().getApellidoUsuario());
                 redireccionar.addFlashAttribute("tipo", "alert-success");
             } else {
                 redireccionar.addFlashAttribute("mensaje", "Fallo al Actualizar el Objeto");
                 redireccionar.addFlashAttribute("tipo", "alert-danger");
             }
         }
-        return "redirect:/adminUsuarios";
+        return "redirect:/adminDetalleHistorial/"+objActualizar.getIdHistorial().getIdHistorial();
 
     }
 }
