@@ -11,12 +11,12 @@
                     <img th:src="@{/img/superiorInicio.png}" class="imagen-superior"> 
                 </div>
                 <div class="boton">
-                    <button class="btn-with-image">
+                    <button class="btn-with-image" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <img th:src="@{/img/logoVision.png}" alt="Icono" class="btn-icon">
                     </button>
                 </div>
             </div>
-            <div class="row mb-5" style="height: 60%">
+            <div class="row collapse hide"  id="collapseExample">
                 <div class="col-3">&nbsp;</div>
                 <div class="col-6">
                     <div class="imagen-collapse">
@@ -26,9 +26,9 @@
                 <div class="col-3">&nbsp;</div>
             </div>
 
-            <div class="container-fluid mt-5 mb-5">
+            <div class="container-fluid mb-5" style="margin-top: 100px">
                 <div class="row">
-                    <div class="col-md-12 imagenes" style="padding-top: 20px; padding-bottom: 10px;">
+                    <div class="col-md-12 imagenes" style="padding-top: 10px; padding-bottom: 10px;">
                         <h1>Productos</h1>
                     </div>
                 </div>
