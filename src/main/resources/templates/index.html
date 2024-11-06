@@ -16,17 +16,54 @@
                     </button>
                 </div>
             </div>
-            <div class="row collapse hide"  id="collapseExample">
-                <div class="col-3">&nbsp;</div>
-                <div class="col-6">
+            <div class="container-fluid">
+                <div class="row collapse hide"  id="collapseExample">   
                     <div class="imagen-collapse">
-                        <img class="eye" th:src="@{/img/einfo.png}" >                 
+                        <center><img class="eye" th:src="@{/img/einfo.png}" height="500px" ></center>              
+                    </div>               
+                </div>
+                          </div>
+
+            <div class="container-fluid" >
+                <center><h1>Nuestros Clientes</h1></center>
+                <div class="row" style="display: flex;justify-content: center;align-items: center" >
+                    <div class="col-6">
+                        <div id="carouselExampleIndicators" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img th:src="@{/img/imagen1.jpg}" class="d-block w-100" height="400" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img th:src="@{/img/imagen2.jpg}" class="d-block w-100" height="400" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img th:src="@{/img/imagen3.jpg}" class="d-block w-100" height="400" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img th:src="@{/img/imagen4.png}" class="d-block w-100" height="400" alt="...">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-3">&nbsp;</div>
             </div>
 
-            <div class="container-fluid mb-5" style="margin-top: 100px">
+            <div class="container-fluid mb-5">
                 <div class="row">
                     <div class="col-md-12 imagenes" style="padding-top: 10px; padding-bottom: 10px;">
                         <h1>Productos</h1>

@@ -90,13 +90,9 @@ h3{
 }
 
 
-.imagen-collapse .eye{
-    width: 100%;
-    height: 100%;
-}
 .texto{
     position: absolute;
-    top: 600px; /* Ajusta la posición vertical */
+    top: 600px; 
     color: black;
     font-size: 30px;
 }
@@ -135,4 +131,6 @@ h3{
     top: 20px;
     height: 100px;
 }
-
+        
+        
+        
