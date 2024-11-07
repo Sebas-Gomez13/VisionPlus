@@ -51,7 +51,7 @@ public class ProductoDAO implements Operacion<Producto>{
     }
     
     public List<Usuario> obtenerUsuarios(){
-        return (List<Usuario>) repoUsuario.findAll();
+        return repoUsuario.findByRolUsuario(new Rol(2, ""));
     }
     
 }

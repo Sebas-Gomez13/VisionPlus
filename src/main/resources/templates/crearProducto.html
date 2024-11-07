@@ -18,7 +18,7 @@
                                         </label>
                                         <select id="idUsuario" class="form-select" th:field="*{idUsuario}">
                                             <option value="null">Seleccione un Usuario</option>
-                                            <option th:each="objUsuario:${arrUsuarios}" th:if="(objUsuario.idUsuario != 3) and (objUsuario.idUsuario != 4)" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
+                                            <option th:each="objUsuario:${arrUsuarios}" th:if="(objUsuario.rolUsuario.idRol != 1) or (objUsuario.rolUsuaio.idRol != 2)" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>                                            
                                         </select>
                                         <span class="rojito" th:if="${objProducto.idUsuario==null}"th:errors="*{idUsuario}">Seleccione un Usuario</span>     
                                     </div>
@@ -49,7 +49,7 @@
                                             <option value="1">Lentes de Contacto</option>
                                         </select>
                                     </div>
-                                   
+
                                     <span class="d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary col-3 fw-semibold mx-3">Registrar</button>
                                         <a th:href="@{/adminCitas}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
@@ -67,7 +67,7 @@
             </div>
         </main>
     </body>
-    
+
 
     <footer th:replace="contenedor/tablero :: footer"></footer>
 </html>
