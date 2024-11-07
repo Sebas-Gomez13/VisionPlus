@@ -1,80 +1,38 @@
 <head th:fragment="head">
-    <title>Clothes Shop</title>
+    <title>Vision Plus</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/fontawesome/css/all.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
+    <link rel="stylesheet" th:href="@{/css/estilosDash.css}"/>
 </head>
 
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark" th:fragment="cabecera">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">
+<nav class="estilos navbar navbar-expand-lg " th:fragment="cabecera">
+    <div class="container-fluid" >
+        <button class="navbar-brand"  data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" style="border: none; background: none">
             <div class="d-flex justify-content-center align-items-center">
-                <img th:src="@{/img/logo.png}" alt="logo.png" style="height: 50px"/>
-                <span class="fw-bold fst-italic fs-5">Clothes Shop</span>
+                <img th:src="@{/img/logoVision.png}" alt="logo.png" style="height: 50px"/>
+                <span class="titulo fw-bold fst-italic fs-5">Vision Plus</span>
             </div>  
-        </a>
+        </button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">                
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Usuarios
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/listUsuarios}">Listar</a></li>
-                        <li><a class="dropdown-item" th:href="@{/adminUsuarios}">Administrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addUsuarios}">Registrar</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tallas
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/listBrandTalla}">Listar</a></li>
-                        <li><a class="dropdown-item" th:href="@{/adminBrandTalla}">Administrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addBrandTalla}">Registrar</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Camisas
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/shirts}">Listar</a></li>
-                        <li><a class="dropdown-item" th:href="@{/adminShirts}">Administrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addShirts}">Registrar</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tenis
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/tenis}">Listar</a></li>
-                        <li><a class="dropdown-item" th:href="@{/adminTenis}">Administrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addTenis}">Registrar</a></li>
-                    </ul>
-                </li>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">  
             </ul>
             <div class="nabvar-nav navbar"> 
                 <span class="nav-item text-white fw-semibold fst-italic">
-                    <a class="nav-link" th:href="@{/cerrarSesion}">CerrarSesion</a>
+                    <a class="titulo nav-link" th:href="@{/cerrarSesion}" style="color:#3e596d" >Cerrar Sesion</a>
                 </span>
             </div>
         </div>
     </div>
 </nav>
 
-<div th:fragment="menuLateral" class="bg-dark text-white h-100 w-50">
+
+<div style="min-height: 120px;" th:fragment="menuLateral" class="bg-dark text-white h-100 w-25 collapse collapse-horizontal"  id="collapseWidthExample" >
     <ul class="nav flex-column">
         <li class="nav-item">
             <div class="dropdown">

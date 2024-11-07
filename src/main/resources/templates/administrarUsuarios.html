@@ -1,14 +1,17 @@
 <html>
-    <head th:replace="contenedor/tablero :: head"></head>
+    <head th:replace="contenedor/tableroDash :: head"></head>
     <body>
         <main>
-            <nav th:replace="contenedor/tablero :: cabecera"></nav>
+            <nav th:replace="contenedor/tableroDash :: cabecera"></nav>
             <section>
+                <div class="text-center mt-5 text-white" th:replace="contenedor/tableroDash :: menuLateral">
+                        <div ></div>
+                    </div>
                 <div class="container-fluid mt-4">
                     <h4 class="fw-semibold fst-italic text-center">Administrar Pacientes</h4>
                     <div class="d-flex justify-content-center ">
                         <div class="col-md-10">
-
+                            
                             <div th:if="${mensaje != null}">
                                 <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
                                     <span class="fw-semibold" th:text="${mensaje}"></span>
@@ -21,7 +24,7 @@
                                     Registrar Paciente
                                 </a>
                             </div>
-
+                            
                             <div class="mt-2">
                                 <table class="table table-sm table-striped table-hover">
                                     <thead>
