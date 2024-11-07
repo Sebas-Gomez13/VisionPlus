@@ -32,24 +32,39 @@
 </nav>
 
 
-<div style="min-height: 120px;" th:fragment="menuLateral" class="bg-dark text-white h-100 w-25 collapse collapse-horizontal"  id="collapseWidthExample" >
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+<div th:fragment="menuLateral" class="menuLateral text-white h-100" style="width: 200px">
+    <ul class="nav d-flex flex-column ps-md-4 pt-4">
+        <li class="nav-item mb-2">
+            <div class="dropend">
+                <a class="btn w-75 btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Usuarios
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" th:href="@{/adminUsuarios}">Administrar Usuarios</a></li>
-                    <li><a class="dropdown-item" href="#">Agregar Usuarios</a></li>                    
+                    <li><a class="dropdown-item" th:href="@{/addUsuarios}">Agregar Usuarios</a></li>                    
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li> 
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+        <li class="nav-item mb-2">
+            <div class="dropend ">
+                <a class="btn w-75 btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Citas
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/adminCitas}">Administrar Citas</a></li>
+                    <li><a class="dropdown-item" th:href="@{/addCitas}">Agregar Citas</a></li>                    
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item mb-2">
+            <div class="dropend ">
+                <a class="btn w-75 btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Historiales
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/adminHistoriales}">Administrar Historiales</a></li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
