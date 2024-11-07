@@ -1,5 +1,5 @@
 .blog-footer{
-    padding: 2.5rem;
+    padding: 1.7rem;
     text-align: center;
 }
 
@@ -56,4 +56,17 @@ section{
 .photo-container {
     display: flex;
     justify-content: center;
+}
+.colorBoton{
+    background: #6889a2;
+    color:white;
+    transition: 0.2s
+}
+.colorBoton:hover{
+    border:1px solid #6889a2;
+    color: #537995;
+    font-weight: bold
+}
+.actualizarbtn{
+    background: #313890
 }

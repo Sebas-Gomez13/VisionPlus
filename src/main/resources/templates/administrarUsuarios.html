@@ -20,7 +20,7 @@
 
                         </div>
                         <div class="text-end">
-                            <a th:href="@{/addUsuarios}" class="btn btn-info text-white">
+                            <a th:href="@{/addUsuarios}" class=" colorBoton btn ">
                                 Registrar Paciente
                             </a>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="mt-2">
                             <table class="table table-sm table-striped table-hover">
                                 <thead>
-                                    <tr class="table table-dark bg-dark">
+                                    <tr class="table table-light bg-primary">
                                         <th>Codigo</th>
                                         <th>Nombre</th>
                                         <th>Apellidos</th>
@@ -54,7 +54,7 @@
                                         <td ><span style="padding:5px; margin-top: 30%" class="alert" th:text="${objUsuario.estadoUsuario == 0 ? 'Inactivo' : 'Activo'}" th:classappend="${objUsuario.estadoUsuario == 0 ? 'alert-danger' : 'text-success'}"></span></td>
                                         <td th:text="${objUsuario.rolUsuario.nombreRol}"></td>
                                         <td> 
-                                            <a th:href="@{/updateUsuarios/}+${objUsuario.idUsuario}" class="btn btn-primary btn-sm">
+                                            <a th:href="@{/updateUsuarios/}+${objUsuario.idUsuario}" class="actualizarbtn btn btn-sm">
                                                 <i class="fa fa-edit fs-5 text-white"></i>  
                                             </a>
                                             &nbsp;
