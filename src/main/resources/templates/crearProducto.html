@@ -18,7 +18,7 @@
                                         </label>
                                         <select id="idUsuario" class="form-select" th:field="*{idUsuario}">
                                             <option value="null">Seleccione un Usuario</option>
-                                            <option th:each="objUsuario:${arrUsuarios}" th:if="(objUsuario.rolUsuario.idRol != 1) or (objUsuario.rolUsuaio.idRol != 2)" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>                                            
+                                            <option th:each="objUsuario:${arrUsuarios}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>                                            
                                         </select>
                                         <span class="rojito" th:if="${objProducto.idUsuario==null}"th:errors="*{idUsuario}">Seleccione un Usuario</span>     
                                     </div>
