@@ -1,5 +1,6 @@
 .estilos{
-    background: #bfd9ec;
+    background: white;
+    border-bottom:3px solid #6889a2;
 }
 .titulo{
     color:#72468d;
@@ -8,4 +9,14 @@
 
 .menuLateral{
     background: #bfd9ec;
+}
+.botones{
+    background: white;
+    width: 90%;
+        
+}
+.botones:hover{
+    background: #6889a2;
+    color: white;
+    font-weight: bold;
 }

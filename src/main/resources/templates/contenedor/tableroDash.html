@@ -9,7 +9,7 @@
 </head>
 
 <nav class="estilos navbar navbar-expand-lg " th:fragment="cabecera">
-    <div class="container-fluid" >
+    <div class="container-fluid">
         <button class="navbar-brand"  data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" style="border: none; background: none">
             <div class="d-flex justify-content-center align-items-center">
                 <img th:src="@{/img/logoVision.png}" alt="logo.png" style="height: 50px"/>
@@ -24,7 +24,7 @@
             </ul>
             <div class="nabvar-nav navbar"> 
                 <span class="nav-item text-white fw-semibold fst-italic">
-                    <a class="titulo nav-link" th:href="@{/cerrarSesion}" style="color:#3e596d" >Cerrar Sesion</a>
+                    <a class="titulo nav-link" th:href="@{/cerrarSesion}" style="color:#3e596d; padding-right: 10px" >Cerrar Sesión</a>
                 </span>
             </div>
         </div>
@@ -32,11 +32,11 @@
 </nav>
 
 
-<div th:fragment="menuLateral" class="menuLateral text-white h-100" style="width: 200px">
+<div th:fragment="menuLateral" class="menuLateral text-white h-100" style="width: 200px;">
     <ul class="nav d-flex flex-column ps-md-4 pt-4">
         <li class="nav-item mb-2">
             <div class="dropend">
-                <a class="btn w-75 btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" botones btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Usuarios
                 </a>
                 <ul class="dropdown-menu">
@@ -47,7 +47,7 @@
         </li>
         <li class="nav-item mb-2">
             <div class="dropend ">
-                <a class="btn w-75 btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="botones btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Citas
                 </a>
                 <ul class="dropdown-menu">
@@ -58,7 +58,7 @@
         </li>
         <li class="nav-item mb-2">
             <div class="dropend ">
-                <a class="btn w-75 btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" botones btn   dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Historiales
                 </a>
                 <ul class="dropdown-menu">
@@ -66,8 +66,26 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        <li class="nav-item mb-2">
+            <div class="dropend ">
+                <a class="botones btn   dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Productos
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/adminProducto}">Administrar Productos</a></li>
+                    <li><a class="dropdown-item" th:href="@{/addProducto}">Agregar Productos</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item mb-2">
+            <div class="dropend ">
+                <a class="botones btn   dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Notificaciones
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/adminNotificaciones}">Administrar Notificaciones</a></li>
+                </ul>
+            </div>
         </li>
     </ul>
 </div>
