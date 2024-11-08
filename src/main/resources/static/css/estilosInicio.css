@@ -136,5 +136,10 @@ h3{
     height: 100px;
 }
         
-        
-        
+                
+.btnIndex{
+    padding: 0px;
+    background: #cacad1;
+    border-radius: 30px
+}
+
