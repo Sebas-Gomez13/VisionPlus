@@ -7,7 +7,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="col-6">
                         <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
+                            <div class="card-header" style="background: #6a98bc; color:white; display: flex;justify-content: center;align-content: center;text-shadow: 4px 4px 5px #90abcb ">
                                 <h4 class="fw-semibold fst-italic"> Formulario Registro Usuario</h4>
                             </div>
                             <div class="card-body">
@@ -24,44 +24,44 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Nombres
+                                            <span class="rojito"></span> Nombres
                                         </label>
                                         <input type="text" name="nombreUsuario" class="form-control" th:field="*{nombreUsuario}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Apellidos
+                                            <span class="rojito"></span> Apellidos
                                         </label>
                                         <input type="text" name="apellidoUsuario" class="form-control" th:field="*{apellidoUsuario}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Correo
+                                            <span class="rojito"></span> Correo
                                         </label>
                                         <input type="email" name="correoUsuario" class="form-control" th:field="*{correoUsuario}" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Contraseña
+                                            <span class="rojito"></span> Contraseña
                                         </label>
                                         <input type="password" name="contrasenaUsuario" class="form-control" th:field="*{contrasenaUsuario}" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Telefono
+                                            <span class="rojito"></span> Telefono
                                         </label>
                                         <input type="text" name="telefonoUsuario" class="form-control" th:field="*{telefonoUsuario}" maxlength="10" minlength="10"  required>
                                     </div>                                        
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Direccion
+                                            <span class="rojito"></span> Direccion
                                         </label>
                                         <input type="text" name="direccionUsuario" class="form-control" th:field="*{direccionUsuario}" required>
                                     </div>
                                     <span class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary col-3 fw-semibold mx-3">Registrar</button>
+                                        <button type="submit" class="btn  col-3 fw-semibold mx-3" style="background: #aecfb7">Registrar</button>
                                         <a th:href="@{/adminUsuarios}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
                                     </span>
                                 </form>
