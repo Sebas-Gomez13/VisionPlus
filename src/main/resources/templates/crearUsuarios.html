@@ -10,7 +10,7 @@
             </div>       
             <div class="container-fluid mt-4">
                 <div class="d-flex justify-content-center">
-                    <div class="col-6">
+                    <div class="col-5">
                         <div class="card mb-4">
                             <div class="card-header" style="background: #6a98bc; color:white; display: flex;justify-content: center;align-content: center;text-shadow: 4px 4px 5px #90abcb ">
                                 <h4 class="fw-semibold fst-italic"> Formulario Registro Usuario</h4>
@@ -19,7 +19,7 @@
                                 <form th:action="@{/addUsuarios}" th:object="${objUsuario}" method="post">
                                     <div class="mb-3">
                                         <label for="rolUsuario" class="form-label">
-                                            <span class="rojito">*</span> Rol del Usuario
+                                            <span class="rojito"></span> Rol del Usuario
                                         </label>
                                         <select id="rolUsuario" class="form-select" th:field="*{rolUsuario}">
                                             <option value="null">Seleccione un Rol</option>

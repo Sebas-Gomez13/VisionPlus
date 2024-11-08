@@ -12,15 +12,15 @@
                 <div class="d-flex justify-content-center">
                     <div class="col-6">
                         <div class="card">
-                            <div class="card-header bg-primary text-white">
-                                <h4 class="fw-semibold fst-italic"> Formulario editar Usuarios</h4>
+                            <div class="card-header " style="background: #6a98bc; color:white; display: flex;justify-content: center;align-content: center;text-shadow: 4px 4px 5px #90abcb ">
+                                <h4 class="fw-semibold fst-italic" > Formulario editar Usuarios</h4>
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/updateCitas/{idCita}(idCita=${objCitas.idCita})}" th:object="${objCitas}" method="post">                                    
                                     <input type="text" th:field="*{estado}" hidden>
                                     <div class="mb-3">
                                         <label for="idPaciente" class="form-label">
-                                            <span class="rojito">*</span> Paciente
+                                            <span class="rojito"></span> Paciente
                                         </label>
                                         <select id="idPaciente" class="form-select" th:field="*{idPaciente}">                                            
                                             <option th:each="objUsuario:${arrCita}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="idOftalmologo" class="form-label">
-                                            <span class="rojito">*</span> Oftalmologo
+                                            <span class="rojito"></span> Oftalmologo
                                         </label>
                                         <select id="idOftalmologo" class="form-select" th:field="*{idOftalmologo}">                                            
                                             <option th:each="objUsuario:${arrCitaOf}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
@@ -36,18 +36,18 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="idOftalmologo" class="form-label">
-                                            <span class="rojito">*</span> Fecha
+                                            <span class="rojito"></span> Fecha
                                         </label>
                                         <input type="date" class="form-control" th:field="*{fecha}" th:value="${#dates.format(fecha, 'dd-MM-yyyy')}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="idOftalmologo" class="form-label">
-                                            <span class="rojito">*</span> Hora
+                                            <span class="rojito"></span> Hora
                                         </label>
                                         <input type="time" class="form-control" step="1800" min="08:00" max="17:00"  th:field="*{hora}">
                                     </div>                                    
                                     <span class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                        <button type="submit" class="btn col-3 fw.semibold mx-3" style="background: #aecfb7">Actualizar</button>
                                         <a th:href="@{/adminCitas}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
                                     </span>
                                 </form>

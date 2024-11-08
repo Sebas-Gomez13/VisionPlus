@@ -12,14 +12,14 @@
                 <div class="d-flex justify-content-center">
                     <div class="col-6">
                         <div class="card">
-                            <div class="card-header bg-primary text-white">
+                            <div class="card-header" style="background: #6a98bc; color:white; display: flex;justify-content: center;align-content: center;text-shadow: 4px 4px 5px #90abcb ">
                                 <h4 class="fw-semibold fst-italic"> Formulario editar Productos</h4>
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/updateProducto/{idProducto}(idProducto =${objProducto.idProducto})}" th:object="${objProducto}" method="post">
                                     <div class="mb-3">
                                         <label for="idUsuario" class="form-label">
-                                            <span class="rojito">*</span> Usuario
+                                            <span class="rojito"></span> Usuario
                                         </label>
                                         <select id="idUsuario" class="form-select" th:field="*{idUsuario}">
                                             <option th:each="objUsuario:${arrUsuarios}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
@@ -27,25 +27,25 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Nombre Producto
+                                            <span class="rojito"></span> Nombre Producto
                                         </label>
                                         <input type="text" name="nombreProducto" class="form-control" th:field="*{nombreProducto}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Descripción Producto
+                                            <span class="rojito"></span> Descripción Producto
                                         </label>
                                         <input type="text" name="descripcion" class="form-control" th:field="*{descripcion}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Imagen Producto
+                                            <span class="rojito"></span> Imagen Producto
                                         </label>
                                         <input type="text" name="imagenUrl" class="form-control" th:field="*{imagenUrl}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Categoria Producto
+                                            <span class="rojito"></span> Categoria Producto
                                         </label>
                                         <select th:field="*{categoria}" class="form-control">
                                             <option value="0">Gafas</option>
@@ -53,7 +53,7 @@
                                         </select>
                                     </div>
                                     <span class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                        <button type="submit" class="btn  col-3 fw.semibold mx-3"style="background: #aecfb7">Actualizar</button>
                                         <a th:href="@{/adminProducto}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
                                     </span>
                                 </form>

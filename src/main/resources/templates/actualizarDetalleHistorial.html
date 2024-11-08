@@ -12,7 +12,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="col-6">
                         <div class="card">
-                            <div class="card-header bg-primary text-white">
+                            <div class="card-header" style="background: #6a98bc; color:white; display: flex;justify-content: center;align-content: center;text-shadow: 4px 4px 5px #90abcb ">
                                 <h4 class="fw-semibold fst-italic"> Formulario Actualizar Historial</h4>
                             </div>
                             <div class="card-body">
@@ -20,7 +20,7 @@
                                     <input type="text" th:field="*{idHistorial.idHistorial}" hidden>
                                      <div class="mb-3">
                                         <label for="idOftalmologo" class="form-label">
-                                            <span class="rojito">*</span> Oftalmologo
+                                            <span class="rojito"></span> Oftalmologo
                                         </label>
                                         <select id="idOftalmologo" class="form-select" th:field="*{idOftamologo}">                                            
                                             <option th:each="objUsuario:${arrDetalleOf}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
@@ -28,24 +28,24 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Diagnóstico
+                                            <span class="rojito"></span> Diagnóstico
                                         </label>
                                         <input type="text" name="daignostico" class="form-control" th:field="*{diagnostico}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Descripçión
+                                            <span class="rojito"></span> Descripçión
                                         </label>
                                         <input type="text" name="descripcion" class="form-control" th:field="*{descripcion}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Precripción
+                                            <span class="rojito"></span> Precripción
                                         </label>
                                         <input type="text" name="prescripcion" class="form-control" th:field="*{prescripcion}" required>
                                     </div>
                                     <span class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                        <button type="submit" class="btn  col-3 fw.semibold mx-3" style="background: #aecfb7">Actualizar</button>
                                         <a th:href="@{/adminUsuarios}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
                                     </span>
                                 </form>

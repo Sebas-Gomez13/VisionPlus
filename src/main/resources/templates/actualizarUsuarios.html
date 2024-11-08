@@ -12,7 +12,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="col-6">
                         <div class="card">
-                            <div class="card-header bg-primary text-white">
+                            <div class="card-header"style="background: #6a98bc; color:white; display: flex;justify-content: center;align-content: center;text-shadow: 4px 4px 5px #90abcb ">
                                 <h4 class="fw-semibold fst-italic"> Formulario editar Usuarios</h4>
                             </div>
                             <div class="card-body">
@@ -21,43 +21,43 @@
                                     <input type="text" name="rolUsuario" class="form-control" th:field="*{rolUsuario.idRol}" hidden>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Nombres
+                                            <span class="rojito"></span> Nombres
                                         </label>
                                         <input type="text" name="nombreUsuario" class="form-control" th:field="*{nombreUsuario}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Apellidos
+                                            <span class="rojito"></span> Apellidos
                                         </label>
                                         <input type="text" name="apellidoUsuario" class="form-control" th:field="*{apellidoUsuario}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Correo
+                                            <span class="rojito"></span> Correo
                                         </label>
                                         <input type="email" name="correoUsuario" class="form-control" th:field="*{correoUsuario}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Contraseña
+                                            <span class="rojito"></span> Contraseña
                                         </label>
                                         <input type="password" name="contrasenaUsuario" class="form-control" th:field="*{contrasenaUsuario}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Telefono
+                                            <span class="rojito"></span> Telefono
                                         </label>
                                         <input type="text" name="telefonoUsuario" class="form-control" th:field="*{telefonoUsuario}" th:value="${telefonoUsuario}"  maxlength="10" minlength="10" required>
                                     </div>                                        
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            <span class="rojito">*</span> Direccion
+                                            <span class="rojito"></span> Direccion
                                         </label>
                                         <input type="text" name="direccionUsuario" class="form-control" th:field="*{direccionUsuario}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="estadoUsuario">
-                                            <span class="rojito">*</span>Estado
+                                            <span class="rojito"></span>Estado
                                         </label>
                                         <select id="estadoUsuario" class="form-select" th:field="*{estadoUsuario}"> 
                                             <option th:value="1" th:text="'Activo'" 
@@ -67,7 +67,7 @@
                                         </select>
                                                   </div>
                                     <span class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary col-3 fw.semibold mx-3">Actualizar</button>
+                                        <button type="submit" class="btn  col-3 fw.semibold mx-3"style="background: #aecfb7">Actualizar</button>
                                         <a th:href="@{/adminUsuarios}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
                                     </span>
                                 </form>
