@@ -17,6 +17,7 @@
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/updateCitas/{idCita}(idCita=${objCitas.idCita})}" th:object="${objCitas}" method="post">                                    
+                                    <input type="text" th:field="*{estado}" hidden>
                                     <div class="mb-3">
                                         <label for="idPaciente" class="form-label">
                                             <span class="rojito">*</span> Paciente

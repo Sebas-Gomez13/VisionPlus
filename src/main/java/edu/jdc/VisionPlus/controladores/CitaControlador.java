@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,6 +94,33 @@ public class CitaControlador {
             return "redirect:/adminCitas";
         }
     }
+    
+    
+    @PostMapping(value = {"/updateCitas/{idCita}"})
+    public String modificarCita(@PathVariable(value = "idCita") Integer codigo, @Valid @ModelAttribute("objCitas") Cita objActualizar,
+            BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {                
+        if (respuesta.hasErrors()) {
+            redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
+            redireccionar.addFlashAttribute("tipo", "alert-danger");
+        } else {
+            objActualizar.setIdCita(codigo); 
+            LocalDate fecha = objActualizar.getFecha();
+            LocalTime hora = objActualizar.getHora();
+            LocalDateTime fechaCitaLocal = LocalDateTime.of(fecha, hora);
+            Timestamp fechaCita = Timestamp.valueOf(fechaCitaLocal);
+            objActualizar.setFecha_hora(fechaCita);
+            boolean actualizado = citaDao.actualizar(objActualizar);
+            if (actualizado) {
+                redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar la Cita de: " + objActualizar.getIdPaciente().getNombreUsuario() + " " + objActualizar.getIdPaciente().getApellidoUsuario());
+                redireccionar.addFlashAttribute("tipo", "alert-success");
+            } else {
+                redireccionar.addFlashAttribute("mensaje", "Fallo al Actualizar el Objeto");
+                redireccionar.addFlashAttribute("tipo", "alert-danger");
+            }
+        }
+        return "redirect:/adminCitas";
+    }
+    
     
     @GetMapping("/nuevaNoti/{idCita}")
     public String nuevaNotificacion(Model vista, @Valid @ModelAttribute Notificacion objNotificacion, @PathVariable(value = "idCita") Integer llavePrimaria, RedirectAttributes redireccionar){
