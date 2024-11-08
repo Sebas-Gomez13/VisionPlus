@@ -1,8 +1,13 @@
 <html>
-    <head th:replace="contenedor/tablero :: head"></head>
+    <head th:replace="contenedor/tableroDash :: head"></head>
     <body>
         <main>
-            <nav th:replace="/contenedor/tablero ::cabecera"></nav>            
+            <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                        
+            <div style="position: fixed; left: 0; top: 75;" class="h-100">
+                <div class="collapse collapse-horizontal" id="collapseWidthExample" style="max-width: 200px">
+                    <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
+                </div>
+            </div>       
             <div class="container-fluid mt-4">
                 <div class="d-flex justify-content-center">
                     <div class="col-6">
