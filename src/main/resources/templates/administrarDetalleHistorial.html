@@ -1,8 +1,13 @@
 <html>
-    <head th:replace="contenedor/tablero :: head"></head>
+    <head th:replace="contenedor/tableroDash :: head"></head>
     <body>
         <main>
-            <nav th:replace="contenedor/tablero :: cabecera"></nav>
+            <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                        
+            <div style="position: fixed; left: 0; top: 75;" class="h-100">
+                <div class="collapse collapse-horizontal" id="collapseWidthExample" style="max-width: 200px">
+                    <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
+                </div>
+            </div>    
             <section>
                 <div class="container-fluid mt-4">
                     <h4 class="fw-semibold fst-italic text-center">Ver Historial: 
@@ -17,7 +22,7 @@
                                 </div> 
                             </div>
                             <div class="text-end">
-                                <a th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:href="@{/addDetalleHistorial/}+${arrDetalle[0].idHistorial.idHistorial}" class="btn btn-info text-white">
+                                <a th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:href="@{/addDetalleHistorial/}+${arrDetalle[0].idHistorial.idHistorial}" class="colorBoton btn">
                                     Agregar Detalle
                                 </a>
                             </div>
@@ -41,7 +46,7 @@
                                             <td th:text="${objDetalleHistorial.descripcion}"></td>
                                             <td th:text="${objDetalleHistorial.prescripcion}"></td>
                                             <td>
-                                                <a th:href="@{/updateDetalleHistorial/}+${objDetalleHistorial.idDetalleHistorial}" class="btn btn-success btn-sm">
+                                                <a th:href="@{/updateDetalleHistorial/}+${objDetalleHistorial.idDetalleHistorial}" class="actualizarbtn btn btn-sm">
                                                     <i class="fa fa-edit fs-5 text-white"></i>  
                                                 </a>
                                             </td>

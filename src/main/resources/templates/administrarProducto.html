@@ -1,79 +1,82 @@
 <html>
-    <head th:replace="contenedor/tablero :: head"></head>
+    <head th:replace="contenedor/tableroDash :: head"></head>
     <body>        
+        <main>
             <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                        
             <div style="position: fixed; left: 0; top: 75;" class="h-100">
                 <div class="collapse collapse-horizontal" id="collapseWidthExample" style="max-width: 200px">
                     <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
                 </div>
-            </div>            
-            <div class="container-fluid mt-4 mb-4">
-                <h4 class="fw-semibold fst-italic text-center">Administrar Productos</h4>
-                <div class="d-flex justify-content-center ">
-                    <div class="col-md-10">
-                        <div th:if="${mensaje != null}">
-                            <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
-                                <span class="fw-semibold" th:text="${mensaje}"></span>
-                                <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
-                            </div> 
+            </div>          
+            <section>
+                <div class="container-fluid mt-4 mb-4">
+                    <h4 class="fw-semibold fst-italic text-center">Administrar Productos</h4>
+                    <div class="d-flex justify-content-center ">
+                        <div class="col-md-10">
+                            <div th:if="${mensaje != null}">
+                                <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
+                                    <span class="fw-semibold" th:text="${mensaje}"></span>
+                                    <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
+                                </div> 
 
-                        </div>
-                        <div class="text-end">
-                            <a th:href="@{/addProducto}" class="btn btn-info text-white">
-                                Nueva Producto
-                            </a>
-                        </div>
+                            </div>
+                            <div class="text-end">
+                                <a th:href="@{/addProducto}" class="colorBoton btn">
+                                    Nueva Producto
+                                </a>
+                            </div>
 
-                        <div class="mt-2">
-                            <table class="table table-sm table-striped table-hover">
-                                <thead>
-                                    <tr class="table table-dark bg-dark">                                        
-                                        <th>Nombre Producto</th>
-                                        <th>Descripcion</th>
-                                        <th>Imagen URL</th>
-                                        <th>Categoria</th>
-                                        <th>Cantidad Visitas</th>
-                                        <th>Usuario</th>
-                                        <th>&nbsp;</th>
-                                    </tr>
-                                </thead>
+                            <div class="mt-2">
+                                <table class="table table-sm table-striped table-hover">
+                                    <thead>
+                                        <tr class="table table-dark bg-dark">                                        
+                                            <th>Nombre Producto</th>
+                                            <th>Descripcion</th>
+                                            <th>Imagen URL</th>
+                                            <th>Categoria</th>
+                                            <th>Cantidad Visitas</th>
+                                            <th>Usuario</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
 
-                                <tbody>
-                                    <tr th:each="objProductos:${arrProductos}">
-                                        <td th:text="${objProductos.nombreProducto}"></td>
-                                        <td th:text="${objProductos.descripcion}"></td>
-                                        <td th:text="${objProductos.imagenUrl}"></td>
+                                    <tbody>
+                                        <tr th:each="objProductos:${arrProductos}">
+                                            <td th:text="${objProductos.nombreProducto}"></td>
+                                            <td th:text="${objProductos.descripcion}"></td>
+                                            <td th:text="${objProductos.imagenUrl}"></td>
+                                            <td>
+                                                <span class="alert fw-bold"
+                                                      th:text="${objProductos.categoria== 0 ? 'Gafas' : (objProductos.categoria == 1 ? 'Lentes de Contacto' : (objProductos.categoria == 2 ? 'Monturas' : 'Desconocido'))}"
+                                            </span>
+                                        </td>                                         
+                                        <td th:text="${objProductos.cantidadVisitas}"></td>
+                                        <td th:text="${objProductos.idUsuario.nombreUsuario}"></td>
+
                                         <td>
-                                            <span class="alert fw-bold"
-                                                  th:text="${objProductos.categoria== 0 ? 'Gafas' : (objProductos.categoria == 1 ? 'Lentes de Contacto' : (objProductos.categoria == 2 ? 'Monturas' : 'Desconocido'))}"
-                                        </span>
-                                    </td>                                         
-                                    <td th:text="${objProductos.cantidadVisitas}"></td>
-                                    <td th:text="${objProductos.idUsuario.nombreUsuario}"></td>
+                                            <a th:href="@{/updateProducto/}+${objProductos.idProducto}" class="actualizarbtn btn btn-sm">
+                                                <i class="fa fa-edit fs-5 text-white"></i>  
+                                            </a>
+                                            <a th:if="${(objProductos)}" th:href="@{/deleteProductos/}+${objProductos.idProducto}" class="btn btn-danger btn-sm"
+                                               onclick="return confirm('¿estas seguro de eliminar a este producto')">
+                                                <i class="fa fa-trash fs-5 text-white"></i>
+                                            </a>
+                                            &nbsp;
+                                            <a th:unless="${objProductos}" class="btn btn-secondary btn-sm"
+                                               onclick="return alert('El producto se elimino')">
+                                                <i class="fa fa-trash fs-5 text-white"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                                    <td>
-                                        <a th:href="@{/updateProducto/}+${objProductos.idProducto}" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-edit fs-5 text-white"></i>  
-                                        </a>
-                                        <a th:if="${(objProductos)}" th:href="@{/deleteProductos/}+${objProductos.idProducto}" class="btn btn-danger btn-sm"
-                                           onclick="return confirm('¿estas seguro de eliminar a este producto')">
-                                            <i class="fa fa-trash fs-5 text-white"></i>
-                                        </a>
-                                        &nbsp;
-                                        <a th:unless="${objProductos}" class="btn btn-secondary btn-sm"
-                                           onclick="return alert('El producto se elimino')">
-                                            <i class="fa fa-trash fs-5 text-white"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div> 
+                        </div>
+                    </div> 
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 </body>
 <footer th:replace="contenedor/tablero :: footer"></footer>
 
