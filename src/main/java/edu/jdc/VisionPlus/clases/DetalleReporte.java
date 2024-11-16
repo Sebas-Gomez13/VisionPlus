@@ -25,6 +25,10 @@ public class DetalleReporte {
     
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "id_producto", nullable = false)
-    private Producto idProducto;    
+    @Column(name = "producto")
+    private String nombreProducto;
+
+    @NotNull
+    @Column(name = "cantidad", nullable = false)
+    private Integer cantidad;
 }
