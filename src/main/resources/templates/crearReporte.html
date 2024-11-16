@@ -1,0 +1,63 @@
+<html>
+    <head th:replace="contenedor/tableroDash :: head"></head>
+    <body>
+        <main>
+            <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                        
+            <div style="position: fixed; left: 0; top: 75;" class="h-100">
+                <div class="collapse collapse-horizontal" id="collapseWidthExample" style="max-width: 200px">
+                    <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
+                </div>
+            </div>
+            <div class="container-fluid mt-5 mb-5">
+                <div class="d-flex justify-content-center">
+                    <div class="col-5">
+                        <div class="card">
+                            <div class="card-header" style="background: #6a98bc; color:white; display: flex;justify-content: center;align-content: center;text-shadow: 4px 4px 5px #90abcb ">
+                                <h4 class="fw-semibold fst-italic"> Formulario Nuevo Reporte</h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/addReportes}" th:object="${objReportes}" method="post">
+                                    <div class="mb-3">
+                                        <label for="idUsuario" class="form-label">
+                                            <span class="rojito"></span> Usuario
+                                        </label>
+                                        <select id="idUsuario" class="form-select" th:field="*{idUsuario}">
+                                            <option value="null">Seleccione un Usuario</option>
+                                            <option th:each="objUsuarios:${arrUsuarios}" th:text="${objUsuarios.nombreUsuario}" th:value="${objUsuarios.idUsuario}"></option>
+                                        </select>
+                                        <span class="rojito" th:if="${objReportes.idUsuario==null}"th:errors="*{idUsuario}">Seleccione un Usuario</span>     
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito"></span> Nombre Reporte
+                                        </label>
+                                        <input type="text" name="nombreReporte" class="form-control" th:field="*{nombreReporte}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito"></span> Descripción Reporte
+                                        </label>
+                                        <input type="text" name="descripcionReporte" class="form-control" th:field="*{descripcionReporte}" required>
+                                    </div>                                    
+
+                                    <span class="d-flex justify-content-center">
+                                        <button type="submit" class="btn col-3 fw-semibold mx-3" style="background: #aecfb7">Registrar</button>
+                                        <a th:href="@{/adminReportes}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>
+                                    </span>
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </body>
+
+
+    <footer th:replace="contenedor/tablero :: footer"></footer>
+</html>

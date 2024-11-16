@@ -5,11 +5,16 @@
 package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.Reporte;
+import edu.jdc.VisionPlus.clases.Rol;
+import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
 import java.util.List;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.jdc.VisionPlus.repositorios.ReporteRepositorio;
+import edu.jdc.VisionPlus.repositorios.UsuarioRepositorio;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -20,7 +25,10 @@ import edu.jdc.VisionPlus.repositorios.ReporteRepositorio;
 public class ReporteDAO implements Operacion<Reporte>{
 
     @Autowired
-    private ReporteRepositorio repoReporte;        
+    private ReporteRepositorio repoReporte;       
+    
+    @Autowired
+    private UsuarioRepositorio repoUsuario;
     
     @Override
     public List<Reporte> consultar(String orden) {
@@ -42,16 +50,21 @@ public class ReporteDAO implements Operacion<Reporte>{
         return repoReporte.save(objActualizar)!=null;
     }
 
+    @Transactional
     @Override
     public Boolean eliminar(Integer llavePrimaria) {
-        return true;
-//        return repoMarca.eliminarMarca(llavePrimaria);
+        int eliminado = repoReporte.eliminarReporte(llavePrimaria);
+        return eliminado > 0;
     }
 
     @Override
     public Integer cantidadRegistros() {
         //         return repoCita.cantidadMarcas();
     return 0;
-    }        
+    }    
+
+    public List<Usuario> obtenerUsuarios(){
+        return repoUsuario.findByRolUsuario_IdRolIn(Arrays.asList(1, 2));
+    }    
     
 }

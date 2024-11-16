@@ -23,10 +23,7 @@ public class ProductoControlador {
 
     @Autowired(required = true)
     private ProductoDAO productoDao;
-    
-     @Autowired
-    private UsuarioDAO usuarioDao;
-
+         
     @GetMapping("/listProducto")
     public String listarProducto(Model vista) {
         List<Producto> arregloProductos = productoDao.consultar("");
