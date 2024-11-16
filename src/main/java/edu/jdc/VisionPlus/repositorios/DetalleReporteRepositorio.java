@@ -2,6 +2,7 @@ package edu.jdc.VisionPlus.repositorios;
 
 import edu.jdc.VisionPlus.clases.DetalleReporte;
 import edu.jdc.VisionPlus.clases.Reporte;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

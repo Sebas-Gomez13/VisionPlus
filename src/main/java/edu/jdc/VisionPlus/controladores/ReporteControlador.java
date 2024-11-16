@@ -19,11 +19,11 @@ public class ReporteControlador {
     @Autowired(required = true)
     private ReporteDAO reporteDao;
 
-    @GetMapping("/listReportes")
+    @GetMapping("/adminReportes")
     public String listarReporte(Model vista) {
         List<Reporte> arregloReportes = reporteDao.consultar("");
         vista.addAttribute("arrReportes", arregloReportes);
-        return "listarReporte";
+        return "administrarReportes";
     }
 
     @GetMapping("/addReportes")
@@ -43,14 +43,6 @@ public class ReporteControlador {
             return "redirect:/listReportes";
         }
     }
-
-    @GetMapping("/adminReportes")
-    public String administrarReporte(Model vista) {
-        return "administrarReporte";
-    }
-
-    @GetMapping("/updateReportes")
-    public String actualizarReporte(Model vista, Integer llavePrimaria) {
-        return "actualizarReporte";
-    }
+    
+    
 }

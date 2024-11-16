@@ -27,10 +27,10 @@ public class DetalleReporteControlador {
     @GetMapping("/adminDetalleReporte/{idReporte}")
     public String administrarDetalleReporte(Model vista, @Valid @ModelAttribute Reporte objReporte, @PathVariable(value = "idReporte") Integer llavePrimaria) {
         objReporte.setIdReporte(llavePrimaria);
-        Reporte arregloDetalleReporte = detalleReporteDAO.buscarReporte(llavePrimaria);
-        System.out.println(arregloDetalleHistorial);
-        vista.addAttribute("arrDetalle", arregloDetalleHistorial);
-        return "administrarDetalleHistorial";
+        List<DetalleReporte> arregloDetalleReporte = detalleReporteDAO.obtenerReporte(objReporte);
+        System.out.println(arregloDetalleReporte);
+        vista.addAttribute("arrDetalle", arregloDetalleReporte);
+        return "administrarDetalleReportes";
     }
     
 }
