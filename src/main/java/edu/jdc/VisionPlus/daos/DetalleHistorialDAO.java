@@ -17,8 +17,10 @@ public class DetalleHistorialDAO implements Operacion<DetalleHistorial>{
 
     @Autowired(required = true)
     private DetalleHistorialRepositorio repoDetalleHistorial;
+    
     @Autowired
     private UsuarioRepositorio repoUsuario;
+    
     @Autowired
     private HistorialRepositorio repoHistorial;
     

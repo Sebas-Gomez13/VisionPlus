@@ -20,7 +20,7 @@ import edu.jdc.VisionPlus.repositorios.ReporteRepositorio;
 public class ReporteDAO implements Operacion<Reporte>{
 
     @Autowired
-    private ReporteRepositorio repoReporte;
+    private ReporteRepositorio repoReporte;        
     
     @Override
     public List<Reporte> consultar(String orden) {
@@ -52,6 +52,6 @@ public class ReporteDAO implements Operacion<Reporte>{
     public Integer cantidadRegistros() {
         //         return repoCita.cantidadMarcas();
     return 0;
-    }
+    }        
     
 }

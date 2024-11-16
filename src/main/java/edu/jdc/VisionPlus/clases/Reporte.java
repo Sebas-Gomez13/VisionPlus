@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -28,17 +29,24 @@ public class Reporte {
     @Size(min=3, max=250)
     @Column(name="descripcion_Reporte")
     private String descripcionReporte;
+    
+    @NotNull    
+    @ManyToOne    
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario idUsuario;
    
     
     public Reporte(){
         
     }
 
-    public Reporte(Integer idReporte, String nombreReporte, String descripcionReporte) {
+    public Reporte(Integer idReporte, String nombreReporte, String descripcionReporte, Usuario idUsuario) {
         this.idReporte = idReporte;
         this.nombreReporte = nombreReporte;
         this.descripcionReporte = descripcionReporte;
+        this.idUsuario = idUsuario;
     }
+    
 
     public Integer getIdReporte() {
         return idReporte;
@@ -64,6 +72,14 @@ public class Reporte {
         this.descripcionReporte = descripcionReporte;
     }
 
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
+    }        
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -88,8 +104,7 @@ public class Reporte {
 
     @Override
     public String toString() {
-        return "Reportes{" + "idReporte=" + idReporte + ", nombreReporte=" + nombreReporte + ", descripcionReporte=" + descripcionReporte + '}';
+        return "Reporte{" + "idReporte=" + idReporte + ", nombreReporte=" + nombreReporte + ", descripcionReporte=" + descripcionReporte + ", idUsuario=" + idUsuario + '}';
     }
-    
-    
+            
 }

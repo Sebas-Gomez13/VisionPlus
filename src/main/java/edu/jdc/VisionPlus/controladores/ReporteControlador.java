@@ -1,5 +1,6 @@
 package edu.jdc.VisionPlus.controladores;
 
+import edu.jdc.VisionPlus.clases.Producto;
 import edu.jdc.VisionPlus.clases.Reporte;
 import edu.jdc.VisionPlus.daos.ReporteDAO;
 import jakarta.validation.Valid;
@@ -27,7 +28,7 @@ public class ReporteControlador {
     }
 
     @GetMapping("/addReportes")
-    public String crearReporte(Model vista) {
+    public String crearReporte(Model vista) {        
         vista.addAttribute("objReporte", new Reporte());
         return "crearReporte";
     }
@@ -40,7 +41,7 @@ public class ReporteControlador {
         } else {
             reporteDao.registrar(objReportes);
             estado.setComplete();
-            return "redirect:/listReportes";
+            return "redirect:/adminReportes";
         }
     }
     
