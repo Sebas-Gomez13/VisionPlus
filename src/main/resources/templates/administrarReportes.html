@@ -33,15 +33,18 @@
                                             <th>Usuario</th>
                                             <th>Nombre Reporte</th>
                                             <th>Descripcion Reporte</th>                                            
+                                            <th>Nombre Producto</th>
+                                            <th>Cantidad</th>
                                             <th>&nbsp;</th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
                                         <tr th:each="objReportes:${arrReportes}">
-                                            <td th:text="${objReportes.idUsuario.nombreUsuario + ' ' + objReportes.idUsuario.ApellidoUsuario}"></td>                                            
+                                            <td th:text="${objReportes.idUsuario.nombreUsuario + ' ' + objReportes.idUsuario.ApellidoUsuario}"></td>
                                             <td th:text="${objReportes.nombreReporte}"></td>
-                                            <td th:text="${objReportes.descripcionReporte}"></td>                                                                                    
+                                            <td th:text="${objReportes.descripcionReporte}"></td>
+                                            <td th:text="${objReportes.idProducto.nombreProducto}"></td>
+                                            <td th:text="${objReportes.cantidad}"></td>
                                         <td>                                                                                                                                    
                                             <a th:if="${(objReportes)}" th:href="@{/deleteReportes/}+${objReportes.idReporte}" class="btn btn-danger btn-sm"
                                                onclick="return confirm('¿estas seguro de eliminar este reporte')">

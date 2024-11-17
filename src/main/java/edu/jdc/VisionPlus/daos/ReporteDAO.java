@@ -4,10 +4,12 @@
  */
 package edu.jdc.VisionPlus.daos;
 
+import edu.jdc.VisionPlus.clases.Producto;
 import edu.jdc.VisionPlus.clases.Reporte;
 import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
+import edu.jdc.VisionPlus.repositorios.ProductoRepositorio;
 import java.util.List;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class ReporteDAO implements Operacion<Reporte>{
     
     @Autowired
     private UsuarioRepositorio repoUsuario;
+    
+    @Autowired
+    private ProductoRepositorio repoProducto;
     
     @Override
     public List<Reporte> consultar(String orden) {
@@ -65,6 +70,10 @@ public class ReporteDAO implements Operacion<Reporte>{
 
     public List<Usuario> obtenerUsuarios(){
         return repoUsuario.findByRolUsuario_IdRolIn(Arrays.asList(1, 2));
-    }    
+    }   
+    
+    public List<Producto> obtenerProductos(){
+        return (List<Producto>) repoProducto.findAll();
+    }
     
 }

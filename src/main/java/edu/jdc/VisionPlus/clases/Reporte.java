@@ -13,39 +13,51 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-@Table(name="reportes")
+@Table(name = "reportes")
 public class Reporte {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_Reporte")
+    @Column(name = "id_Reporte")
     private Integer idReporte;
-     
+
     @NotNull
-    @Size(min=3, max=250)
-    @Column(name="nombre_Reporte")
+    @Size(min = 3, max = 250)
+    @Column(name = "nombre_Reporte")
     private String nombreReporte;
-    
+
     @NotNull
-    @Size(min=3, max=250)
-    @Column(name="descripcion_Reporte")
+    @Size(min = 3, max = 250)
+    @Column(name = "descripcion_Reporte")
     private String descripcionReporte;
-    
-    @NotNull    
-    @ManyToOne    
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_producto", nullable = false)
+    private Producto idProducto;
+
+    @NotNull
+    @Column(name = "cantidad")
+    private Integer cantidad;
+
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario idUsuario;
-   
-    
-    public Reporte(){
-        
+
+    public Reporte() {
+
     }
 
-    public Reporte(Integer idReporte, String nombreReporte, String descripcionReporte, Usuario idUsuario) {
+    public Reporte(Integer idReporte, String nombreReporte, String descripcionReporte, Producto idProducto, Integer cantidad, Usuario idUsuario) {
         this.idReporte = idReporte;
         this.nombreReporte = nombreReporte;
         this.descripcionReporte = descripcionReporte;
+        this.idProducto = idProducto;
+        this.cantidad = cantidad;
         this.idUsuario = idUsuario;
     }
+
     
 
     public Integer getIdReporte() {
@@ -78,7 +90,25 @@ public class Reporte {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }        
+    }
+
+    public Producto getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Producto idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+    
 
     @Override
     public int hashCode() {
@@ -104,7 +134,9 @@ public class Reporte {
 
     @Override
     public String toString() {
-        return "Reporte{" + "idReporte=" + idReporte + ", nombreReporte=" + nombreReporte + ", descripcionReporte=" + descripcionReporte + ", idUsuario=" + idUsuario + '}';
+        return "Reporte{" + "idReporte=" + idReporte + ", nombreReporte=" + nombreReporte + ", descripcionReporte=" + descripcionReporte + ", idProducto=" + idProducto + ", cantidad=" + cantidad + ", idUsuario=" + idUsuario + '}';
     }
-            
+
+    
+
 }

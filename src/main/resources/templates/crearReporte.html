@@ -38,7 +38,23 @@
                                             <span class="rojito"></span> Descripción Reporte
                                         </label>
                                         <input type="text" name="descripcionReporte" class="form-control" th:field="*{descripcionReporte}" required>
-                                    </div>                                    
+                                    </div>    
+                                    <div class="mb-3">
+                                        <label for="idUsuario" class="form-label">
+                                            <span class="rojito"></span> Producto
+                                        </label>
+                                        <select id="idProducto" class="form-select" th:field="*{idProducto}">
+                                            <option value="null">Seleccione un Producto</option>
+                                            <option th:each="objProductos:${arrProductos}" th:text="${objProductos.nombreProducto}" th:value="${objProductos.idProducto}"></option>
+                                        </select>
+                                        <span class="rojito" th:if="${objReportes.idProducto==null}"th:errors="*{idProducto}">Seleccione un Usuario</span>     
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <span class="rojito"></span> Cantidad
+                                        </label>
+                                        <input type="number" name="descripcionReporte" class="form-control" th:field="*{cantidad}" required>
+                                    </div>    
 
                                     <span class="d-flex justify-content-center">
                                         <button type="submit" class="btn col-3 fw-semibold mx-3" style="background: #aecfb7">Registrar</button>

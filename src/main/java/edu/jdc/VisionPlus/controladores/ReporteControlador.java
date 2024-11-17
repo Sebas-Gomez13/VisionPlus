@@ -33,6 +33,8 @@ public class ReporteControlador {
     @GetMapping("/addReportes")
     public String crearReporte(Model vista) {        
         List<Usuario> arrUsuarios = reporteDao.obtenerUsuarios();
+        List<Producto> arrProductos = reporteDao.obtenerProductos();
+        vista.addAttribute("arrProductos", arrProductos);
         vista.addAttribute("arrUsuarios", arrUsuarios);
         vista.addAttribute("objReportes", new Reporte());
         return "crearReporte";
