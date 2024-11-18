@@ -3,7 +3,7 @@ package edu.jdc.VisionPlus.controladores;
 import edu.jdc.VisionPlus.clases.DatoSesion;
 import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
-import edu.jdc.VisionPlus.daos.AccesoDao;
+import edu.jdc.VisionPlus.daos.AccesoDAO;
 import jakarta.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AccesoControlador {
 
     @Autowired(required = true)
-    private AccesoDao daoAcceso;
+    private AccesoDAO daoAcceso;
 
     @GetMapping("/signin")
     public String iniciarSesion(Model vista) {

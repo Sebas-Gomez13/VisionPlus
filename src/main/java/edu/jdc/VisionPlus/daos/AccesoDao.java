@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class AccesoDao implements Sesion {
+public class AccesoDAO implements Sesion {
 
     @Autowired(required = true)
     private AccesoRepositorio repoAcceso;
