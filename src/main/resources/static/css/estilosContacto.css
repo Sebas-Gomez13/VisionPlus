@@ -18,8 +18,20 @@
 }
 
 .fondoImg{
-    background-image: url('../img/circulo.png');    
+    background-image: url('../img/circulo.png');
     background-position: center; /* Centrar la imagen */
     background-repeat: no-repeat; /* No repetir la imagen */
-    background-size: 40%
+    background-size: 65%
+}
+
+.imagenGafas{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;    
+    transition: transform 1.5s ease; /* Transición suave */
+    transform-style: preserve-3d; /* Permite la rotación 3D */
+}
+
+.imagenGafas:hover{
+    transform: rotateY(180deg);
 }
