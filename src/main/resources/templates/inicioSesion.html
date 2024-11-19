@@ -3,55 +3,59 @@
     </head>
     <body>
         <div class="mt-5 container">
-            <div class="d-flex justify-content-center h-100">
-                <div class="col-6">
-                    <div th:if="${mensaje!=null}">
-                        <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
-                            <span class="fst-italic fw-semibold" th:text="${mensaje}"></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="d-flex justify-content-center h-100 w-100">
+                <div th:if="${mensaje!=null}">
+                    <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
+                        <span class="fst-italic fw-semibold" th:text="${mensaje}"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="row w-100">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header text-center bg-secondary text-white">
+                                <i class="fa fa-user-circle" style="font-size: 60px"></i>
+                                <h4 class="fst-italic fw-semibold">
+                                    Inicio de sesion
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/signin}" th:object="${objAcceso}" class="p-3" method="POST">
+                                    <div class="mb-3">
+                                        <label class="form-label fst-italic">
+                                            <span class="rojito">*</span>
+                                            Correo electronico
+                                        </label>
+                                        <input type="email" name="correoUsuario" 
+                                               class="form-control" th:field="*{correoUsuario}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fst-italic">
+                                            <span class="rojito">*</span>
+                                            Contraseña
+                                        </label>
+                                        <input type="password" name="contrasenaUsuario" 
+                                               class="form-control" th:field="*{contrasenaUsuario}" required>
+                                    </div>                                
+                                    <span class="d-flex justify-content-center mb-3">
+                                        <button type="submit" class="btn btn-primary col-md-2">
+                                            Acceder
+                                        </button>
+                                    </span>
+                                </form>
+                            </div>
+                            <div class="card-footer text-center">
+                                <span class="fst-italic fw-semibold fs-6">
+                                    ¿No tienes cuenta?
+                                    <a th:href="@{/register}" style="text-decoration: none">
+                                        click aqui
+                                    </a> Para registro
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="card">
-                        <div class="card-header text-center bg-secondary text-white">
-                            <i class="fa fa-user-circle" style="font-size: 60px"></i>
-                            <h4 class="fst-italic fw-semibold">
-                                Inicio de sesion
-                            </h4>
-                        </div>
-                        <div class="card-body">
-                            <form th:action="@{/signin}" th:object="${objAcceso}" class="p-3" method="POST">
-                                <div class="mb-3">
-                                    <label class="form-label fst-italic">
-                                        <span class="rojito">*</span>
-                                        Correo electronico
-                                    </label>
-                                    <input type="email" name="correoUsuario" 
-                                           class="form-control" th:field="*{correoUsuario}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fst-italic">
-                                        <span class="rojito">*</span>
-                                        Contraseña
-                                    </label>
-                                    <input type="password" name="contrasenaUsuario" 
-                                           class="form-control" th:field="*{contrasenaUsuario}" required>
-                                </div>                                
-                                <span class="d-flex justify-content-center mb-3">
-                                    <button type="submit" class="btn btn-primary col-md-2">
-                                        Acceder
-                                    </button>
-                                </span>
-                            </form>
-                        </div>
-                        <div class="card-footer text-center">
-                            <span class="fst-italic fw-semibold fs-6">
-                                ¿No tienes cuenta?
-                                <a th:href="@{/register}" style="text-decoration: none">
-                                    click aqui
-                                </a> Para registro
-                            </span>
-                        </div>
+                    <div class="col-6">
+                        adasd
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@
     <body>
         <nav th:replace="/contenedor/tablero :: cabecera"></nav>
         <div class="container-fluid">
-            <div class="row" style="border-bottom: 1px solid #e8daef; box-shadow: 10px 10px 15px #e8daef; padding-bottom: 15px" >
+            <div class="row" style="border-bottom: 1px solid #e8daef; box-shadow: 10px 10px 15px #e8daef; padding-bottom: 15px; background: #e7e7e7" >
                 <div class="contImagen">
                     <img  class="imagen1" th:src="@{/img/contacInicio.png}">
                 </div>
@@ -19,9 +19,12 @@
                 </div>
             </div>
             <div class="row">
-                <h1>Nuestros medios de Comunicación</h1>    
+                <h1 style="padding: 20px">Nuestros medios de Comunicación</h1>    
                 <div class="col-6">
                     <img  class="w-100 mt-3 mb-5" th:src="@{/img/contaEspacio.png}">
+                </div>
+                <div class="col-6">
+                    <img  class=" mt-3 mb-5" th:src="@{/img/redes.png}">
                 </div>
             </div>
         </div>
