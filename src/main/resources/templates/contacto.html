@@ -4,16 +4,32 @@
     <head th:replace="/contenedor/tablero :: head">
     </head>
     <body>
-            <nav th:replace="/contenedor/tablero :: cabecera"></nav>
-            <div class="contac row" style="background: #d0ebff">
-                <div class="contImagen col-6">
-                        <img  class="imagen2" th:src="@{/img/contactoInicio2.png}">
-                    </div>
-                    <div class="contImagen col-6" >
-                         <img  class=" imagen1" th:src="@{/img/contactoInicio.png}">
-                    </div>
+        <nav th:replace="/contenedor/tablero :: cabecera"></nav>
+        <div class="container-fluid">
+            <div class="row" style="border-bottom: 1px solid #e8daef; box-shadow: 10px 10px 15px #e8daef; padding-bottom: 15px" >
+                <div class="contImagen">
+                    <img  class="imagen1" th:src="@{/img/contacInicio.png}">
                 </div>
+            </div>
+
+            <div class="row mt-4" >
+                <center><h1 class="mt-1">Ubicación</h1></center>
+                <div>
+                    <center><img  class="imagenUbi" th:src="@{/img/direccion.png}"></center>
+                </div>
+            </div>
+            <div class="row">
+                <h1>Nuestros medios de Comunicación</h1>    
+                <div class="col-6">
+                    <img  class="w-100 mt-3 mb-5" th:src="@{/img/contaEspacio.png}">
+                </div>
+            </div>
+        </div>
+
+
+
     </body>
+
 
     <footer th:replace="/contenedor/tablero :: footer"></footer>
 </html>

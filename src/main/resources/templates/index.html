@@ -19,12 +19,18 @@
             <div class="container-fluid">
                 <div class="row collapse hide"  id="collapseExample" style="transition: .5s">   
                     <div class="imagen-collapse">
-                        <center><img class="eye" th:src="@{/img/eye.png}" height="500px" style="opacity: 0.6"></center>     
-                        <img th:src="@{/img/eyinfoArriba.png}" width="550px" height="500px" style="position: absolute; top: 87%; left: 29%">
+                        <div class="embed-responsive embed-responsive-16by9 mt-3 mb-3">
+                            <center><video class="embed-responsive-item" th:src="@{/img/cuidadosojo.mp4}" style="object-fit: cover" controls></video</center>
+                        </div>
                     </div>               
                 </div>
             </div>
-
+            <div class="container-fluid mt-3 mb-3" style="width: 80%" >
+                <div class="row">
+                <center><h1>¡RECUERDA!</h1></center>
+                <img th:src="@{/img/infoInicio.png}">
+                </div>
+            </div>
             <div class="container-fluid" >
                 <center><h1>Nuestros Clientes</h1></center>
                 <div class="row" style="display: flex;justify-content: center;align-items: center" >

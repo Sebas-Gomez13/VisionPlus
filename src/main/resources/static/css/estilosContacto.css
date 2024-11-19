@@ -1,22 +1,15 @@
-.contac{
-    max-width: 100%;
-    height: auto;
-}
-.imagen1{
-    width: 380px;
-}
-.imagen2{
-    width: 700px;
-    margin-left: 100px;
-
-}
 .contImagen{
-    padding: 20px;
     display: flex;
     align-content: center;
     justify-content: center;
 }
-
+.imagen1{
+    height: 300px;
+}
+.imagenUbi{
+    width: 90%;
+    height: auto;
+}
 .fondoImg{
     background-image: url('../img/circulo.png');
     background-position: center; /* Centrar la imagen */

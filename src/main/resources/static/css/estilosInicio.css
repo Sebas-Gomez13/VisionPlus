@@ -112,6 +112,7 @@ h3{
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 10px 20px 20px #d7bde2;
 }
 
 .product-img {
