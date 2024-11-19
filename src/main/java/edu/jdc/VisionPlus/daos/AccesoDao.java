@@ -1,4 +1,4 @@
-    package edu.jdc.VisionPlus.daos;
+package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.DatoSesion;
 import edu.jdc.VisionPlus.clases.Rol;
