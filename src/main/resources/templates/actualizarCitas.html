@@ -4,10 +4,13 @@
         <main>
             <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                        
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel" style="background: #E8DAEF">
-                    <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
-                </div>     
+                <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
+            </div>     
             <div class="container-fluid mt-4 mb-4">
                 <div class="d-flex justify-content-center" style="padding-left: 60px; padding-right: 60px;">
+                    <div class="col-3">
+                        <img th:src="@{/img/exito_1.png}"  width="400" height="500px">
+                    </div>
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header " style="background: #6a98bc; color:white; display: flex;justify-content: center;align-content: center;text-shadow: 4px 4px 5px #90abcb ">
@@ -51,8 +54,12 @@
                                 </form>
                             </div>
                         </div>
-                    </div>                   
-                    <div class="col-6" style="border: 1px solid red">asdasd</div>
+                    </div>  
+                    <div class="row mt-0">
+                        <div class="col-3" style="con">
+                            <img th:src="@{/img/opt1.jpg}"  width="400" height="500px">
+                        </div>
+                    </div>
                 </div>
             </div>            
         </main>
