@@ -7,7 +7,8 @@
                     <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
                 </div>  
             <section>
-                <div class="container-fluid mt-4">
+                <div class="container-fluid">
+                    <h4 class="fw-semibold fst-italic text-center"><img th:src="@{/img/adminUsuarios.png}" style="width: 84%; border-radius: 0px 0px 30px 30px; height: 35%"> <br></h4>
                     <h4 class="fw-semibold fst-italic text-center">Ver Historial: 
                         <span th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:text="${arrDetalle[0].idHistorial.idPaciente.nombreUsuario + ' ' + arrDetalle[0].idHistorial.idPaciente.apellidoUsuario}"></span>
                     </h4>
@@ -19,8 +20,8 @@
                                     <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
                                 </div> 
                             </div>
-                            <div class="text-end">
-                                <a th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:href="@{/addDetalleHistorial/}+${arrDetalle[0].idHistorial.idHistorial}" class="colorBoton btn">
+                            <div class="text-start">                            
+                                <a th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:href="@{/addDetalleHistorial/}+${arrDetalle[0].idHistorial.idHistorial}" class="colorBoton btn w-100">
                                     Agregar Detalle
                                 </a>
                             </div>

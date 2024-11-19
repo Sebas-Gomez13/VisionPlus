@@ -58,8 +58,9 @@ section{
     justify-content: center;
 }
 .colorBoton{
-    background: #6889a2;
-    color:white;
+    background: #3B8CB9;
+    color: white;
+    font-weight: bold;
     transition: 0.2s
 }
 .colorBoton:hover{
