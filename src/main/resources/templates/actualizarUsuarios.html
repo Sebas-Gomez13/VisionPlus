@@ -3,11 +3,9 @@
     <body>
         <main>
             <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                        
-            <div style="position: fixed; left: 0; top: 75;" class="h-100">
-                <div class="collapse collapse-horizontal" id="collapseWidthExample" style="max-width: 200px">
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel" style="background: #E8DAEF">
                     <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
                 </div>
-            </div>
             <div class="container-fluid mt-4 mb-4">
                 <div class="d-flex justify-content-center">
                     <div class="col-6">

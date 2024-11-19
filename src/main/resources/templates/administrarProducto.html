@@ -3,11 +3,9 @@
     <body>        
         <main>
             <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                        
-            <div style="position: fixed; left: 0; top: 75;" class="h-100">
-                <div class="collapse collapse-horizontal" id="collapseWidthExample" style="max-width: 200px">
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel" style="background: #E8DAEF">
                     <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
                 </div>
-            </div>          
             <section>
                 <div class="container-fluid mt-4 mb-4">
                 <h4 class="fw-semibold fst-italic text-center"><img th:src="@{/img/titulo.png}" width="150"> <br>Administrar Productos</h4>
@@ -36,7 +34,7 @@
                                             <th>Categoria</th>
                                             <th>Cantidad Visitas</th>
                                             <th>Usuario</th>
-                                            <th>&nbsp;</th>
+                                            <th style="width: 10%">&nbsp;</th>
                                         </tr>
                                     </thead>
 
