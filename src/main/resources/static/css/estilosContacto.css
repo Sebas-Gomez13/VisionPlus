@@ -1,13 +1,13 @@
-.contac{ 
-max-width: 100%;
-height: auto;  
+.contac{
+    max-width: 100%;
+    height: auto;
 }
 .imagen1{
     width: 380px;
 }
 .imagen2{
     width: 700px;
-        margin-left: 100px;
+    margin-left: 100px;
 
 }
 .contImagen{
@@ -15,4 +15,11 @@ height: auto;
     display: flex;
     align-content: center;
     justify-content: center;
+}
+
+.fondoImg{
+    background-image: url('../img/circulo.png');    
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    background-size: 40%
 }
