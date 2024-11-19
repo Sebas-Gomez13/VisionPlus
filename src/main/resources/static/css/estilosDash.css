@@ -13,10 +13,20 @@
 .botones{
     background: white;
     width: 90%;
-        
+
 }
 .botones:hover{
     background: #6889a2;
     color: white;
     font-weight: bold;
+}
+
+.list-group {
+    border: none; /* Quitar borde de la lista completa */
+    box-shadow: none; /* Quitar sombras si las hay */
+}
+
+.list-group-item {
+    border: none; /* Quitar bordes de cada elemento */
+    background-color: transparent; /* Fondo transparente si es necesario */
 }

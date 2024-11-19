@@ -16,7 +16,7 @@
                 <span class="titulo fw-bold fst-italic fs-5">Vision Plus</span>
             </div>  
         </button>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">            
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,43 +32,47 @@
 </nav>
 
 
-<div th:fragment="menuLateral" class=" text-white">
-
+<div th:fragment="menuLateral" class=" text-white" style="background: #E8DAEF">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasLeftLabel">Menú Lateral</h5>
+        <h5 class="offcanvas-title" id="offcanvasLeftLabel" style="color: black">Menú</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
     </div>
     <div class="offcanvas-body ">
-        <ul class="list-group ">
-            <li class="list-group-item mb-2">
+        <ul class="list-group " style="border: none; background: none;">
+            <li class="list-group-item mb-2" style="border: none; background: none">
+                <div class="dropend">
+                    <center><img th:src="@{/img/admi.png}" width="150"></center>
+                </div>
+            </li>
+            <li class="list-group-item mb-2" style="border: none; background: none">
                 <div class="dropend">
                     <a class="botones btn btn-outline-primary" th:href="@{/adminUsuarios}" role="button" data-bs-container="body" aria-expanded="false">                        
                         Usuarios
                     </a>                    
                 </div>
             </li>
-            <li class="list-group-item mb-2">
+            <li class="list-group-item mb-2" style="border: none; background: none">
                 <div class="dropend ">
                     <a class="botones btn" th:href="@{/adminCitas}" aria-expanded="false">
                         Citas
                     </a>                    
                 </div>
             </li>
-            <li class="list-group-item mb-2">
+            <li class="list-group-item mb-2" style="border: none; background: none">
                 <div class="dropend ">
                     <a class=" botones btn" th:href="@{/adminHistoriales}" aria-expanded="false">
                         Historiales
                     </a>                    
                 </div>
             </li>
-            <li class="list-group-item mb-2">
+            <li class="list-group-item mb-2" style="border: none; background: none">
                 <div class="dropend ">
                     <a class="botones btn" th:href="@{/adminProducto}" aria-expanded="false">
                         Productos
                     </a>                    
                 </div>
             </li>
-            <li class="list-group-item mb-2">
+            <li class="list-group-item mb-2" style="border: none; background: none">
                 <div class="dropend ">
                     <a class="botones btn" th:href="@{/admiNotificaciones}" aria-expanded="false">
                         Notificaciones
