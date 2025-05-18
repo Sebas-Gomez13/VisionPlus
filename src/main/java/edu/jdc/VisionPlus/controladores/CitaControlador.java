@@ -4,6 +4,7 @@ import edu.jdc.VisionPlus.clases.Cita;
 import edu.jdc.VisionPlus.clases.Notificacion;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.CitaDAO;
+import edu.jdc.VisionPlus.daos.EmailServiceImpl;
 import edu.jdc.VisionPlus.daos.UsuarioDAO;
 import jakarta.validation.Valid;
 import java.sql.Timestamp;
@@ -29,13 +30,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CitaControlador {
 
     @Autowired(required = true)
-    private CitaDAO citaDao;   
+    private CitaDAO citaDao;
+
+    @Autowired
+    private EmailServiceImpl emailService;
 
     @GetMapping("/listCitas")
     public String listarCita(Model vista) {
         List<Cita> arregloCitas = citaDao.consultar("");
         vista.addAttribute("arrCitas", arregloCitas);
-        return "listarCitas";
+        return "administrarCitas";
     }
 
     @GetMapping("/addCitas")
@@ -49,7 +53,7 @@ public class CitaControlador {
     }
 
     @PostMapping("/addCitas")
-    public String registrarCita(@Valid @ModelAttribute Cita objCita, BindingResult respuesta, Model vista, SessionStatus estado) {
+    public String registrarCita(@ModelAttribute("objCita") Cita objCita, BindingResult respuesta, Model vista, SessionStatus estado) {
         System.out.println(objCita.getFecha());
         System.out.println(objCita.getHora());
         if (respuesta.hasErrors()) {
@@ -62,6 +66,11 @@ public class CitaControlador {
             objCita.setFecha_hora(fechaCita);
             objCita.setEstado(1);
             citaDao.registrar(objCita);
+
+            emailService.sendEmail(objCita.getIdPaciente().getCorreoUsuario(), "Nueva Cita Generada", "Informacion Cita: " +
+                    "\n Oftalmologo: " + objCita.getIdOftalmologo().getNombreUsuario() +
+                    "\n Fecha y Hora: " + objCita.getFecha_hora());
+
             estado.setComplete();
             return "redirect:/adminCitas";
         }
@@ -97,7 +106,7 @@ public class CitaControlador {
     
     
     @PostMapping(value = {"/updateCitas/{idCita}"})
-    public String modificarCita(@PathVariable(value = "idCita") Integer codigo, @Valid @ModelAttribute("objCitas") Cita objActualizar,
+    public String modificarCita(@PathVariable(value = "idCita") Integer codigo, @ModelAttribute("objCitas") Cita objActualizar,
             BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {                
         if (respuesta.hasErrors()) {
             redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
@@ -109,6 +118,9 @@ public class CitaControlador {
             LocalDateTime fechaCitaLocal = LocalDateTime.of(fecha, hora);
             Timestamp fechaCita = Timestamp.valueOf(fechaCitaLocal);
             objActualizar.setFecha_hora(fechaCita);
+            emailService.sendEmail(objActualizar.getIdPaciente().getCorreoUsuario(), "Cita Actualizada", "Informacion Cita: " +
+                    "\n Oftalmologo: " + objActualizar.getIdOftalmologo().getNombreUsuario() +
+                    "\n Fecha y Hora: " + objActualizar.getFecha_hora());
             boolean actualizado = citaDao.actualizar(objActualizar);
             if (actualizado) {
                 redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar la Cita de: " + objActualizar.getIdPaciente().getNombreUsuario() + " " + objActualizar.getIdPaciente().getApellidoUsuario());
@@ -132,6 +144,7 @@ public class CitaControlador {
         objNotificacion.setMensajeNotificacion(mensaje);
         objNotificacion.setEstadoNotificacion(1);
         objNotificacion.setFechaEnvioNotificacion(Date.from(Instant.now()));
+        emailService.sendEmail(objNotificacion.getIdUsuario().getCorreoUsuario(), "Recordatorio Cita", "Recuerde que el dia de hoy tiene una cita");
         boolean noti = citaDao.nuevaNoti(objNotificacion);
         if(noti){
             Integer actu = citaDao.actualizarEstado(objEncontrado.getIdCita(), 2);

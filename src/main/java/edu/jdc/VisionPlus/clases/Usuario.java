@@ -10,14 +10,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_usuario")
@@ -63,14 +68,13 @@ public class Usuario {
     private Integer estadoUsuario;
     
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "cod_rol", nullable = false)
-    public Rol rolUsuario;
+    @Column(name = "rolUsuario")
+    public Integer rolUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String ApellidoUsuario, String correoUsuario, String contrasenaUsuario, Date fechaCreacionUsuario, String telefonoUsuario, String direccionUsuario, Integer estadoUsuario, Rol rolUsuario) {
+    public Usuario(Integer idUsuario, String nombreUsuario, String ApellidoUsuario, String correoUsuario, String contrasenaUsuario, Date fechaCreacionUsuario, String telefonoUsuario, String direccionUsuario, Integer estadoUsuario, Integer rolUsuario) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.ApellidoUsuario = ApellidoUsuario;
@@ -155,15 +159,13 @@ public class Usuario {
         this.estadoUsuario = estadoUsuario;
     }
 
-    public Rol getRolUsuario() {
+    public Integer getRolUsuario() {
         return rolUsuario;
     }
 
-    public void setRolUsuario(Rol rolUsuario) {
+    public void setRolUsuario(Integer rolUsuario) {
         this.rolUsuario = rolUsuario;
     }
- 
-    
 
     @Override
     public int hashCode() {
@@ -190,5 +192,35 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuarios{" + "idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", ApellidoUsuario=" + ApellidoUsuario + ", correoUsuario=" + correoUsuario + ", contrasenaUsuario=" + contrasenaUsuario + ", fechaCreacionUsuario=" + fechaCreacionUsuario + ", telefonoUsuario=" + telefonoUsuario + ", direccionUsuario=" + direccionUsuario + ", estadoUsuario=" + estadoUsuario + '}';
-    }                
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(() -> "ROLE_" + this.rolUsuario);
+    }
+
+    @Override
+    public String getPassword() {
+        return this.contrasenaUsuario;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.nombreUsuario;
+    }
 }

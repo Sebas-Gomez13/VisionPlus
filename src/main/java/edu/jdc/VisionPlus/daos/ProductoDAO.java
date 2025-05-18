@@ -1,7 +1,6 @@
 package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.Producto;
-import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
 import java.util.List;
@@ -51,7 +50,7 @@ public class ProductoDAO implements Operacion<Producto>{
     }
     
     public List<Usuario> obtenerUsuarios(){
-        return repoUsuario.findByRolUsuario(new Rol(1, ""));
+        return repoUsuario.findByRolUsuario(1);
     }
     
 }

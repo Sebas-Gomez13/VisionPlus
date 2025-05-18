@@ -2,7 +2,6 @@ package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.DetalleHistorial;
 import edu.jdc.VisionPlus.clases.Historial;
-import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
 import edu.jdc.VisionPlus.repositorios.DetalleHistorialRepositorio;
@@ -60,7 +59,7 @@ public class DetalleHistorialDAO implements Operacion<DetalleHistorial>{
     
     public List<Usuario> obtenerUsuariosOft() {
         // Llamar al método definido en el repositorio
-        return repoUsuario.findByRolUsuario(new Rol(3, ""));
+        return repoUsuario.findByRolUsuario(3);
     }
     
     public Historial buscarHistorial(Integer llavePrimaria){

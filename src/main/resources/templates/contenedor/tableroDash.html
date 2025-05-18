@@ -20,11 +20,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">  
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
             </ul>
             <div class="nabvar-nav navbar"> 
                 <span class="nav-item text-white fw-semibold fst-italic">
-                    <a class="titulo nav-link" th:href="@{/cerrarSesion}" style="color:#3e596d; padding-right: 10px" >Cerrar Sesión</a>
+                    <form method="post" th:action="@{/logout}">
+                        <button }class="titulo nav-link" style="color:#3e596d; padding-right: 10px" >Cerrar Sesión</button>
+                    </form>
                 </span>
             </div>
         </div>

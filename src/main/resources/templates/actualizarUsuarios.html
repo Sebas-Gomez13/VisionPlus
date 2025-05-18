@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <form th:action="@{/updateUsuarios/{idUsuario}(idUsuario =${objUsuario.idUsuario})}" th:object="${objUsuario}" method="post">
                                     <input type="date" name="fechaCreacionUsuario" class="form-control" th:field="*{fechaCreacionUsuario}" hidden>
-                                    <input type="text" name="rolUsuario" class="form-control" th:field="*{rolUsuario.idRol}" hidden>
+                                    <input type="text" name="rolUsuario" class="form-control" th:field="*{rolUsuario}" hidden>
                                     <div class="mb-3">
                                         <label class="form-label">
                                             <span class="rojito"></span> Nombres
@@ -68,7 +68,7 @@
                                             <option th:value="0" th:text="'Inactivo'" 
                                                     th:selected="${estadoUsuario == 0}">Inactivo</option>
                                         </select>
-                                                  </div>
+                                        </div>
                                     <span class="d-flex justify-content-center">
                                         <button type="submit" class="btn  col-3 fw.semibold mx-3"style="background: #aecfb7">Actualizar</button>
                                         <a th:href="@{/adminUsuarios}" class="btn btn-danger col-3 fw-semibold mx-3"> Cancelar</a>

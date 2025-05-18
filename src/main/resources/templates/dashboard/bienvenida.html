@@ -22,9 +22,8 @@
                                 <div class="card-body text-center">
                                     <p>Estamos encantados de que estés aquí. Estos son tus datos:</p>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><i class="fas fa-user"></i> <span th:text="${objSesion.nombreUsuario + ' ' + objSesion.apellidosUsuario}"></span></li>
-                                        <li class="list-group-item"><i class="fas fa-envelope"></i> <span th:text="${objSesion.correoAcceso}"></span></li>
-                                        <li class="list-group-item"><i class="fas fa-user-tag"></i> Rol: <span th:text="${objSesion.nombreRol}"></span></li>
+                                        <li class="list-group-item"><i class="fas fa-user"></i> <span th:text="${idUsuario.nombreUsuario}"></span></li>
+                                        <li class="list-group-item"><i class="fas fa-envelope"></i> <span th:text="${idUsuario.correoUsuario}"></span></li>
                                     </ul>
                                 </div>
                             </div>

@@ -20,7 +20,7 @@ public class Historial {
     @Column(name="id_historial")
     private Integer idHistorial;
     
-    @NotNull
+
     @OneToOne
     @JoinColumn(name = "id_paciente", nullable = false)
     private Usuario idPaciente;

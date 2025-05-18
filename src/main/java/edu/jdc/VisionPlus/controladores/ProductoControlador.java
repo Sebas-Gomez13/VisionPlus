@@ -28,7 +28,7 @@ public class ProductoControlador {
     public String listarProducto(Model vista) {
         List<Producto> arregloProductos = productoDao.consultar("");
         vista.addAttribute("arrProductos", arregloProductos);
-        return "listarProducto";
+        return "administrarProducto";
     }
 
     @GetMapping("/addProducto")
@@ -40,7 +40,7 @@ public class ProductoControlador {
     }
 
     @PostMapping("/addProducto")
-    public String registrarProducto(@Valid @ModelAttribute Producto objProductos, BindingResult respuesta, Model vista, SessionStatus estado) {
+    public String registrarProducto(@ModelAttribute("objProducto") Producto objProductos, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearProducto";
 
@@ -77,7 +77,7 @@ public class ProductoControlador {
         
     }
     @PostMapping(value = {"/updateProducto/{idProducto}"})
-    public String modificarProducto(@PathVariable(value = "idProducto") Integer codigo, @Valid @ModelAttribute("objProducto") Producto objActualizar,
+    public String modificarProducto(@PathVariable(value = "idProducto") Integer codigo, @ModelAttribute("objProducto") Producto objActualizar,
             BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {                
         if (respuesta.hasErrors()) {
             redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");

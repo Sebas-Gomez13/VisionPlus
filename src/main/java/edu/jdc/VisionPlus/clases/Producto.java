@@ -41,7 +41,7 @@ public class Producto {
     @Column(name = "categoria")
     private Integer categoria;
     
-    @NotNull    
+
     @Column(name = "cantidad_visitas")
     private Integer cantidadVisitas;
     

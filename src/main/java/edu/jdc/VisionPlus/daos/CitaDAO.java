@@ -2,7 +2,6 @@ package edu.jdc.VisionPlus.daos;
 
 import edu.jdc.VisionPlus.clases.Cita;
 import edu.jdc.VisionPlus.clases.Notificacion;
-import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
 import java.util.List;
@@ -57,12 +56,12 @@ public class CitaDAO implements Operacion<Cita>{
     }
     public List<Usuario> obtenerUsuariosPorRol() {
         // Llamar al método definido en el repositorio
-        return repoUsuario.findByRolUsuario(new Rol(4, ""));
+        return repoUsuario.findByRolUsuario(4);
     }
     
     public List<Usuario> obtenerUsuariosOft() {
         // Llamar al método definido en el repositorio
-        return repoUsuario.findByRolUsuario(new Rol(3, ""));
+        return repoUsuario.findByRolUsuario(3);
     }
     
     public Boolean nuevaNoti(Notificacion objNoti){

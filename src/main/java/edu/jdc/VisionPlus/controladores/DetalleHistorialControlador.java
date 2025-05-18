@@ -51,7 +51,7 @@ public class DetalleHistorialControlador {
     }
 
     @PostMapping("/addDetalleHistorial")
-    public String registrarUsuario(@Valid @ModelAttribute DetalleHistorial objDetalleHistorial, BindingResult respuesta, Model vista, SessionStatus estado) {
+    public String registrarUsuario(@ModelAttribute("objDetalleHistorial") DetalleHistorial objDetalleHistorial, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearUsuarios";
         } else {

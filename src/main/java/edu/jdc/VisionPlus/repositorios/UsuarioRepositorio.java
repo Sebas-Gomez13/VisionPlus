@@ -1,7 +1,5 @@
 package edu.jdc.VisionPlus.repositorios;
 
-import edu.jdc.VisionPlus.clases.Notificacion;
-import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
 import java.util.List;
 import org.springframework.data.jpa.repository.Modifying;
@@ -15,9 +13,9 @@ public interface UsuarioRepositorio extends CrudRepository<Usuario, Integer> {
     @Query("UPDATE Usuario set estadoUsuario=0 WHERE idUsuario=:llavePrimaria")
     public Integer eliminarUsuario(@Param("llavePrimaria") Integer llavePrimaria);
 
-    List<Usuario> findByRolUsuario(Rol rolUsuario);
-    List<Usuario> findByIdUsuario(Integer idUsuario);
+    List<Usuario> findByRolUsuario(Integer rolUsuario);
+    Usuario findByCorreoUsuario(String correo);
         
-    List<Usuario> findByRolUsuario_IdRolIn(List<Integer> ids);
+    List<Usuario> findByRolUsuarioIn(List<Integer> ids);
 
 }

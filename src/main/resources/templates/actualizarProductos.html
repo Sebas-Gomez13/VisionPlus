@@ -20,6 +20,7 @@
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/updateProducto/{idProducto}(idProducto =${objProducto.idProducto})}" th:object="${objProducto}" method="post">
+                                    <input type="text"  class="form-control" th:field="*{cantidadVisitas}" required hidden>
                                     <div class="mb-3">
                                         <label for="idUsuario" class="form-label">
                                             <span class="rojito"></span> Usuario

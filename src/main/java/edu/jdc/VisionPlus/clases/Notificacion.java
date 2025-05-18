@@ -22,21 +22,21 @@ public class Notificacion {
     @Column(name = "id_notificacion")
     private Integer idNotificacion;
     
-    @NotNull
+
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario idUsuario;
     
-    @NotNull
+
     @Size(min = 3, max = 250)
     @Column(name = "mensaje_notificacion")
     private String mensajeNotificacion;
     
-    @NotNull    
+
     @Column(name = "fecha_envio_notificacion")
     private Date fechaEnvioNotificacion;
     
-    @NotNull    
+
     @Column(name = "estado_notificacion")
     private Integer estadoNotificacion;
     

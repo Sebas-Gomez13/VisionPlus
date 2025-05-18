@@ -1,9 +1,7 @@
 package edu.jdc.VisionPlus.controladores;
 
 import edu.jdc.VisionPlus.clases.Historial;
-import edu.jdc.VisionPlus.clases.Rol;
 import edu.jdc.VisionPlus.clases.Usuario;
-import edu.jdc.VisionPlus.daos.RolDAO;
 import edu.jdc.VisionPlus.daos.UsuarioDAO;
 import jakarta.validation.Valid;
 import java.time.LocalDate;
@@ -12,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,37 +26,37 @@ public class UsuarioControlador {
 
     @Autowired(required = true)
     private UsuarioDAO usuarioDao;
-    
-    @Autowired(required=true)
-    private RolDAO rolDao;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @GetMapping("/listUsuarios")
     public String listarUsuario(Model vista) {
         List<Usuario> arregloUsuarios = usuarioDao.consultar("");
         vista.addAttribute("arrUsuarios", arregloUsuarios);
-        return "listarUsuarios";
+        return "administrarUsuarios";
     }
 
     @GetMapping("/addUsuarios")
     public String crearUsuario(Model vista) {
-        List<Rol> arrRol = rolDao.consultar("");
-        vista.addAttribute("objUsuario", new Usuario());
-        vista.addAttribute("arrRoles", arrRol);
+        vista.addAttribute("objUsuarios", new Usuario());
         return "crearUsuarios";
     }
 
     @PostMapping("/addUsuarios")
-    public String registrarUsuario(@Valid @ModelAttribute Usuario objUsuarios, BindingResult respuesta, Model vista, SessionStatus estado) {
+    public String registrarUsuario(@ModelAttribute ("objUsuarios") Usuario objUsuarios, BindingResult respuesta, Model vista, SessionStatus estado) {
         if (respuesta.hasErrors()) {
             return "crearUsuarios";
         } else {                      
             objUsuarios.setFechaCreacionUsuario(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
             objUsuarios.setEstadoUsuario(1);
-            String claveCifrada = DigestUtils.sha512Hex(objUsuarios.getContrasenaUsuario());
-            objUsuarios.setContrasenaUsuario(claveCifrada);
+            if (objUsuarios.getContrasenaUsuario() != null && !objUsuarios.getContrasenaUsuario().isEmpty()) {
+                // Opcional: encriptar contraseña si usas Spring Security
+                String encryptedPassword = passwordEncoder.encode(objUsuarios.getContrasenaUsuario());
+                objUsuarios.setContrasenaUsuario(encryptedPassword);
+            }
             usuarioDao.registrar(objUsuarios);
-            int rol = objUsuarios.getRolUsuario().getIdRol();
+            int rol = objUsuarios.getRolUsuario();
             if( rol == 4){
                 Historial objHistorial = new Historial();            
                 objHistorial.setIdPaciente(objUsuarios);
@@ -109,15 +108,18 @@ public class UsuarioControlador {
     }
 
     @PostMapping(value = {"/updateUsuarios/{idUsuario}"})
-    public String modificarUsuario(@PathVariable(value = "idUsuario") Integer codigo, @Valid @ModelAttribute("objUsuario") Usuario objActualizar,
+    public String modificarUsuario(@PathVariable(value = "idUsuario") Integer codigo, @ModelAttribute("objUsuario") Usuario objActualizar,
             BindingResult respuesta, SessionStatus estado, RedirectAttributes redireccionar) {                
         if (respuesta.hasErrors()) {
             redireccionar.addFlashAttribute("mensaje", "FallO al Actualizar el Objeto");
             redireccionar.addFlashAttribute("tipo", "alert-danger");
         } else {
-            objActualizar.setIdUsuario(codigo);        
-            String claveCifrada = DigestUtils.sha512Hex(objActualizar.getContrasenaUsuario());
-            objActualizar.setContrasenaUsuario(claveCifrada);
+            objActualizar.setIdUsuario(codigo);
+            if (objActualizar.getContrasenaUsuario() != null && !objActualizar.getContrasenaUsuario().isEmpty()) {
+                // Opcional: encriptar contraseña si usas Spring Security
+                String encryptedPassword = passwordEncoder.encode(objActualizar.getContrasenaUsuario());
+                objActualizar.setContrasenaUsuario(encryptedPassword);
+            }
             boolean actualizado = usuarioDao.actualizar(objActualizar);
             if (actualizado) {
                 redireccionar.addFlashAttribute("mensaje", "Exito al Actualizar el Usuario: " + objActualizar.getNombreUsuario() + " " + objActualizar.getApellidoUsuario());
