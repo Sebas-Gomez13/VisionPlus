@@ -21,7 +21,7 @@
                                 </div> 
                             </div>
                             <div class="text-start">                            
-                                <a th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:href="@{/addDetalleHistorial/}+${arrDetalle[0].idHistorial.idHistorial}" class="colorBoton btn w-100">
+                                <a th:if="${arrDetalle != null and !arrDetalle.isEmpty()}" th:href="@{/addDetalleHistorial/}+${arrDetalle[0].idHistorial.idHistorial}" sec:authorize="hasAnyRole('ADMIN', 'OFTALMOLOGO')" class="colorBoton btn w-100">
                                     Agregar Detalle
                                 </a>
                             </div>
@@ -45,7 +45,7 @@
                                             <td th:text="${objDetalleHistorial.descripcion}"></td>
                                             <td th:text="${objDetalleHistorial.prescripcion}"></td>
                                             <td>
-                                                <a th:href="@{/updateDetalleHistorial/}+${objDetalleHistorial.idDetalleHistorial}" class="actualizarbtn btn btn-sm">
+                                                <a th:href="@{/updateDetalleHistorial/}+${objDetalleHistorial.idDetalleHistorial}" class="actualizarbtn btn btn-sm" sec:authorize="hasAnyRole('ADMIN', 'OFTALMOLOGO')">
                                                     <i class="fa fa-edit fs-5 text-white"></i>  
                                                 </a>
                                             </td>

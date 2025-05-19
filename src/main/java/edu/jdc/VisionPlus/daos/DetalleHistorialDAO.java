@@ -59,7 +59,7 @@ public class DetalleHistorialDAO implements Operacion<DetalleHistorial>{
     
     public List<Usuario> obtenerUsuariosOft() {
         // Llamar al método definido en el repositorio
-        return repoUsuario.findByRolUsuario(3);
+        return repoUsuario.findByRolUsuario("oftalmologo");
     }
     
     public Historial buscarHistorial(Integer llavePrimaria){

@@ -41,7 +41,7 @@
                                                     <i class="fa fa-eye fs-5 text-white"></i>  
                                                 </a>
                                                 &nbsp;
-                                                <a th:href="@{/addDetalleHistorial/}+${objHistoriales.idHistorial}" class="btn btn-success btn-sm">
+                                                <a th:href="@{/addDetalleHistorial/}+${objHistoriales.idHistorial}" sec:authorize="hasAnyRole('ADMIN', 'OFTALMOLOGO')" class="btn btn-success btn-sm">
                                                     <i class="fa fa-edit fs-5 text-white"></i>  
                                                 </a>
                                             </td>

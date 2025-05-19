@@ -13,7 +13,7 @@ public interface UsuarioRepositorio extends CrudRepository<Usuario, Integer> {
     @Query("UPDATE Usuario set estadoUsuario=0 WHERE idUsuario=:llavePrimaria")
     public Integer eliminarUsuario(@Param("llavePrimaria") Integer llavePrimaria);
 
-    List<Usuario> findByRolUsuario(Integer rolUsuario);
+    List<Usuario> findByRolUsuario(String rolUsuario);
     Usuario findByCorreoUsuario(String correo);
         
     List<Usuario> findByRolUsuarioIn(List<Integer> ids);

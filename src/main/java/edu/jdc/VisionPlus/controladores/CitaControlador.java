@@ -6,6 +6,7 @@ import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.CitaDAO;
 import edu.jdc.VisionPlus.daos.EmailServiceImpl;
 import edu.jdc.VisionPlus.daos.UsuarioDAO;
+import edu.jdc.VisionPlus.repositorios.CitaRepositorio;
 import jakarta.validation.Valid;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -32,12 +33,27 @@ public class CitaControlador {
     @Autowired(required = true)
     private CitaDAO citaDao;
 
+    @Autowired(required = true)
+    private UsuarioDAO usuarioDao;
+
     @Autowired
     private EmailServiceImpl emailService;
+    @Autowired
+    private CitaRepositorio citaRepositorio;
 
     @GetMapping("/listCitas")
     public String listarCita(Model vista) {
-        List<Cita> arregloCitas = citaDao.consultar("");
+        List<Cita> arregloCitas;
+        Usuario user = usuarioDao.authenticationUser();
+        System.out.println(user.getRolUsuario());
+        if(user.getRolUsuario().equals("oftalmologo")) {
+            arregloCitas = citaRepositorio.findCitaByIdOftalmologo(user);
+            System.out.println(arregloCitas);
+        } else if (user.getRolUsuario().equals("paciente")) {
+            arregloCitas = citaRepositorio.findCitaByIdPaciente(user);
+        } else {
+            arregloCitas = citaDao.consultar("");
+        }
         vista.addAttribute("arrCitas", arregloCitas);
         return "administrarCitas";
     }
@@ -65,6 +81,12 @@ public class CitaControlador {
             Timestamp fechaCita = Timestamp.valueOf(fechaCitaLocal);
             objCita.setFecha_hora(fechaCita);
             objCita.setEstado(1);
+            Usuario availableOftalmologo = citaDao.getAvailableOftalmologo(null);
+
+            if (availableOftalmologo != null) {
+                objCita.setIdOftalmologo(availableOftalmologo);
+                objCita.setEstado(1);
+            }
             citaDao.registrar(objCita);
 
             emailService.sendEmail(objCita.getIdPaciente().getCorreoUsuario(), "Nueva Cita Generada", "Informacion Cita: " +
@@ -78,7 +100,17 @@ public class CitaControlador {
 
     @GetMapping("/adminCitas")
     public String administrarCita(Model vista) {
-        List<Cita> arregloCitas = citaDao.consultar("");
+        List<Cita> arregloCitas;
+        Usuario user = usuarioDao.authenticationUser();
+        System.out.println(user.getRolUsuario());
+        if(user.getRolUsuario().equals("oftalmologo")) {
+            arregloCitas = citaRepositorio.findCitaByIdOftalmologo(user);
+            System.out.println(arregloCitas);
+        } else if (user.getRolUsuario().equals("paciente")) {
+            arregloCitas = citaRepositorio.findCitaByIdPaciente(user);
+        } else {
+            arregloCitas = citaDao.consultar("");
+        }
         vista.addAttribute("arrCitas", arregloCitas);
         return "administrarCitas";
     }
@@ -186,5 +218,37 @@ public class CitaControlador {
         Cita objEncontrado = citaDao.buscar(llavePrimaria);
         citaDao.actualizarEstado(objEncontrado.getIdCita(), 3);
         return "redirect:/adminCitas";
+    }
+
+    @PostMapping("AssignOftalmologo/{id}")
+    public String assignOftalmologo(@PathVariable Integer id) {
+        Cita citaEntity = citaDao.buscar(id);
+
+        Integer previousState = citaEntity.getEstado();
+
+        // Validación: si ya tiene técnico asignado, redirige sin hacer nada
+        if (citaEntity.getIdOftalmologo() != null) {
+            return "redirect:/ListCita";
+        }
+
+        Usuario availableOftalmologo = citaDao.getAvailableOftalmologo(citaEntity.getIdOftalmologo().getIdUsuario());
+        Usuario user = usuarioDao.buscar(citaEntity.getIdPaciente().getIdUsuario());
+
+        if (availableOftalmologo != null) {
+            citaEntity.setIdOftalmologo(availableOftalmologo);
+            citaEntity.setEstado(1);
+        }
+        Cita updateCitaEntity = citaRepositorio.save(citaEntity);
+        Integer newState = updateCitaEntity.getEstado();
+        Usuario idUser = usuarioDao.authenticationUser();
+
+        if (updateCitaEntity.getIdOftalmologo() != null) {
+            emailService.sendEmail(updateCitaEntity.getIdPaciente().getCorreoUsuario(), "Cita Actualizada", "La cita del dia: " + updateCitaEntity.getFecha_hora() + " ha sido actualizada" +
+                    "\n Notificacion: " + "La cita Fue Asignada a un Oftalmologo");
+            emailService.sendEmail(updateCitaEntity.getIdOftalmologo().getCorreoUsuario(), "Nueva Cita", "Se le ha Asignado la Cita" +
+                    "\n Notificacion: " + "Se le ha Asignado una Nueva Cita");
+        }
+
+        return "redirect:/ListCita";
     }
 }

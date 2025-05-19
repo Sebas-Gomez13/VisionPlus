@@ -56,12 +56,12 @@ public class CitaDAO implements Operacion<Cita>{
     }
     public List<Usuario> obtenerUsuariosPorRol() {
         // Llamar al método definido en el repositorio
-        return repoUsuario.findByRolUsuario(4);
+        return repoUsuario.findByRolUsuario("paciente");
     }
     
     public List<Usuario> obtenerUsuariosOft() {
         // Llamar al método definido en el repositorio
-        return repoUsuario.findByRolUsuario(3);
+        return repoUsuario.findByRolUsuario("oftalmologo");
     }
     
     public Boolean nuevaNoti(Notificacion objNoti){
@@ -71,6 +71,25 @@ public class CitaDAO implements Operacion<Cita>{
     @Transactional
     public Integer actualizarEstado(Integer llavePrimaria, Integer estadoAct){
         return repoCita.actualizarCita(llavePrimaria, estadoAct);
+    }
+
+
+    public Usuario getAvailableOftalmologo(Integer idActualOftalmologo) {
+        List<Usuario> oftalmologos = repoUsuario.findByRolUsuario("oftalmologo");
+        int maxOpenCitas = 2; // Puedes cambiarlo fácilmente en el futuro (por ejemplo, a 5)
+
+        for (Usuario oftalmologo : oftalmologos) {
+            if (idActualOftalmologo != null && oftalmologo.getIdUsuario().equals(idActualOftalmologo)) {
+                continue;
+            }
+
+            int open = repoCita.countByIdOftalmologoAndEstado(oftalmologo, 1);
+            if (open < maxOpenCitas) {
+                return oftalmologo;
+            }
+        }
+
+        return null; // No hay técnicos disponibles por debajo del límite
     }
     
 }

@@ -14,4 +14,16 @@ public interface CitaRepositorio extends CrudRepository<Cita, Integer>{
     @Modifying
     @Query("UPDATE Cita set estado=:estadoAct where idCita=:llavePrimaria")
     public Integer actualizarCita(@Param("llavePrimaria") Integer llavePrimaria, @Param("estadoAct") Integer estadoAct);
+    public List<Cita> findCitaByIdOftalmologo(Usuario oft);
+    public List<Cita> findCitaByIdPaciente(Usuario user);
+    int countByIdOftalmologoAndEstado(Usuario oftalmologo, Integer estado);
+    @Query("""
+                SELECT c FROM Cita c
+                WHERE c.idOftalmologo.idUsuario = :idOftalmologo
+                AND (:estado IS NULL OR c.estado = :estado)
+            """)
+    List<Cita> findCitasFiltrados(
+            @Param("idOftalmologo") Long idOftalmologo,
+            @Param("estado") Integer estado
+    );
 }

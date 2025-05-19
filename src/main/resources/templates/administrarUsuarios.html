@@ -25,7 +25,6 @@
                     </a>
                 </div>
                 <div class="mt-2">
-                    <p th:text="${usuario.rolUsuario}"></p>
                     <table class="table table-sm table-striped table-hover">
                         <thead>
                         <tr class="table table-light bg-primary">
@@ -47,7 +46,7 @@
                             th:if="${!(usuario.rolUsuario == 2 and objUsuario.idUsuario == 1)}">
                             <td th:text="${objUsuario.idUsuario}"></td>
                             <td th:text="${objUsuario.nombreUsuario}"></td>
-                            <td th:text="${objUsuario.ApellidoUsuario}"></td>
+                            <td th:text="${objUsuario.apellidoUsuario}"></td>
                             <td th:text="${objUsuario.direccionUsuario}"></td>
                             <td th:text="${#dates.format(objUsuario.fechaCreacionUsuario, 'yyyy/MMM/dd').toUpperCase()}"></td>
                             <td th:text="${objUsuario.correoUsuario}"></td>
@@ -56,10 +55,10 @@
                                       th:text="${objUsuario.estadoUsuario == 0 ? 'Inactivo' : 'Activo'}"
                                       th:classappend="${objUsuario.estadoUsuario == 0 ? 'alert-danger' : 'text-success'}"></span>
                             </td>
-                            <td th:text="${objUsuario.rolUsuario == 1 ? 'Administrador' :
-              (objUsuario.rolUsuario == 2 ? 'Recepcionista' :
-              (objUsuario.rolUsuario == 3 ? 'Oftalmólogo' :
-              (objUsuario.rolUsuario == 4 ? 'Paciente' : 'Desconocido')))}"></td>
+                            <td th:text="${objUsuario.rolUsuario.equals('admin') ? 'Administrador' :
+              (objUsuario.rolUsuario.equals('recepcionista') ? 'Recepcionista' :
+              (objUsuario.rolUsuario.equals('oftalmologo') ? 'Oftalmólogo' :
+              (objUsuario.rolUsuario.equals('paciente') ? 'Paciente' : 'Desconocido')))}"></td>
 
                             <td>
                                 <a th:href="@{/updateUsuarios/}+${objUsuario.idUsuario}"

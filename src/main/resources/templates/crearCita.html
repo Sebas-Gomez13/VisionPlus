@@ -28,26 +28,16 @@
                                             <option value="null">Seleccione un Paciente</option>
                                             <option th:each="objUsuario:${arrCita}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
                                         </select>
-                                        <span class="rojito" th:if="${objCita.idPaciente==null}"th:errors="*{idPaciente}">Seleccione un Paciente</span>     
+                                        <span class="rojito" th:if="${objCita.idPaciente==null}"th:errors="*{idPaciente}">Seleccione un Paciente</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="idOftalmologo" class="form-label">
-                                            <span class="rojito"></span> Oftalmologo
-                                        </label>
-                                        <select id="idOftalmologo" class="form-select" th:field="*{idOftalmologo}">
-                                            <option value="null">Seleccione un Oftalmologo</option>
-                                            <option th:each="objUsuario:${arrCitaOf}" th:text="${objUsuario.nombreUsuario}" th:value="${objUsuario.idUsuario}"></option>
-                                        </select>
-                                        <span class="rojito" th:if="${objCita.idOftalmologo==null}"th:errors="*{idOftalmologo}">Seleccione un Oftalmologo</span>     
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="idOftalmologo" class="form-label">
+                                        <label  class="form-label">
                                             <span class="rojito"></span> Fecha
                                         </label>
                                         <input type="date" class="form-control" th:field="*{fecha}">                                                                                                                                    
                                     </div>
                                     <div class="mb-3">
-                                        <label for="idOftalmologo" class="form-label">
+                                        <label  class="form-label">
                                             <span class="rojito"></span> Hora
                                         </label>
                                         <input type="time" class="form-control" step="1800" min="08:00" max="17:00"  th:field="*{hora}">

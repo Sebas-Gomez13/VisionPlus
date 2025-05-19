@@ -1,7 +1,11 @@
 package edu.jdc.VisionPlus.controladores;
 
+import edu.jdc.VisionPlus.clases.Cita;
 import edu.jdc.VisionPlus.clases.Historial;
+import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.daos.HistorialDAO;
+import edu.jdc.VisionPlus.daos.UsuarioDAO;
+import edu.jdc.VisionPlus.repositorios.HistorialRepositorio;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +22,20 @@ public class HistorialControlador {
 
     @Autowired(required = true)
     private HistorialDAO historialDao;
+    @Autowired
+    private UsuarioDAO usuarioDAO;
+    @Autowired
+    private HistorialRepositorio historialRepositorio;
 
     @GetMapping("/adminHistoriales")
     public String administrarHistorial(Model vista) {
-        List<Historial> arregloHistoriales = historialDao.consultar("");
+        List<Historial> arregloHistoriales;
+        Usuario user = usuarioDAO.authenticationUser();
+        if (user.getRolUsuario().equals("paciente")) {
+            arregloHistoriales = historialRepositorio.findByIdPaciente(user);
+        } else {
+            arregloHistoriales = historialDao.consultar("");
+        }
         vista.addAttribute("arrHistoriales", arregloHistoriales);
         return "administrarHistoriales";
     }

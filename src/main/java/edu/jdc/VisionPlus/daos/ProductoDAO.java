@@ -50,7 +50,7 @@ public class ProductoDAO implements Operacion<Producto>{
     }
     
     public List<Usuario> obtenerUsuarios(){
-        return repoUsuario.findByRolUsuario(1);
+        return repoUsuario.findByRolUsuario("admin");
     }
     
 }
