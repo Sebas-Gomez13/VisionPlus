@@ -28,8 +28,7 @@ public class Cita {
     @ManyToOne
     @JoinColumn(name = "id_paciente", nullable = false)
     private Usuario idPaciente;
-    
-    @NotNull
+
     @ManyToOne
     @JoinColumn(name = "id_oftalmologo", nullable = false)
     private Usuario idOftalmologo;

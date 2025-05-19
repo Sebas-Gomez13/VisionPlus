@@ -90,9 +90,13 @@ public class CitaControlador {
                 objCita.setEstado(1);
             }
             citaDao.registrar(objCita);
+            String oftalmologo = "No se le ha asignado un oftalmologo";
+            if(objCita.getIdOftalmologo() != null) {
+                oftalmologo = objCita.getIdOftalmologo().getNombreUsuario() + " " + objCita.getIdOftalmologo().getNombreUsuario();
+            }
 
             emailService.sendEmail(objCita.getIdPaciente().getCorreoUsuario(), "Nueva Cita Generada", "Informacion Cita: " +
-                    "\n Oftalmologo: " + objCita.getIdOftalmologo().getNombreUsuario() +
+                    "\n Oftalmologo: " + oftalmologo +
                     "\n Fecha y Hora: " + objCita.getFecha_hora());
 
             estado.setComplete();

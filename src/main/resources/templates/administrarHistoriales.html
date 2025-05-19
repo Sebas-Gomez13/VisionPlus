@@ -1,59 +1,65 @@
 <html>
-    <head th:replace="contenedor/tableroDash :: head"></head>
-    <body>
-        <main>
-            <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                        
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel" style="background: #E8DAEF">
-                    <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
-                </div>  
-            <section>
-                <div class="container-fluid">
-                    <h4 class="fw-semibold fst-italic text-center"><img th:src="@{/img/adminHistoriales.png}" style="width: 84%; border-radius: 0px 0px 30px 30px; height: 35%"> <br></h4>                
-                    <div class="d-flex justify-content-center ">
-                        <div class="col-md-10">
-                            <div th:if="${mensaje != null}">
-                                <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
-                                    <span class="fw-semibold" th:text="${mensaje}"></span>
-                                    <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
-                                </div> 
-                            </div>                            
-                            <!--<div class="text-end">
-                                <a th:href="@{/addHistoriales}" class="btn btn-info text-white">
-                                    Registrar Historial
-                                </a>
-                            </div>-->
-                            <div class="mt-2">
-                                <table class="table table-sm table-striped table-hover">
-                                    <thead>
-                                        <tr class="table table-striped table-hover">
-                                            <th>Codigo</th>
-                                            <th>Paciente</th>                                            
-                                            <th style="">&nbsp;</th>
-                                        </tr>
-                                    </thead>
+<head th:replace="contenedor/tableroDash :: head"></head>
+<body>
+<main>
+    <nav th:replace="contenedor/tableroDash :: cabecera"></nav>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel"
+         style="background: #E8DAEF">
+        <div th:replace="contenedor/tablerodash :: menuLateral"></div>
+    </div>
+    <section>
+        <div class="container-fluid">
+            <h4 class="fw-semibold fst-italic text-center"><img th:src="@{/img/adminHistoriales.png}"
+                                                                style="width: 84%; border-radius: 0px 0px 30px 30px; height: 35%">
+                <br></h4>
+            <div class="d-flex justify-content-center ">
+                <div class="col-md-10">
+                    <div th:if="${mensaje != null}">
+                        <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
+                            <span class="fw-semibold" th:text="${mensaje}"></span>
+                            <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
+                        </div>
+                    </div>
+                    <!--<div class="text-end">
+                        <a th:href="@{/addHistoriales}" class="btn btn-info text-white">
+                            Registrar Historial
+                        </a>
+                    </div>-->
+                    <div class="mt-2">
+                        <table class="table table-sm table-striped table-hover">
+                            <thead>
+                            <tr class="table table-striped table-hover">
+                                <th>Codigo</th>
+                                <th>Paciente</th>
+                                <th style="">&nbsp;</th>
+                            </tr>
+                            </thead>
 
-                                    <tbody>
-                                        <tr th:each="objHistoriales:${arrHistoriales}" >
-                                            <td th:text="${objHistoriales.idHistorial}"></td>
-                                            <td th:text="${objHistoriales.idPaciente.nombreUsuario+' '+objHistoriales.idPaciente.ApellidoUsuario}"></td>                                            
-                                            <td>
-                                                <a th:href="@{/adminDetalleHistorial/}+${objHistoriales.idHistorial}" class="actualizarbtn btn btn-sm">
-                                                    <i class="fa fa-eye fs-5 text-white"></i>  
-                                                </a>
-                                                &nbsp;
-                                                <a th:href="@{/addDetalleHistorial/}+${objHistoriales.idHistorial}" sec:authorize="hasAnyRole('ADMIN', 'OFTALMOLOGO')" class="btn btn-success btn-sm">
-                                                    <i class="fa fa-edit fs-5 text-white"></i>  
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> 
+                            <tbody>
+                            <tr th:each="objHistoriales:${arrHistoriales}">
+                                <td th:text="${objHistoriales.idHistorial}"></td>
+                                <td th:text="${objHistoriales.idPaciente.nombreUsuario+' '+objHistoriales.idPaciente.ApellidoUsuario}"></td>
+                                <td>
+                                    <a th:href="@{/adminDetalleHistorial/}+${objHistoriales.idHistorial}"
+                                       class="actualizarbtn btn btn-sm">
+                                        <i class="fa fa-eye fs-5 text-white"></i>
+                                    </a>
+                                    &nbsp;
+                                    <a th:href="@{/addDetalleHistorial/}+${objHistoriales.idHistorial}"
+                                       sec:authorize="hasAnyRole('ADMIN', 'OFTALMOLOGO')"
+                                       class="btn btn-success btn-sm">
+                                        <i class="fa fa-edit fs-5 text-white"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </section>
-        </main>
-    </body>
-    <footer th:replace="contenedor/tablero :: footer"></footer>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+<footer th:replace="contenedor/tablero :: footer"></footer>
 </html>

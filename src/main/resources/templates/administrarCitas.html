@@ -1,79 +1,90 @@
 <html>
-    <head th:replace="contenedor/tableroDash :: head"></head>
-    <body>
-        <main>
-            <nav th:replace="contenedor/tableroDash :: cabecera"></nav>                                                                    
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
-                    <div  th:replace="contenedor/tablerodash :: menuLateral"></div>
-                </div>            
-            <section>
-                <div class="container-fluid">
-                    <h4 class="fw-semibold fst-italic text-center"><img th:src="@{/img/AdminCitas.png}" style="width: 84%; border-radius: 0px 0px 30px 30px; height: 35%"> <br></h4>
-                    <div class="d-flex justify-content-center ">
-                        <div class="col-md-10">
-                            <div th:if="${mensaje != null}">
-                                <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
-                                    <span class="fw-semibold" th:text="${mensaje}"></span>
-                                    <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
-                                </div> 
-                            </div>
-                            <div class="text-start" sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA')">
-                                <a th:href="@{/addCitas}" class="colorBoton btn w-100">
-                                    Nueva Cita
-                                </a>
-                            </div>
-                            <div class="mt-2">
-                                <table class="table table-sm table-striped table-hover">
-                                    <thead>
-                                        <tr class="table table-striped table-hover">                                        
-                                            <th>Paciente</th>
-                                            <th>Oftalmologo</th>
-                                            <th>Fecha</th>
-                                            <th>Hora</th>
-                                            <th>Estado</th>
-                                            <th>&nbsp;</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="objCitas:${arrCitas}">
-                                            <td th:text="${objCitas.idPaciente.nombreUsuario + ' ' + objCitas.idPaciente.ApellidoUsuario}"></td>
-                                            <td th:text="${objCitas.idOftalmologo.nombreUsuario + ' ' + objCitas.idOftalmologo.ApellidoUsuario}"></td>
-                                            <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MMM-dd').toUpperCase}"></td>
-                                            <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>                                        
-                                            <td>
+<head th:replace="contenedor/tableroDash :: head"></head>
+<body>
+<main>
+    <nav th:replace="contenedor/tableroDash :: cabecera"></nav>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel"
+         style="background: #E8DAEF">
+        <div th:replace="contenedor/tablerodash :: menuLateral"></div>
+    </div>
+    <section>
+        <div class="container-fluid">
+            <h4 class="fw-semibold fst-italic text-center"><img th:src="@{/img/AdminCitas.png}"
+                                                                style="width: 84%; border-radius: 0px 0px 30px 30px; height: 35%">
+                <br></h4>
+            <div class="d-flex justify-content-center ">
+                <div class="col-md-10">
+                    <div th:if="${mensaje != null}">
+                        <div class="alert alert-dismissible fade show" th:classappend="${tipo}" role="alert">
+                            <span class="fw-semibold" th:text="${mensaje}"></span>
+                            <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
+                        </div>
+                    </div>
+                    <div class="text-start" sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA')">
+                        <a th:href="@{/addCitas}" class="colorBoton btn w-100">
+                            Nueva Cita
+                        </a>
+                    </div>
+                    <div class="mt-2">
+                        <table class="table table-sm table-striped table-hover">
+                            <thead>
+                            <tr class="table table-striped table-hover">
+                                <th>Paciente</th>
+                                <th>Oftalmologo</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Estado</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="objCitas:${arrCitas}">
+                                <td th:text="${objCitas.idPaciente.nombreUsuario + ' ' + objCitas.idPaciente.ApellidoUsuario}"></td>
+                                <td th:text="${objCitas.idOftalmologo != null ? objCitas.idOftalmologo.nombreUsuario + ' ' + objCitas.idOftalmologo.apellidoUsuario : 'Sin oftalmologo asignado'}"></td>
+                                <td th:text="${#dates.format(objCitas.fecha_hora, 'yyyy-MMM-dd').toUpperCase}"></td>
+                                <td th:text="${#dates.format(objCitas.fecha_hora, 'HH:mm')}"></td>
+                                <td>
                                                 <span class="alert fw-bold"
                                                       th:text="${objCitas.estado == 1 ? 'Pendiente' : (objCitas.estado == 2 ? 'Notificación Enviada' : (objCitas.estado == 3 ? 'Finalizada' : (objCitas.estado == 4 ? 'Cita Cancelada' : 'Desconocido')))}"
                                                       th:classappend="${objCitas.estado == 1 ? 'text-danger' : (objCitas.estado == 2 ? 'text-success' : (objCitas.estado == 3 ? 'text-success' : 'text-danger'))}">
                                                 </span>
-                                            </td>                                             
-                                            <td style="text-align: center"> 
-                                                <a th:if="${(objCitas.estado!=3) and (objCitas.estado!=4)}" th:href="@{/updateCitas/}+${objCitas.idCita}" class="actualizarbtn btn btn-sm" sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA')">
-                                                    <i class="fa fa-edit fs-5 text-white"></i>  
-                                                </a>                                                
-                                                <a th:if="${(objCitas.estado!=3) and (objCitas.estado!=4)}" th:href="@{/deleteCitas/}+${objCitas.idCita}" class="btn btn-danger btn-sm" sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA', 'OFTALMOLOGO')"
-                                                   onclick="return confirm('¿estas seguro de eliminar esta Cita')">
-                                                    <i class="fa fa-trash fs-5 text-white"></i>
-                                                </a>
-                                                <a th:unless="${objCitas.estado!=0}"  class="btn btn-secondary btn-sm"
-                                                   onclick="return alert('El usuario ya se encuentra inactivo')">
-                                                    <i class="fa fa-trash fs-5 text-white"></i>
-                                                </a>                                                
-                                                <a th:if="${(objCitas.estado != 2) and (objCitas.estado != 4) and (objCitas.estado != 3)}" th:href="@{/nuevaNoti/}+${objCitas.idCita}" class="btn btn-primary btn-sm" sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA')">
-                                                    <i class="fa fa-plus fs-5 text-white"></i>  
-                                                </a>                                                
-                                                <a th:if="${(objCitas.estado != 4) and (objCitas.estado != 3)}" sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA', 'OFTALMOLOGO')" th:href="@{/confirmarCita/}+${objCitas.idCita}" class="btn btn-success btn-sm">
-                                                    <i class="fa fa-check fs-5 text-white"></i>  
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> 
+                                </td>
+                                <td style="text-align: center">
+                                    <a th:if="${(objCitas.estado!=3) and (objCitas.estado!=4)}"
+                                       th:href="@{/updateCitas/}+${objCitas.idCita}" class="actualizarbtn btn btn-sm"
+                                       sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA')">
+                                        <i class="fa fa-edit fs-5 text-white"></i>
+                                    </a>
+                                    <a th:if="${(objCitas.estado!=3) and (objCitas.estado!=4)}"
+                                       th:href="@{/deleteCitas/}+${objCitas.idCita}" class="btn btn-danger btn-sm"
+                                       sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA', 'OFTALMOLOGO')"
+                                       onclick="return confirm('¿estas seguro de eliminar esta Cita')">
+                                        <i class="fa fa-trash fs-5 text-white"></i>
+                                    </a>
+                                    <a th:unless="${objCitas.estado!=0}" class="btn btn-secondary btn-sm"
+                                       onclick="return alert('El usuario ya se encuentra inactivo')">
+                                        <i class="fa fa-trash fs-5 text-white"></i>
+                                    </a>
+                                    <a th:if="${(objCitas.estado != 2) and (objCitas.estado != 4) and (objCitas.estado != 3)}"
+                                       th:href="@{/nuevaNoti/}+${objCitas.idCita}" class="btn btn-primary btn-sm"
+                                       sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA')">
+                                        <i class="fa fa-plus fs-5 text-white"></i>
+                                    </a>
+                                    <a th:if="${(objCitas.estado != 4) and (objCitas.estado != 3)}"
+                                       sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA', 'OFTALMOLOGO')"
+                                       th:href="@{/confirmarCita/}+${objCitas.idCita}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-check fs-5 text-white"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </section>
-        </main>
-    </body>
-    <footer th:replace="contenedor/tablero :: footer"></footer>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+<footer th:replace="contenedor/tablero :: footer"></footer>
 </html>

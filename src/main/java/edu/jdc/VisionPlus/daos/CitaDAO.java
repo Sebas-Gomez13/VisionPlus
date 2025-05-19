@@ -5,6 +5,7 @@ import edu.jdc.VisionPlus.clases.Notificacion;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,5 +111,19 @@ public class CitaDAO implements Operacion<Cita>{
         return conteo;
     }
 
-    
+    public Map<Integer, Long> totalCitasPorEstado(Integer idOftalmologo) {
+        List<Object[]> resultados = citaRepositorio.contarCitasPorEstados(idOftalmologo);
+        Map<Integer, Long> conteo = new HashMap<>();
+
+        for (Object[] fila : resultados) {
+            Integer estado = (Integer) fila[0];
+            Long total = ((Number) fila[1]).longValue();
+            conteo.put(estado, total);
+        }
+
+        return conteo;
+    }
+
+
+
 }

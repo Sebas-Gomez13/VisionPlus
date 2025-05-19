@@ -57,7 +57,7 @@ public class UsuarioControlador {
             }
             usuarioDao.registrar(objUsuarios);
             String rol = objUsuarios.getRolUsuario();
-            if( rol == "usuario"){
+            if(rol.equals("paciente")){
                 Historial objHistorial = new Historial();            
                 objHistorial.setIdPaciente(objUsuarios);
                 usuarioDao.nuevoHistorial(objHistorial);

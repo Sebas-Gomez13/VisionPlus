@@ -3,6 +3,8 @@ package edu.jdc.VisionPlus.repositorios;
 import edu.jdc.VisionPlus.clases.Cita;
 import edu.jdc.VisionPlus.clases.Usuario;
 import java.util.List;
+
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +18,8 @@ public interface CitaRepositorio extends CrudRepository<Cita, Integer>{
     public Integer actualizarCita(@Param("llavePrimaria") Integer llavePrimaria, @Param("estadoAct") Integer estadoAct);
     public List<Cita> findCitaByIdOftalmologo(Usuario oft);
     public List<Cita> findCitaByIdPaciente(Usuario user);
-    public long cou
+    long countByEstadoIn(java.util.List<Integer> estados);
+
     int countByIdOftalmologoAndEstado(Usuario oftalmologo, Integer estado);
     @Query("""
                 SELECT c FROM Cita c
@@ -39,5 +42,14 @@ public interface CitaRepositorio extends CrudRepository<Cita, Integer>{
                 ORDER BY TO_CHAR(c.fecha_hora, 'D')
             """, nativeQuery = true)
     List<Object[]> contarCitasPorDiaSemana();
+
+    @Query("""
+    SELECT c.estado, COUNT(c) 
+    FROM Cita c 
+    WHERE c.estado IN (1, 4) AND c.idOftalmologo.idUsuario = :idOftalmologo 
+    GROUP BY c.estado
+""")
+    List<Object[]> contarCitasPorEstados(@Param("idOftalmologo") Integer idOftalmologo);
+
 
 }
