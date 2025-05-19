@@ -30,7 +30,7 @@ public class UsuarioControlador {
     private PasswordEncoder passwordEncoder;
 
 
-    @GetMapping("/listUsuarios")
+    @GetMapping("/ listUsuarios")
     public String listarUsuario(Model vista) {
         List<Usuario> arregloUsuarios = usuarioDao.consultar("");
         vista.addAttribute("arrUsuarios", arregloUsuarios);
@@ -69,8 +69,10 @@ public class UsuarioControlador {
 
     @GetMapping("/adminUsuarios")
     public String administrarUsuario(Model vista) {
+        Usuario usuario = usuarioDao.authenticationUser();
         List<Usuario> arrUsuarios = usuarioDao.consultar("");
         vista.addAttribute("arrUsuarios", arrUsuarios);
+        vista.addAttribute("usuario", usuario);
         return "administrarUsuarios";
     }
 

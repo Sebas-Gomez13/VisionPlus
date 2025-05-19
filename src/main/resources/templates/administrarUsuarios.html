@@ -18,7 +18,6 @@
                         <span class="fw-semibold" th:text="${mensaje}"></span>
                         <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
                     </div>
-
                 </div>
                 <div class="text-start">
                     <a th:href="@{/addUsuarios}" class="colorBoton btn w-100">
@@ -26,6 +25,7 @@
                     </a>
                 </div>
                 <div class="mt-2">
+                    <p th:text="${usuario.rolUsuario}"></p>
                     <table class="table table-sm table-striped table-hover">
                         <thead>
                         <tr class="table table-light bg-primary">
@@ -43,7 +43,8 @@
                         </thead>
 
                         <tbody>
-                        <tr th:each="objUsuario:${arrUsuarios}">
+                        <tr th:each="objUsuario : ${arrUsuarios}"
+                            th:if="${!(usuario.rolUsuario == 2 and objUsuario.idUsuario == 1)}">
                             <td th:text="${objUsuario.idUsuario}"></td>
                             <td th:text="${objUsuario.nombreUsuario}"></td>
                             <td th:text="${objUsuario.ApellidoUsuario}"></td>
