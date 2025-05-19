@@ -68,7 +68,7 @@ public class ReporteDAO implements Operacion<Reporte>{
     }    
 
     public List<Usuario> obtenerUsuarios(){
-        return repoUsuario.findByRolUsuarioIn(Arrays.asList(1, 2));
+        return repoUsuario.findByRolUsuarioIn(Arrays.asList("admin", "recepcionista"));
     }   
     
     public List<Producto> obtenerProductos(){

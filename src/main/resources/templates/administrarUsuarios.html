@@ -43,7 +43,7 @@
 
                         <tbody>
                         <tr th:each="objUsuario : ${arrUsuarios}"
-                            th:if="${!(usuario.rolUsuario == 2 and objUsuario.idUsuario == 1)}">
+                            th:if="${!(usuario.rolUsuario== 'recepcionista'  and objUsuario.idUsuario == 1)}">
                             <td th:text="${objUsuario.idUsuario}"></td>
                             <td th:text="${objUsuario.nombreUsuario}"></td>
                             <td th:text="${objUsuario.apellidoUsuario}"></td>

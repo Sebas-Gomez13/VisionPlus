@@ -47,7 +47,7 @@
                                     <div class="card-body">
                                         <i class="fas fa-bell fa-2x text-warning"></i>
                                         <h5 class="card-title mt-2">Reportes</h5>
-                                        <p class="card-text">3 reportes nuevas</p>
+                                        <p class="card-text"><span th:text="${cantidadReportes}"></span> reportes nuevas</p>
                                     </div>
                                 </div>
                             </div>
@@ -56,13 +56,47 @@
                                     <div class="card-body">
                                         <i class="fas fa-users fa-2x text-success"></i>
                                         <h5 class="card-title mt-2">Pacientes</h5>
-                                        <p class="card-text">24 personas en el sistema</p>
+                                        <p class="card-text"><span th:text="${cantidadPacientes}"></span> personas en el sistema</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <canvas id="graficaCitas" sec:authorize="hasAnyRole('ADMIN', 'RECEPCIONISTA''OFTALMOLOGO')"></canvas>
+
+                    <script th:inline="javascript">
+                        /*<![CDATA[*/
+                        let datos = [[${datosCitas}]];
+                        let labels = Object.keys(datos);
+                        let values = Object.values(datos);
+
+                        const ctx = document.getElementById('graficaCitas').getContext('2d');
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Citas por día de la semana',
+                                    data: values,
+                                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                                    borderColor: 'rgba(54, 162, 235, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        precision: 0
+                                    }
+                                }
+                            }
+                        });
+                        /*]]>*/
+                    </script>
+
                 </div>
             </div>
         </div>    

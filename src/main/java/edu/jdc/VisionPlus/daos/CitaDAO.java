@@ -4,7 +4,11 @@ import edu.jdc.VisionPlus.clases.Cita;
 import edu.jdc.VisionPlus.clases.Notificacion;
 import edu.jdc.VisionPlus.clases.Usuario;
 import edu.jdc.VisionPlus.interfaces.Operacion;
+
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.jdc.VisionPlus.repositorios.CitaRepositorio;
@@ -22,6 +26,8 @@ public class CitaDAO implements Operacion<Cita>{
     private UsuarioRepositorio repoUsuario;
     @Autowired
     private NotificacionRepositorio repoNotificacion;
+    @Autowired
+    private CitaRepositorio citaRepositorio;
 
     @Override
     public List<Cita> consultar(String orden) {
@@ -76,7 +82,7 @@ public class CitaDAO implements Operacion<Cita>{
 
     public Usuario getAvailableOftalmologo(Integer idActualOftalmologo) {
         List<Usuario> oftalmologos = repoUsuario.findByRolUsuario("oftalmologo");
-        int maxOpenCitas = 2; // Puedes cambiarlo fácilmente en el futuro (por ejemplo, a 5)
+        int maxOpenCitas = 2;
 
         for (Usuario oftalmologo : oftalmologos) {
             if (idActualOftalmologo != null && oftalmologo.getIdUsuario().equals(idActualOftalmologo)) {
@@ -88,8 +94,21 @@ public class CitaDAO implements Operacion<Cita>{
                 return oftalmologo;
             }
         }
-
-        return null; // No hay técnicos disponibles por debajo del límite
+        return null;
     }
+
+    //Metodo para graficas
+    public Map<String,Long> citasPorDias(){
+        List<Object[]> resultados = citaRepositorio.contarCitasPorDiaSemana();
+        Map<String, Long> conteo = new LinkedHashMap<>();
+        for(Object[] fila : resultados) {
+            String diaSemana = (String) fila[0];
+            Integer diaOrden = Integer.parseInt((String) fila[1]);
+            Long total = ((Number) fila[2]).longValue();
+            conteo.put(diaSemana, total);
+        }
+        return conteo;
+    }
+
     
 }

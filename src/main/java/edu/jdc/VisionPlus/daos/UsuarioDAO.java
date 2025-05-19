@@ -21,6 +21,9 @@ public class UsuarioDAO implements Operacion<Usuario> {
     @Autowired(required = true)
     private HistorialRepositorio repoHistorial;
 
+    @Autowired(required = true)
+    private UsuarioRepositorio usuarioRepositorio;
+
     @Override
     public List<Usuario> consultar(String orden) {
         return (List<Usuario>) repoUsuario.findAll();
@@ -66,6 +69,10 @@ public class UsuarioDAO implements Operacion<Usuario> {
         }
 
         return null;
+    }
+
+    public long cantidadPacientes() {
+        return usuarioRepositorio.countByRolUsuario("paciente");
     }
 
 }

@@ -16,6 +16,7 @@ public interface CitaRepositorio extends CrudRepository<Cita, Integer>{
     public Integer actualizarCita(@Param("llavePrimaria") Integer llavePrimaria, @Param("estadoAct") Integer estadoAct);
     public List<Cita> findCitaByIdOftalmologo(Usuario oft);
     public List<Cita> findCitaByIdPaciente(Usuario user);
+    public long cou
     int countByIdOftalmologoAndEstado(Usuario oftalmologo, Integer estado);
     @Query("""
                 SELECT c FROM Cita c
@@ -26,4 +27,17 @@ public interface CitaRepositorio extends CrudRepository<Cita, Integer>{
             @Param("idOftalmologo") Long idOftalmologo,
             @Param("estado") Integer estado
     );
+    @Query(value = """
+                    SELECT TO_CHAR(c.fecha_hora, 'FMDay') AS dia_semana,
+                       TO_CHAR(c.fecha_hora, 'D') AS dia_orden,
+                       COUNT(*) AS total
+                FROM citas c
+                WHERE c.estado = 1
+                  AND c.fecha_hora >= DATE_TRUNC('week', CURRENT_DATE)
+                  AND c.fecha_hora < DATE_TRUNC('week', CURRENT_DATE) + INTERVAL '7 days'
+                GROUP BY TO_CHAR(c.fecha_hora, 'FMDay'), TO_CHAR(c.fecha_hora, 'D')
+                ORDER BY TO_CHAR(c.fecha_hora, 'D')
+            """, nativeQuery = true)
+    List<Object[]> contarCitasPorDiaSemana();
+
 }
