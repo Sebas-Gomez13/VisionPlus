@@ -56,8 +56,8 @@ public class UsuarioControlador {
                 objUsuarios.setContrasenaUsuario(encryptedPassword);
             }
             usuarioDao.registrar(objUsuarios);
-            int rol = objUsuarios.getRolUsuario();
-            if( rol == 4){
+            String rol = objUsuarios.getRolUsuario();
+            if( rol == "usuario"){
                 Historial objHistorial = new Historial();            
                 objHistorial.setIdPaciente(objUsuarios);
                 usuarioDao.nuevoHistorial(objHistorial);

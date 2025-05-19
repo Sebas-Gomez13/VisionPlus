@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layoutDash:: head">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<nav th:replace="layout/layoutDash :: navbar"></nav>
+<div th:replace="layout/layoutDash :: menuLateral"></div>
+
+<div class="container-fluid mb-4">
+    <div class="row h-100">
+        <div class="col-12">
+            <!-- Bienvenida personalizada -->
+
+            <div class="d-flex justify-content-center">
+                <div class="mt-4">
+                    <div class="card shadow-lg">
+                        <div class="card-header text-center bg-primary text-white">
+                            <h4 class="fst-italic"> Bienvenido a VisionPlus</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <ul class="list-group list-group-flush">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección adicional de estadísticas o paneles -->
+            <div class="mt-5">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="card bg-light shadow-sm animate__animated animate__fadeInUp animate__delay-.5s">
+                            <div class="card-body">
+                                <i class="fas fa-tasks fa-2x text-primary"></i>
+                                <h5 class="card-title mt-2">Tareas Pendientes</h5>
+                                <p class="card-text">5 tareas asignadas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light shadow-sm animate__animated animate__fadeInUp animate__delay-.5s">
+                            <div class="card-body">
+                                <i class="fas fa-bell fa-2x text-warning"></i>
+                                <h5 class="card-title mt-2">Reportes</h5>
+                                <p class="card-text">3 reportes nuevas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light shadow-sm animate__animated animate__fadeInUp animate__delay-.5s">
+                            <div class="card-body">
+                                <i class="fas fa-users fa-2x text-success"></i>
+                                <h5 class="card-title mt-2">Pacientes</h5>
+                                <p class="card-text">24 personas en el sistema</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+<footer th:replace="layout/layout :: footer"></footer>
+</html>

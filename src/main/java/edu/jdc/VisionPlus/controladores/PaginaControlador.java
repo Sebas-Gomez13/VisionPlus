@@ -41,4 +41,9 @@ public class PaginaControlador {
         model.addAttribute("idUsuario", user);
         return "dashboard/bienvenida";
     }
+
+    @GetMapping("/dashboard")
+    public String verDashboard() {
+        return "IndexDos"; // <== Usa la ruta relativa dentro de templates (sin .html)
+    }
 }

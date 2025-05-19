@@ -69,12 +69,12 @@ public class Usuario implements UserDetails {
     
     @NotNull
     @Column(name = "rolUsuario")
-    public Integer rolUsuario;
+    public String rolUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String ApellidoUsuario, String correoUsuario, String contrasenaUsuario, Date fechaCreacionUsuario, String telefonoUsuario, String direccionUsuario, Integer estadoUsuario, Integer rolUsuario) {
+    public Usuario(Integer idUsuario, String nombreUsuario, String ApellidoUsuario, String correoUsuario, String contrasenaUsuario, Date fechaCreacionUsuario, String telefonoUsuario, String direccionUsuario, Integer estadoUsuario, String rolUsuario) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.ApellidoUsuario = ApellidoUsuario;
@@ -159,11 +159,11 @@ public class Usuario implements UserDetails {
         this.estadoUsuario = estadoUsuario;
     }
 
-    public Integer getRolUsuario() {
+    public String getRolUsuario() {
         return rolUsuario;
     }
 
-    public void setRolUsuario(Integer rolUsuario) {
+    public void setRolUsuario(String rolUsuario) {
         this.rolUsuario = rolUsuario;
     }
 
