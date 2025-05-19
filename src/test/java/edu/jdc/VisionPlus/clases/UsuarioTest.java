@@ -158,12 +158,14 @@ class UsuarioTest {
         usuario.setApellidoUsuario("Corredor");
         usuario.setCorreoUsuario("juli@gmail.com");
         usuario.setContrasenaUsuario("1234");
-        usuario.setFechaCreacionUsuario(Date.of(2025, 5, 20));
-        usuario.setTelefonoUsuario(null);
+        usuario.setFechaCreacionUsuario(new Date());
+        usuario.setTelefonoUsuario("3124563456");
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
-        usuario.rolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(cita);
+        usuario.setRolUsuario("Paciente");
+        Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
+        violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
+        assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
