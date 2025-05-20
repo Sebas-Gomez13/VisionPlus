@@ -21,6 +21,7 @@ public class Historial {
     private Integer idHistorial;
     
 
+    @NotNull
     @OneToOne
     @JoinColumn(name = "id_paciente", nullable = false)
     private Usuario idPaciente;

@@ -34,7 +34,7 @@ class UsuarioTest {
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
         usuario.setRolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
@@ -43,7 +43,6 @@ class UsuarioTest {
     void setIdUsuario() {
 
         Usuario usuario = new Usuario();
-
         usuario.setIdUsuario(null);
         usuario.setNombreUsuario("Juliana");
         usuario.setApellidoUsuario("Corredor");
@@ -54,8 +53,7 @@ class UsuarioTest {
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
         usuario.setRolUsuario("Paciente");
-
-        java.util.Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
+        java.util.Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
@@ -63,8 +61,8 @@ class UsuarioTest {
     @Test
     void setNombreUsuario() {
         Usuario usuario= new Usuario();
-        usuario.setIdUsuario(1);
         usuario.setNombreUsuario(null);
+        usuario.setIdUsuario(1);
         usuario.setApellidoUsuario("Corredor");
         usuario.setCorreoUsuario("juli@gmail.com");
         usuario.setContrasenaUsuario("1234");
@@ -72,8 +70,8 @@ class UsuarioTest {
         usuario.setTelefonoUsuario("3124563456");
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
-        usuario.getRolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
+        usuario.setRolUsuario("Paciente");
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
@@ -81,9 +79,9 @@ class UsuarioTest {
     @Test
     void setApellidoUsuario() {
         Usuario usuario= new Usuario();
+        usuario.setApellidoUsuario(null);
         usuario.setIdUsuario(1);
         usuario.setNombreUsuario("Juliana");
-        usuario.setApellidoUsuario(null);
         usuario.setCorreoUsuario("juli@gmail.com");
         usuario.setContrasenaUsuario("1234");
         usuario.setFechaCreacionUsuario(new Date());
@@ -91,7 +89,7 @@ class UsuarioTest {
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
         usuario.setRolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
@@ -99,17 +97,17 @@ class UsuarioTest {
     @Test
     void setCorreoUsuario() {
         Usuario usuario= new Usuario();
+        usuario.setCorreoUsuario(null);
         usuario.setIdUsuario(1);
         usuario.setNombreUsuario("Juliana");
         usuario.setApellidoUsuario("Corredor");
-        usuario.setCorreoUsuario(null);
         usuario.setContrasenaUsuario("1234");
         usuario.setFechaCreacionUsuario(new Date());
         usuario.setTelefonoUsuario("3124563456");
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
         usuario.setRolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
@@ -117,17 +115,17 @@ class UsuarioTest {
     @Test
     void setContrasenaUsuario() {
         Usuario usuario= new Usuario();
+        usuario.setContrasenaUsuario(null);
         usuario.setIdUsuario(1);
         usuario.setNombreUsuario("Juliana");
         usuario.setApellidoUsuario("Corredor");
         usuario.setCorreoUsuario("juli@gmail.com");
-        usuario.setContrasenaUsuario("1234");
         usuario.setFechaCreacionUsuario(new Date());
         usuario.setTelefonoUsuario("3124563456");
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
         usuario.setRolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
@@ -135,17 +133,17 @@ class UsuarioTest {
     @Test
     void setFechaCreacionUsuario() {
         Usuario usuario= new Usuario();
+        usuario.setFechaCreacionUsuario(null);
         usuario.setIdUsuario(1);
         usuario.setNombreUsuario("Juliana");
         usuario.setApellidoUsuario("Corredor");
         usuario.setCorreoUsuario("juli@gmail.com");
         usuario.setContrasenaUsuario("1234");
-        usuario.setFechaCreacionUsuario(new Date());
         usuario.setTelefonoUsuario("3124563456");
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
         usuario.setRolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
@@ -153,6 +151,61 @@ class UsuarioTest {
     @Test
     void setTelefonoUsuario() {
         Usuario usuario= new Usuario();
+        usuario.setTelefonoUsuario(null);
+        usuario.setIdUsuario(1);
+        usuario.setNombreUsuario("Juliana");
+        usuario.setApellidoUsuario("Corredor");
+        usuario.setCorreoUsuario("juli@gmail.com");
+        usuario.setContrasenaUsuario("1234");
+        usuario.setFechaCreacionUsuario(new Date());
+        usuario.setDireccionUsuario("Calle 1");
+        usuario.setEstadoUsuario(1);
+        usuario.setRolUsuario("Paciente");
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
+        violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
+        assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
+    }
+
+    @Test
+    void setDireccionUsuario() {
+        Usuario usuario= new Usuario();
+        usuario.setDireccionUsuario(null);
+        usuario.setIdUsuario(1);
+        usuario.setNombreUsuario("Juliana");
+        usuario.setApellidoUsuario("Corredor");
+        usuario.setCorreoUsuario("juli@gmail.com");
+        usuario.setContrasenaUsuario("1234");
+        usuario.setFechaCreacionUsuario(new Date());
+        usuario.setTelefonoUsuario("3124563456");
+        usuario.setEstadoUsuario(1);
+        usuario.setRolUsuario("Paciente");
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
+        violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
+        assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
+    }
+
+    @Test
+    void setEstadoUsuario() {
+        Usuario usuario= new Usuario();
+        usuario.setEstadoUsuario(null);
+        usuario.setIdUsuario(1);
+        usuario.setNombreUsuario("Juliana");
+        usuario.setApellidoUsuario("Corredor");
+        usuario.setCorreoUsuario("juli@gmail.com");
+        usuario.setContrasenaUsuario("1234");
+        usuario.setFechaCreacionUsuario(new Date());
+        usuario.setTelefonoUsuario("3124563456");
+        usuario.setDireccionUsuario("Calle 1");
+        usuario.setRolUsuario("Paciente");
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
+        violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
+        assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
+    }
+
+    @Test
+    void setRolUsuario() {
+        Usuario usuario= new Usuario();
+        usuario.setRolUsuario(null);
         usuario.setIdUsuario(1);
         usuario.setNombreUsuario("Juliana");
         usuario.setApellidoUsuario("Corredor");
@@ -162,64 +215,7 @@ class UsuarioTest {
         usuario.setTelefonoUsuario("3124563456");
         usuario.setDireccionUsuario("Calle 1");
         usuario.setEstadoUsuario(1);
-        usuario.setRolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(usuario);
-        violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
-        assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
-        violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
-        assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
-    }
-
-    @Test
-    void setDireccionUsuario() {
-        Usuario usuario= new Usuario();
-        usuario.setIdUsuario(1);
-        usuario.setNombreUsuario("Juliana");
-        usuario.setApellidoUsuario("Corredor");
-        usuario.setCorreoUsuario("juli@gmail.com");
-        usuario.setContrasenaUsuario("1234");
-        usuario.setFechaCreacionUsuario(Date.of(2025, 5, 20));
-        usuario.setTelefonoUsuario("3124563456");
-        usuario.setDireccionUsuario(null);
-        usuario.setEstadoUsuario(1);
-        usuario.rolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(cita);
-        violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
-        assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
-    }
-
-    @Test
-    void setEstadoUsuario() {
-        Usuario usuario= new Usuario();
-        usuario.setIdUsuario(1);
-        usuario.setNombreUsuario("Juliana");
-        usuario.setApellidoUsuario("Corredor");
-        usuario.setCorreoUsuario("juli@gmail.com");
-        usuario.setContrasenaUsuario("1234");
-        usuario.setFechaCreacionUsuario(Date.of(2025, 5, 20));
-        usuario.setTelefonoUsuario("3124563456");
-        usuario.setDireccionUsuario("Calle 1");
-        usuario.setEstadoUsuario(null);
-        usuario.rolUsuario("Paciente");
-        Set<ConstraintViolation<Cita>> violations = validator.validate(cita);
-        violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
-        assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
-    }
-
-    @Test
-    void setRolUsuario() {
-        Usuario usuario= new Usuario();
-        usuario.setIdUsuario(1);
-        usuario.setNombreUsuario("Juliana");
-        usuario.setApellidoUsuario("Corredor");
-        usuario.setCorreoUsuario("juli@gmail.com");
-        usuario.setContrasenaUsuario("1234");
-        usuario.setFechaCreacionUsuario(Date.of(2025, 5, 20));
-        usuario.setTelefonoUsuario("3124563456");
-        usuario.setDireccionUsuario("Calle 1");
-        usuario.setEstadoUsuario(1);
-        usuario.rolUsuario(null);
-        Set<ConstraintViolation<Cita>> violations = validator.validate(cita);
+        Set<ConstraintViolation<Usuario>> violations = validator.validate(usuario);
         violations.forEach(v -> System.out.println(v.getPropertyPath() + ": " + v.getMessage()));
         assertTrue(violations.isEmpty(), "No deben haber errores de validacion");
     }
